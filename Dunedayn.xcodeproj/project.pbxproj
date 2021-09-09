@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F4DC4B926E9D7BA000F9A74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4B826E9D7BA000F9A74 /* AppDelegate.swift */; };
+		1F4DC4BB26E9D7BA000F9A74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4BA26E9D7BA000F9A74 /* SceneDelegate.swift */; };
+		1F4DC4BD26E9D7BA000F9A74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4BC26E9D7BA000F9A74 /* ViewController.swift */; };
+		1F4DC4C026E9D7BA000F9A74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DC4BE26E9D7BA000F9A74 /* Main.storyboard */; };
+		1F4DC4C226E9D7BE000F9A74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DC4C126E9D7BE000F9A74 /* Assets.xcassets */; };
+		1F4DC4C526E9D7BE000F9A74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DC4C326E9D7BE000F9A74 /* LaunchScreen.storyboard */; };
+		8472E9955A7529BDBC217C9B /* Pods_Dunedayn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35E4A3A51731B15AC77B7B9 /* Pods_Dunedayn.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1F4DC4B526E9D7BA000F9A74 /* Dunedayn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dunedayn.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F4DC4B826E9D7BA000F9A74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1F4DC4BA26E9D7BA000F9A74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1F4DC4BC26E9D7BA000F9A74 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1F4DC4BF26E9D7BA000F9A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1F4DC4C126E9D7BE000F9A74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1F4DC4C426E9D7BE000F9A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1F4DC4C626E9D7BE000F9A74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9EDD5988C3DD973A7CC4E7F3 /* Pods-Dunedayn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dunedayn.debug.xcconfig"; path = "Target Support Files/Pods-Dunedayn/Pods-Dunedayn.debug.xcconfig"; sourceTree = "<group>"; };
+		B35E4A3A51731B15AC77B7B9 /* Pods_Dunedayn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dunedayn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6868211DBA2EB253E0686DA /* Pods-Dunedayn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dunedayn.release.xcconfig"; path = "Target Support Files/Pods-Dunedayn/Pods-Dunedayn.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1F4DC4B226E9D7BA000F9A74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8472E9955A7529BDBC217C9B /* Pods_Dunedayn.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		199C4EDC3320D3173033BA3A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B35E4A3A51731B15AC77B7B9 /* Pods_Dunedayn.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F4DC4AC26E9D7BA000F9A74 = {
+			isa = PBXGroup;
+			children = (
+				1F4DC4B726E9D7BA000F9A74 /* Dunedayn */,
+				1F4DC4B626E9D7BA000F9A74 /* Products */,
+				FA356C336E3CE79DE9FE78E6 /* Pods */,
+				199C4EDC3320D3173033BA3A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1F4DC4B626E9D7BA000F9A74 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F4DC4B526E9D7BA000F9A74 /* Dunedayn.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1F4DC4B726E9D7BA000F9A74 /* Dunedayn */ = {
+			isa = PBXGroup;
+			children = (
+				1F4DC4B826E9D7BA000F9A74 /* AppDelegate.swift */,
+				1F4DC4BA26E9D7BA000F9A74 /* SceneDelegate.swift */,
+				1F4DC4BC26E9D7BA000F9A74 /* ViewController.swift */,
+				1F4DC4BE26E9D7BA000F9A74 /* Main.storyboard */,
+				1F4DC4C126E9D7BE000F9A74 /* Assets.xcassets */,
+				1F4DC4C326E9D7BE000F9A74 /* LaunchScreen.storyboard */,
+				1F4DC4C626E9D7BE000F9A74 /* Info.plist */,
+			);
+			path = Dunedayn;
+			sourceTree = "<group>";
+		};
+		FA356C336E3CE79DE9FE78E6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9EDD5988C3DD973A7CC4E7F3 /* Pods-Dunedayn.debug.xcconfig */,
+				B6868211DBA2EB253E0686DA /* Pods-Dunedayn.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1F4DC4B426E9D7BA000F9A74 /* Dunedayn */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F4DC4C926E9D7BE000F9A74 /* Build configuration list for PBXNativeTarget "Dunedayn" */;
+			buildPhases = (
+				DE46BA0C191929BF46B5F16B /* [CP] Check Pods Manifest.lock */,
+				1F4DC4B126E9D7BA000F9A74 /* Sources */,
+				1F4DC4B226E9D7BA000F9A74 /* Frameworks */,
+				1F4DC4B326E9D7BA000F9A74 /* Resources */,
+				0BBDFD5A19CD7A845A180931 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dunedayn;
+			productName = Dunedayn;
+			productReference = 1F4DC4B526E9D7BA000F9A74 /* Dunedayn.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1F4DC4AD26E9D7BA000F9A74 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					1F4DC4B426E9D7BA000F9A74 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = 1F4DC4B026E9D7BA000F9A74 /* Build configuration list for PBXProject "Dunedayn" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1F4DC4AC26E9D7BA000F9A74;
+			productRefGroup = 1F4DC4B626E9D7BA000F9A74 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1F4DC4B426E9D7BA000F9A74 /* Dunedayn */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1F4DC4B326E9D7BA000F9A74 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F4DC4C526E9D7BE000F9A74 /* LaunchScreen.storyboard in Resources */,
+				1F4DC4C226E9D7BE000F9A74 /* Assets.xcassets in Resources */,
+				1F4DC4C026E9D7BA000F9A74 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0BBDFD5A19CD7A845A180931 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dunedayn/Pods-Dunedayn-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dunedayn/Pods-Dunedayn-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dunedayn/Pods-Dunedayn-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE46BA0C191929BF46B5F16B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Dunedayn-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1F4DC4B126E9D7BA000F9A74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F4DC4BD26E9D7BA000F9A74 /* ViewController.swift in Sources */,
+				1F4DC4B926E9D7BA000F9A74 /* AppDelegate.swift in Sources */,
+				1F4DC4BB26E9D7BA000F9A74 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1F4DC4BE26E9D7BA000F9A74 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F4DC4BF26E9D7BA000F9A74 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1F4DC4C326E9D7BE000F9A74 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F4DC4C426E9D7BE000F9A74 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1F4DC4C726E9D7BE000F9A74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1F4DC4C826E9D7BE000F9A74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F4DC4CA26E9D7BE000F9A74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EDD5988C3DD973A7CC4E7F3 /* Pods-Dunedayn.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 22NTM9AJGF;
+				INFOPLIST_FILE = Dunedayn/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Alexander-My.Dunedayn";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1F4DC4CB26E9D7BE000F9A74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6868211DBA2EB253E0686DA /* Pods-Dunedayn.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 22NTM9AJGF;
+				INFOPLIST_FILE = Dunedayn/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Alexander-My.Dunedayn";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1F4DC4B026E9D7BA000F9A74 /* Build configuration list for PBXProject "Dunedayn" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F4DC4C726E9D7BE000F9A74 /* Debug */,
+				1F4DC4C826E9D7BE000F9A74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F4DC4C926E9D7BE000F9A74 /* Build configuration list for PBXNativeTarget "Dunedayn" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F4DC4CA26E9D7BE000F9A74 /* Debug */,
+				1F4DC4CB26E9D7BE000F9A74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1F4DC4AD26E9D7BA000F9A74 /* Project object */;
+}
