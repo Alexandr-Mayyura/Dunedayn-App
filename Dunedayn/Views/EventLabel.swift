@@ -1,5 +1,5 @@
 //
-//  CalendarBase.swift
+//  EventLabel.swift
 //  Dunedayn
 //
 //  Created by Aleksandr Mayyura on 09.09.2021.
