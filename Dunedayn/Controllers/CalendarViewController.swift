@@ -37,10 +37,11 @@ class CalendarViewController: UIViewController {
         
         tableviewConstr()
         
-        EventSetup().asyncGetRequest {
-            events in self.calendarEvents = events
+        EventSetup().asyncGetRequest(URLs().eventURl, model: EventBase.self) {
+            parseData in self.calendarEvents = [parseData]
             self.tableview.reloadData()
-        }     
+        }
+        
     }
     
     override func viewDidLoad() {

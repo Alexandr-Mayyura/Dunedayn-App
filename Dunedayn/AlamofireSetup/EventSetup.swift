@@ -10,15 +10,15 @@ import Alamofire
 
 class EventSetup {
 
-    func asyncGetRequest (completion: @escaping ([EventBase]) -> Void) {
+    func asyncGetRequest<T: Decodable> (_ URlstring: String, model: T.Type, completion: @escaping (T) -> Void) {
 
-        AF.request("https://dunedayn-app.herokuapp.com/api/events/all/").responseJSON { respons in
+        AF.request(URlstring).responseJSON { respons in
             guard let data = respons.data else { return }
                 do {
-                    let eventData = try JSONDecoder().decode(EventBase.self, from: data)
-                    let events: [EventBase] = [eventData]
+                    let datas = try JSONDecoder().decode(model, from: data)
+                    let parseData: T = datas
                     DispatchQueue.main.async {
-                        completion(events)
+                        completion(parseData)
                     }
                     } catch let error {
                     print(error)

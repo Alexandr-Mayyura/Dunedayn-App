@@ -29,6 +29,7 @@
 		1F4DC4F726EBE144000F9A74 /* TeamMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4F626EBE144000F9A74 /* TeamMenuCollectionViewCell.swift */; };
 		1F4DC4F926EBF0FC000F9A74 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4F826EBF0FC000F9A74 /* CalendarViewController.swift */; };
 		1F4DC4FB26EBF702000F9A74 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4FA26EBF702000F9A74 /* CalendarTableViewCell.swift */; };
+		1FF8EBF326ECC9D8004AF652 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8EBF226ECC9D8004AF652 /* URLs.swift */; };
 		8472E9955A7529BDBC217C9B /* Pods_Dunedayn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35E4A3A51731B15AC77B7B9 /* Pods_Dunedayn.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		1F4DC4F626EBE144000F9A74 /* TeamMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		1F4DC4F826EBF0FC000F9A74 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		1F4DC4FA26EBF702000F9A74 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		1FF8EBF226ECC9D8004AF652 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		9EDD5988C3DD973A7CC4E7F3 /* Pods-Dunedayn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dunedayn.debug.xcconfig"; path = "Target Support Files/Pods-Dunedayn/Pods-Dunedayn.debug.xcconfig"; sourceTree = "<group>"; };
 		B35E4A3A51731B15AC77B7B9 /* Pods_Dunedayn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dunedayn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6868211DBA2EB253E0686DA /* Pods-Dunedayn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dunedayn.release.xcconfig"; path = "Target Support Files/Pods-Dunedayn/Pods-Dunedayn.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				1F4DC4D226E9E37C000F9A74 /* Organizers.swift */,
 				1F4DC4DA26E9E55B000F9A74 /* UserBase.swift */,
 				1F4DC4D926E9E55B000F9A74 /* Users.swift */,
+				1FF8EBF226ECC9D8004AF652 /* URLs.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				1F4DC4BB26E9D7BA000F9A74 /* SceneDelegate.swift in Sources */,
 				1F4DC4D426E9E37C000F9A74 /* Organizers.swift in Sources */,
 				1F4DC4EE26EA9ADE000F9A74 /* EventLabel.swift in Sources */,
+				1FF8EBF326ECC9D8004AF652 /* URLs.swift in Sources */,
 				1F4DC4F026EBD49F000F9A74 /* SingInViewController.swift in Sources */,
 				1F4DC4EC26EA9A05000F9A74 /* EventsViewController.swift in Sources */,
 				1F4DC4E826EA7036000F9A74 /* EventSetup.swift in Sources */,
