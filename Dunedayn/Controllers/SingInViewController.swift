@@ -9,15 +9,9 @@ import UIKit
 
 class SingInViewController: UIViewController {
     
-    
     @IBOutlet var logoImageView: UIImageView!
-    
-    
     @IBOutlet var logoLabel: UILabel!
-    
     @IBOutlet var nameLabel: UITextField!
-    
-    
     @IBOutlet var passwordLabel: UITextField!
     
     @IBAction func singInButton(_ sender: Any) {
@@ -25,15 +19,9 @@ class SingInViewController: UIViewController {
     
     @IBAction func singUpButton(_ sender: Any) {
     }
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    
     }
-    
-
-
 }
