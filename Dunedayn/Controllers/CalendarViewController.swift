@@ -10,47 +10,55 @@ import UIKit
 class CalendarViewController: UIViewController {
     
     var calendarEvents = [EventBase]()
- 
+// create tableview
     private let tableview: UITableView = {
         let tv = UITableView(frame: .zero)
-        tv.translatesAutoresizingMaskIntoConstraints = false
         tv.register(CalendarTableViewCell.self, forCellReuseIdentifier: "calendarCell")
         return tv
     }()
-
-    func tableviewConstr() {
-        
-        NSLayoutConstraint.activate([
-            tableview.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            tableview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            tableview.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            tableview.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
-        ])
+    
+// add frame for tableview
+    func tableviewFrame() {
+        tableview.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+// transition to AddEventViewController
+    @objc func rightButtonAction(sender: UIBarButtonItem){
         
+        let vc = AddEventViewController()
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
+
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+// add tableview
         view.addSubview(tableview)
         tableview.dataSource = self
         tableview.delegate = self
-        tableview.backgroundColor = .darkGray
+        tableview.backgroundColor = .gray
         
-        tableviewConstr()
+        tableviewFrame()
+   
+// add data to EventBase
         
-        EventSetup().asyncGetRequest(URLs().eventURl, model: EventBase.self) {
-            parseData in self.calendarEvents = [parseData]
+        EventSetup().asyncGetRequest(URLs().eventURl) { (datas: EventBase) in
+            self.calendarEvents = [datas]
             self.tableview.reloadData()
         }
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.title = "Календарь"
+// add button to navigationController
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector (rightButtonAction))
         self.navigationController?.navigationBar.backgroundColor = .black
         self.navigationController?.navigationBar.tintColor = .white
+        
         view.backgroundColor = .gray
-
     }
 }
 
@@ -84,7 +92,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         
         let vc = EventsViewController()
         
-        vc.date = ev?[indexPath.row].date ?? ""
+        
         vc.name = ev?[indexPath.row].name ?? ""
         vc.type = ev?[indexPath.row].type ?? ""
         vc.info = ev?[indexPath.row].info ?? ""

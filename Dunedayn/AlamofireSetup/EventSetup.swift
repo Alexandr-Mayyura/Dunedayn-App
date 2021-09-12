@@ -10,15 +10,14 @@ import Alamofire
 
 class EventSetup {
 
-    func asyncGetRequest<T: Decodable> (_ URlstring: String, model: T.Type, completion: @escaping (T) -> Void) {
+    func asyncGetRequest<T: Decodable>(_ URlString: String, completion: @escaping ((T) -> ())) {
 
-        AF.request(URlstring).responseJSON { respons in
+        AF.request(URlString).responseJSON { respons in
             guard let data = respons.data else { return }
                 do {
-                    let datas = try JSONDecoder().decode(model, from: data)
-                    let parseData: T = datas
+                    let datas = try JSONDecoder().decode(T.self, from: data)
                     DispatchQueue.main.async {
-                        completion(parseData)
+                        completion(datas)
                     }
                     } catch let error {
                     print(error)
