@@ -30,8 +30,8 @@
 		1F4DC4FB26EBF702000F9A74 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4FA26EBF702000F9A74 /* CalendarTableViewCell.swift */; };
 		1FF8EBF326ECC9D8004AF652 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8EBF226ECC9D8004AF652 /* URLs.swift */; };
 		1FF8EBF526EE04DF004AF652 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8EBF426EE04DF004AF652 /* AddEventViewController.swift */; };
-		1FF8EBF926EE0532004AF652 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8EBF826EE0532004AF652 /* AddEventView.swift */; };
 		1FF8EBFD26EE2D50004AF652 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8EBFC26EE2D50004AF652 /* Extentions.swift */; };
+		1FF8EBFF26EE5D94004AF652 /* MetodsAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8EBFE26EE5D94004AF652 /* MetodsAlamofire.swift */; };
 		8472E9955A7529BDBC217C9B /* Pods_Dunedayn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35E4A3A51731B15AC77B7B9 /* Pods_Dunedayn.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,8 +61,8 @@
 		1F4DC4FA26EBF702000F9A74 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		1FF8EBF226ECC9D8004AF652 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		1FF8EBF426EE04DF004AF652 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
-		1FF8EBF826EE0532004AF652 /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
 		1FF8EBFC26EE2D50004AF652 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		1FF8EBFE26EE5D94004AF652 /* MetodsAlamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetodsAlamofire.swift; sourceTree = "<group>"; };
 		9EDD5988C3DD973A7CC4E7F3 /* Pods-Dunedayn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dunedayn.debug.xcconfig"; path = "Target Support Files/Pods-Dunedayn/Pods-Dunedayn.debug.xcconfig"; sourceTree = "<group>"; };
 		B35E4A3A51731B15AC77B7B9 /* Pods_Dunedayn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dunedayn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6868211DBA2EB253E0686DA /* Pods-Dunedayn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dunedayn.release.xcconfig"; path = "Target Support Files/Pods-Dunedayn/Pods-Dunedayn.release.xcconfig"; sourceTree = "<group>"; };
@@ -181,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				1F4DC4E726EA7036000F9A74 /* EventSetup.swift */,
+				1FF8EBFE26EE5D94004AF652 /* MetodsAlamofire.swift */,
 			);
 			path = AlamofireSetup;
 			sourceTree = "<group>";
@@ -190,7 +191,6 @@
 			children = (
 				1F4DC4F626EBE144000F9A74 /* TeamMenuCollectionViewCell.swift */,
 				1F4DC4FA26EBF702000F9A74 /* CalendarTableViewCell.swift */,
-				1FF8EBF826EE0532004AF652 /* AddEventView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -319,10 +319,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F4DC4E326EA6E47000F9A74 /* Events.swift in Sources */,
-				1FF8EBF926EE0532004AF652 /* AddEventView.swift in Sources */,
 				1FF8EBF526EE04DF004AF652 /* AddEventViewController.swift in Sources */,
 				1F4DC4B926E9D7BA000F9A74 /* AppDelegate.swift in Sources */,
 				1F4DC4DB26E9E55B000F9A74 /* Users.swift in Sources */,
+				1FF8EBFF26EE5D94004AF652 /* MetodsAlamofire.swift in Sources */,
 				1F4DC4D826E9E53D000F9A74 /* RolesBase.swift in Sources */,
 				1F4DC4FB26EBF702000F9A74 /* CalendarTableViewCell.swift in Sources */,
 				1F4DC4F226EBD791000F9A74 /* SingUpViewController.swift in Sources */,

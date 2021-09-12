@@ -9,16 +9,23 @@ import UIKit
 
 class AddEventViewController: UIViewController {
     
+    var name = String()
+    var date = String()
+    var organizer : Int?
+    var info = String()
+    var weight: Int?
+    var id: Int?
+    var type = String()
     
     let nameGameTextfield = UITextField()
     let dateGameTextfield = UITextField()
     let organizerTextfield = UITextField()
-    let discriptionTextview = UITextView()
+    let infoTextview = UITextView()
     let scrollView = UIScrollView()
     let secondView = UIView()
     let addButton : UIButton = {
         let bt = UIButton()
-//        bt.addTarget(self, action: #selector(addDataFirebase), for: .touchUpInside)
+        bt.addTarget(self, action: #selector(postDateForBackend), for: .touchUpInside)
         bt.translatesAutoresizingMaskIntoConstraints = false
         bt.setTitle("Сохранить", for: .normal)
         bt.backgroundColor = .systemGray
@@ -26,6 +33,21 @@ class AddEventViewController: UIViewController {
         return bt
     }()
 
+    //  datePicker method
+        
+        @objc func tapDone() {
+                if let datePicker = self.dateGameTextfield.inputView as? UIDatePicker { // 2-1
+                    let dateformatter = DateFormatter() // 2-2
+                    dateformatter.dateStyle = .medium
+//                    dateformatter.locale = .init(identifier: "ru_RU_POSIX")
+                    dateformatter.dateFormat = "E, dd MMM yyyy HH:mm:ss Z"// 2-3
+                    self.dateGameTextfield.text = dateformatter.string(from: datePicker.date) //2-4
+                }
+                self.dateGameTextfield.resignFirstResponder() // 2-5
+                
+            }
+    
+    // constrint for view
     
     func positionViews() {
         
@@ -34,7 +56,7 @@ class AddEventViewController: UIViewController {
         nameGameTextfield.translatesAutoresizingMaskIntoConstraints = false
         dateGameTextfield.translatesAutoresizingMaskIntoConstraints = false
         organizerTextfield.translatesAutoresizingMaskIntoConstraints = false
-        discriptionTextview.translatesAutoresizingMaskIntoConstraints = false
+        infoTextview.translatesAutoresizingMaskIntoConstraints = false
         
         
         view.addSubview(scrollView)
@@ -42,7 +64,7 @@ class AddEventViewController: UIViewController {
         secondView.addSubview(dateGameTextfield)
         secondView.addSubview(nameGameTextfield)
         secondView.addSubview(organizerTextfield)
-        secondView.addSubview(discriptionTextview)
+        secondView.addSubview(infoTextview)
         secondView.addSubview(addButton)
 
         secondView.backgroundColor = .gray
@@ -76,11 +98,11 @@ class AddEventViewController: UIViewController {
             organizerTextfield.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: 30),
             organizerTextfield.heightAnchor.constraint(equalToConstant: 30),
             
-            discriptionTextview.topAnchor.constraint(equalTo: organizerTextfield.bottomAnchor, constant: 20),
-            discriptionTextview.trailingAnchor.constraint(equalTo: secondView.trailingAnchor, constant: -30),
-            discriptionTextview.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: 30),
+            infoTextview.topAnchor.constraint(equalTo: organizerTextfield.bottomAnchor, constant: 20),
+            infoTextview.trailingAnchor.constraint(equalTo: secondView.trailingAnchor, constant: -30),
+            infoTextview.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: 30),
             
-            addButton.topAnchor.constraint(equalTo: discriptionTextview.bottomAnchor, constant: 30),
+            addButton.topAnchor.constraint(equalTo: infoTextview.bottomAnchor, constant: 30),
             addButton.trailingAnchor.constraint(equalTo: secondView.trailingAnchor, constant: -30),
             addButton.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: 30),
             addButton.heightAnchor.constraint(equalToConstant: 60),
@@ -121,23 +143,25 @@ class AddEventViewController: UIViewController {
         organizerTextfield.textColor = .black
         organizerTextfield.backgroundColor = .white
         
-        discriptionTextview.font = .systemFont(ofSize: 20)
-        discriptionTextview.layer.cornerRadius = 8
-        discriptionTextview.autocorrectionType = .no
-        discriptionTextview.keyboardType = .default
-        discriptionTextview.returnKeyType = .done
-        discriptionTextview.scrollIndicatorInsets = .zero
-        discriptionTextview.textColor = .black
-        discriptionTextview.backgroundColor = .white
-        discriptionTextview.isScrollEnabled = false
+        infoTextview.font = .systemFont(ofSize: 20)
+        infoTextview.layer.cornerRadius = 8
+        infoTextview.autocorrectionType = .no
+        infoTextview.keyboardType = .default
+        infoTextview.returnKeyType = .done
+        infoTextview.scrollIndicatorInsets = .zero
+        infoTextview.textColor = .black
+        infoTextview.backgroundColor = .white
+        infoTextview.isScrollEnabled = false
         
     // scroll with keyboard
         registerForKeyboardNotification()
     // close keyboard
         addTapGestureToHideKeyboard()
+        
+        self.dateGameTextfield.setInputViewDatePicker(target: self, selector: #selector(tapDone))
     }
     
-    // MARK: - scroll with keyboard
+    // scroll with keyboard
         
         func registerForKeyboardNotification() {
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -168,8 +192,37 @@ class AddEventViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    // post data
+    @objc func postDateForBackend(sender: UIButton) {
+        
+        name = nameGameTextfield.text ?? ""
+        date = "Fri, 03 Sep 2021 00:00:00 GMT"
+//        date = dateGameTextfield.text ?? ""
+        organizer = organizerTextfield.text.flatMap(Int.init)
+        info = infoTextview.text ?? ""
+        id = 1
+        weight = 1
+        type = "Game"
+        
+        let datas = ["date": date, "type": type, "name" : name,  "organizerId": organizer ?? 0, "weight": weight!, "info": info] as [String : Any]
+        let param = ["events": [datas]]
+        
+        EventSetup().asyncGetPostRequest(URLs().eventURl, method: .post, parameters: param) { (result: EventBase) in
+            
+        }
+        
+//        EventSetup().postRequest(URLs().eventURl, parameters: param) { (result: Result<EventBase,Error>) in
+//        }
+        
+        navigationController?.popViewController(animated: true)
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         self.title = "Добавьте игру"
         positionViews()
     }

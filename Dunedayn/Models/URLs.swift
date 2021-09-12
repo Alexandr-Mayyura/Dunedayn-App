@@ -9,6 +9,6 @@ import Foundation
 
 class URLs {
     
-    let eventURl = "https://dunedayn-app.herokuapp.com/api/events/all/"
+    let eventURl = "https://dunedayn-app.herokuapp.com/api/events/"
     
 }

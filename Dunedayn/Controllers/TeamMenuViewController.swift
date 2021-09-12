@@ -30,8 +30,11 @@ class TeamMenuViewController: UIViewController {
             ])
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         collectionViewConstr()
+    
     }
 
     override func viewDidLoad() {

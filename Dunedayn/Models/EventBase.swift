@@ -23,7 +23,7 @@ import Foundation
 //
 //}
 
-struct EventBase : Decodable {
+struct EventBase : Codable {
     let events : [Events]?
 
     enum CodingKeys: String, CodingKey {
