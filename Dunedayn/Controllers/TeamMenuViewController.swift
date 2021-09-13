@@ -33,8 +33,9 @@ class TeamMenuViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        collectionViewConstr()
+        
         view.addSubview(collectionView)
+        collectionViewConstr()
         collectionView.delegate = self
         collectionView.dataSource = self
     
