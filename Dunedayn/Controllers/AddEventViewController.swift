@@ -50,7 +50,7 @@ class AddEventViewController: UIViewController {
                 
             }
     
-    // constrint for view
+    // constraints for view
     
     func positionViews() {
         
@@ -194,62 +194,32 @@ class AddEventViewController: UIViewController {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
-    
-    
-    func start() {
-        
-        name = nameGameTextfield.text ?? "no name"
-        date = dateGameTextfield.text ?? "no date"
-        organizer = organizerTextfield.text.flatMap(Int.init)
-        info = infoTextview.text ?? "no info"
-        weight = 1
-        type = "Game"
-        
-        
-    }
-    
-    
-    // post/edit data
+ 
+    // post, put data
     @objc func postDateForBackend(sender: UIButton) {
         
         func addEdit(){
             
-            if id != nil {
+            name = nameGameTextfield.text ?? "no name"
+            date = dateGameTextfield.text ?? "2222-22-22"
+            organizer = organizerTextfield.text.flatMap(Int.init)
+            info = infoTextview.text ?? "no info"
+            weight = 1
+            type = "Game"
             
-                name = nameGameTextfield.text ?? "no name"
-                date = dateGameTextfield.text ?? "2222-22-22"
-                organizer = organizerTextfield.text.flatMap(Int.init)
-                info = infoTextview.text ?? "no info"
-                weight = 1
-                type = "Game"
-                
-                let datas = ["date": date, "type": type, "name" : name,  "organizerId": organizer ?? 1, "weight": weight!, "info": info, "id": id!] as [String : Any]
-                let param = ["events": [datas]]
-                let link = "\(URLs().eventURl)\(String(describing: id!) + "/")"
-                print(link)
-                EventSetup().asyncGetPostRequest(link, method: .put, parameters: param) { (result: EventBase) in
-                    self.calendarEvents = [result]
-                    print(self.calendarEvents)
-                }
-                
-            } else {
-                name = nameGameTextfield.text ?? ""
-                date = "Fri, 03 Sep 2021 00:00:00 GMT"
-        //        date = dateGameTextfield.text ?? ""
-                organizer = organizerTextfield.text.flatMap(Int.init)
-                info = infoTextview.text ?? ""
-                id = 1
-                weight = 1
-                type = "Game"
-                
-                
-                let datas = ["date": date, "type": type, "name" : name,  "organizerId": organizer ?? 0, "weight": weight!, "info": info] as [String : Any]
-                let param = ["events": [datas]]
-                
-                EventSetup().asyncGetPostRequest(URLs().eventURl, method: .post, parameters: param) { (result: EventBase) in
-                    }
-            }
+            let datas = ["date": date, "type": type, "name" : name,  "organizerId": organizer ?? 1, "weight": weight!, "info": info, "id": id!] as [String : Any]
+            let param = ["events": [datas]]
+            
+            let link = "\(URLs().eventURl)\(String(describing: id!) + "/")"
+            
+            if id != nil {
   
+                EventSetup().asyncGetPostRequest(link, method: .put, parameters: param) { (result: EventBase) in
+                }
+            } else {
+                EventSetup().asyncGetPostRequest(URLs().eventURl, method: .post, parameters: param) { (result: EventBase) in
+                }
+            }
         }
         addEdit()
         navigationController?.popViewController(animated: true)
@@ -257,14 +227,9 @@ class AddEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        start()
-        
-        
+
         self.title = "Добавьте игру"
         positionViews()
     }
-    
-
-  
 
 }

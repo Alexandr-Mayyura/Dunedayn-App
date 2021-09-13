@@ -58,10 +58,7 @@ class CalendarViewController: UIViewController {
     
     func editContent(rowIndexPathAt indexPath: IndexPath) -> UIContextualAction {
         let actionEdit = UIContextualAction(style: .destructive, title: "Edit") { _, _, _ in
-            
-//            let vc = AddEventViewController()
-//            let data = self.calendarEvents[indexPath.section].events?[indexPath.row].date
-//            let name = self.calendarEvents[indexPath.section].events?[indexPath.row].name
+
             let vc = AddEventViewController()
             let ev = self.calendarEvents[indexPath.section].events
             vc.nameGameTextfield.text = ev?[indexPath.row].name ?? ""
@@ -69,7 +66,6 @@ class CalendarViewController: UIViewController {
             vc.dateGameTextfield.text = ev?[indexPath.row].date ?? ""
             vc.organizerTextfield.text = ev?[indexPath.row].organizerid.flatMap(String.init)
             vc.id = ev?[indexPath.row].id
-            print(vc.id)
             
             self.navigationController?.pushViewController(vc, animated: true)
             
@@ -82,7 +78,7 @@ class CalendarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-// add tableview
+
         view.addSubview(tableview)
         tableview.dataSource = self
         tableview.delegate = self
@@ -102,7 +98,7 @@ class CalendarViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector (rightButtonAction))
         self.navigationController?.navigationBar.backgroundColor = .black
         self.navigationController?.navigationBar.tintColor = .white
-        tableview.reloadData()
+       
         view.backgroundColor = .gray
     }
 }
