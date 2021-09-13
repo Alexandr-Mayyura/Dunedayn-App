@@ -26,14 +26,6 @@ class EventSetup{
                     }
                 })
             }
-    
-    func deleteRequest<T>(_ URLString: String, parameters: Parameters, completion: @escaping (Result<T, Error>) -> Void) where T: Codable {
-         
-        AF.request(URLString, method: .delete,  encoding: JSONEncoding.default).responseJSON(completionHandler: { response in
-            
-//
-        })
-    }
 }
 //switch response.result {
 //            case .success(let res):

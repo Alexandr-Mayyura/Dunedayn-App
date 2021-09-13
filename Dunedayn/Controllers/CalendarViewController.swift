@@ -37,20 +37,45 @@ class CalendarViewController: UIViewController {
         }
     }
     
-    func deleteContetn(rowIdexPathAt indePath: IndexPath) -> UIContextualAction {
+    
+    
+    func deleteContetn(rowIndexPathAt indexPath: IndexPath) -> UIContextualAction {
         
-        let action = UIContextualAction(style: .destructive, title: "delete") { _, _, _ in
-//            let id = self.calendarEvents[indePath.section].events?[indePath.row].id
-            let index = ["id" : 1]
-            let param = ["events": [index]]
-            print(param)
+        let actionDelet = UIContextualAction(style: .destructive, title: "delete") { _, _, _ in
             
-            EventSetup().deleteRequest(URLs().eventURl, parameters: param) { (result: Result<EventBase,Error>) in
+            let id = self.calendarEvents[indexPath.section].events?[indexPath.row].id
+            let link = "\(URLs().eventURl)\(String(describing: id!) + "/")"
+            
+            EventSetup().asyncGetPostRequest(link, method: .delete, parameters: nil) { (result: EventBase) in
             }
             
-            self.tableview.deleteRows(at: [indePath], with: .automatic)
+            self.calendarEvents[indexPath.section].events?.remove(at: indexPath.row)
+            self.tableview.deleteRows(at: [indexPath], with: .automatic)
         }
-        return action
+        
+        return actionDelet
+    }
+    
+    func editContent(rowIndexPathAt indexPath: IndexPath) -> UIContextualAction {
+        let actionEdit = UIContextualAction(style: .destructive, title: "Edit") { _, _, _ in
+            
+//            let vc = AddEventViewController()
+//            let data = self.calendarEvents[indexPath.section].events?[indexPath.row].date
+//            let name = self.calendarEvents[indexPath.section].events?[indexPath.row].name
+            let vc = AddEventViewController()
+            let ev = self.calendarEvents[indexPath.section].events
+            vc.nameGameTextfield.text = ev?[indexPath.row].name ?? ""
+            vc.infoTextview.text = ev?[indexPath.row].info ?? ""
+            vc.dateGameTextfield.text = ev?[indexPath.row].date ?? ""
+            vc.organizerTextfield.text = ev?[indexPath.row].organizerid.flatMap(String.init)
+            vc.id = ev?[indexPath.row].id
+            print(vc.id)
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        actionEdit.backgroundColor = .orange
+        return actionEdit
     }
 
     
@@ -62,7 +87,7 @@ class CalendarViewController: UIViewController {
         tableview.dataSource = self
         tableview.delegate = self
         tableview.backgroundColor = .gray
-        
+        tableview.reloadData()
         tableviewFrame()
    
         addContetnt()
@@ -77,7 +102,7 @@ class CalendarViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector (rightButtonAction))
         self.navigationController?.navigationBar.backgroundColor = .black
         self.navigationController?.navigationBar.tintColor = .white
-        
+        tableview.reloadData()
         view.backgroundColor = .gray
     }
 }
@@ -110,8 +135,10 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
    
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = self.deleteContetn(rowIdexPathAt: indexPath)
-        let swipe = UISwipeActionsConfiguration(actions: [delete])
+
+        let delete = self.deleteContetn(rowIndexPathAt: indexPath)
+        let edit = self.editContent(rowIndexPathAt: indexPath)
+        let swipe = UISwipeActionsConfiguration(actions: [delete, edit])
         return swipe
     }
     
