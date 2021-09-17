@@ -7,7 +7,19 @@
 
 import UIKit
 
-class CalendarViewController: UIViewController {
+protocol reloadData {
+    func reload(complition: EventSetup) -> ()
+}
+
+class CalendarViewController: UIViewController, reloadData {
+    
+    func reload(complition: EventSetup) {
+        EventSetup.asyncGetPostRequest(URLs().eventURl, method: .get, parameters: nil, header: ["Content-Type": "application/json"]) { (result: [EventBase]) in
+            self.calendarEvents = result
+            self.tableview.reloadData()
+        }
+    }
+    
     
     var calendarEvents = [EventBase]()
 // create tableview
@@ -30,26 +42,36 @@ class CalendarViewController: UIViewController {
         
     }
     
-    func addContetnt(){
-        EventSetup().asyncGetPostRequest(URLs().eventURl, method: .get, parameters: nil) { (result: EventBase) in
-            self.calendarEvents = [result]
-            self.tableview.reloadData()
-        }
+    func reloadData(){
+        self.tableview.reloadData()
     }
-    
-    
+
+    func addContetnt(){
+        
+ 
+        EventSetup.asyncGetPostRequest(URLs().eventURl, method: .get, parameters: nil, header: ["Offset": "0", "Count": "100"]) { [weak self] (result: EventBase) in
+            self?.calendarEvents = [result]
+            self?.tableview.reloadData()
+            print("GET")
+        }
+        
+       
+        
+    }
     
     func deleteContetn(rowIndexPathAt indexPath: IndexPath) -> UIContextualAction {
         
         let actionDelet = UIContextualAction(style: .destructive, title: "delete") { _, _, _ in
             
-            let id = self.calendarEvents[indexPath.section].events?[indexPath.row].id
+            
+            let id = self.calendarEvents[indexPath.section].records?[indexPath.row].id
             let link = "\(URLs().eventURl)\(String(describing: id!) + "/")"
             
-            EventSetup().asyncGetPostRequest(link, method: .delete, parameters: nil) { (result: EventBase) in
+            EventSetup.asyncGetPostRequest(link, method: .delete, parameters: nil, header: nil) { (result: EventBase) in
             }
             
-            self.calendarEvents[indexPath.section].events?.remove(at: indexPath.row)
+//            self.calendarEvents.remove(at: indexPath.section)
+            self.calendarEvents[indexPath.section].records?.remove(at: indexPath.row)
             self.tableview.deleteRows(at: [indexPath], with: .automatic)
         }
         
@@ -58,14 +80,14 @@ class CalendarViewController: UIViewController {
     
     func editContent(rowIndexPathAt indexPath: IndexPath) -> UIContextualAction {
         let actionEdit = UIContextualAction(style: .destructive, title: "Edit") { _, _, _ in
-
+            let dates = String()
             let vc = AddEventViewController()
-            let ev = self.calendarEvents[indexPath.section].events
-            vc.nameGameTextfield.text = ev?[indexPath.row].name ?? ""
-            vc.infoTextview.text = ev?[indexPath.row].info ?? ""
-            vc.dateGameTextfield.text = ev?[indexPath.row].date ?? ""
-            vc.organizerTextfield.text = ev?[indexPath.row].organizerid.flatMap(String.init)
-            vc.id = ev?[indexPath.row].id
+            let ev = self.calendarEvents
+            vc.nameGameTextfield.text = ev[indexPath.section].records?[indexPath.row].name ?? ""
+            vc.infoTextview.text = ev[indexPath.section].records?[indexPath.row].info ?? ""
+            vc.dateGameTextfield.text = dates.dateFormated(data: (ev[indexPath.section].records?[indexPath.row].date)!)
+            vc.organizerTextfield.text = ev[indexPath.section].records?[indexPath.row].organizerId.flatMap(String.init)
+            vc.id = ev[indexPath.section].records?[indexPath.row].id
             
             self.navigationController?.pushViewController(vc, animated: true)
             
@@ -78,21 +100,23 @@ class CalendarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        view.addSubview(tableview)
-        tableview.dataSource = self
-        tableview.delegate = self
-        tableview.backgroundColor = .gray
         tableview.reloadData()
-        tableviewFrame()
-   
-        addContetnt()
         
+       
+        
+        
+  
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        addContetnt()
+        view.addSubview(tableview)
+        tableview.reloadData()
+        tableview.dataSource = self
+        tableview.delegate = self
+        tableview.backgroundColor = .gray
+        tableviewFrame()
         self.title = "Календарь"
 // add button to navigationController
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector (rightButtonAction))
@@ -109,19 +133,22 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         return calendarEvents.count
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return calendarEvents[section].events?.count ?? 0
+    
+        return calendarEvents[section].records?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableview.dequeueReusableCell(withIdentifier: "calendarCell", for: indexPath) as! CalendarTableViewCell
         
-        let ev = calendarEvents[indexPath.section].events
-        cell.nameLabel?.text = ev?[indexPath.row].name
-//        let dates = String()
-//        cell.dateLabel?.text = dates.dateFormated(data: ev?[indexPath.row].date ?? "")
-        cell.dateLabel?.text = ev?[indexPath.row].date
+        let ev = calendarEvents[indexPath.section].records?[indexPath.row]
+        cell.nameLabel?.text = ev?.name
+        
+        let dates = String()
+        cell.dateLabel?.text = dates.dateFormated(data: (ev?.date)!)
+        
         
         cell.backgroundColor = .gray
         cell.accessoryType = .disclosureIndicator
@@ -139,18 +166,18 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let ev = calendarEvents[indexPath.section].events
+        let ev = calendarEvents
         
         let vc = EventsViewController()
         
         
-        vc.name = ev?[indexPath.row].name ?? ""
-        vc.type = ev?[indexPath.row].type ?? ""
-        vc.info = ev?[indexPath.row].info ?? ""
-        vc.date = ev?[indexPath.row].date ?? ""
-//       let dates = String()
+        vc.name = ev[indexPath.section].records?[indexPath.row].name ?? ""
+        vc.type = ev[indexPath.section].records?[indexPath.row].type ?? ""
+        vc.info = ev[indexPath.section].records?[indexPath.row].info ?? ""
+//        vc.date = ev[indexPath.section].records?[indexPath.row].date ?? ""
+       let dates = String()
         
-//        vc.date = dates.dateFormated(data: ev?[indexPath.row].date ?? "")
+        vc.date = dates.dateFormated(data: (ev[indexPath.section].records?[indexPath.row].date)!)
         
         navigationController?.pushViewController(vc, animated: true)        
     }

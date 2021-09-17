@@ -7,33 +7,22 @@
 
 import Foundation
 
-//struct EventBase :  {
-//
-//	let events : [Events]?
-//
-//	enum CodingKeys: String, CodingKey {
-//
-//		case events = "events"
-//	}
-//
-//	init(from decoder: Decoder) throws {
-//		let values = try decoder.container(keyedBy: CodingKeys.self)
-//		events = try values.decodeIfPresent([Events].self, forKey: .events)
-//	}
-//
-//}
 
 struct EventBase : Codable {
-    var events : [Events]?
+    var records : [Records]?
+    let total : Int?
 
     enum CodingKeys: String, CodingKey {
 
-        case events = "events"
+        case records = "records"
+        case total = "total"
     }
 
     init(from decoder: Decoder) throws {
-            let values = try decoder.container(keyedBy: CodingKeys.self)
-            events = try values.decodeIfPresent([Events].self, forKey: .events)
-        }
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        records = try values.decodeIfPresent([Records].self, forKey: .records)
+        total = try values.decodeIfPresent(Int.self, forKey: .total)
+    }
 
 }
+

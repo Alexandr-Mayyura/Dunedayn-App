@@ -7,36 +7,32 @@
 
 import Foundation
 
-struct Events : Codable {
-    
-	let id : Int?
-	let date : String?
-	let type : String?
-	let name : String?
-	let organizerid : Int?
-	let weight : Int?
-	let info : String?
+struct Records : Codable {
+    let date : String?
+    let id : Int?
+    let info : String?
+    let name : String?
+    let organizerId : Int?
+    let type : String?
 
-	enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
 
-		case id = "id"
-		case date = "date"
-		case type = "type"
-		case name = "name"
-		case organizerid = "organizerid"
-		case weight = "weight"
-		case info = "info"
-	}
+        case date = "date"
+        case id = "id"
+        case info = "info"
+        case name = "name"
+        case organizerId = "organizerId"
+        case type = "type"
+    }
 
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		id = try values.decodeIfPresent(Int.self, forKey: .id)
-		date = try values.decodeIfPresent(String.self, forKey: .date)
-		type = try values.decodeIfPresent(String.self, forKey: .type)
-		name = try values.decodeIfPresent(String.self, forKey: .name)
-		organizerid = try values.decodeIfPresent(Int.self, forKey: .organizerid)
-		weight = try values.decodeIfPresent(Int.self, forKey: .weight)
-		info = try values.decodeIfPresent(String.self, forKey: .info)
-	}
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        date = try values.decodeIfPresent(String.self, forKey: .date)
+        id = try values.decodeIfPresent(Int.self, forKey: .id)
+        info = try values.decodeIfPresent(String.self, forKey: .info)
+        name = try values.decodeIfPresent(String.self, forKey: .name)
+        organizerId = try values.decodeIfPresent(Int.self, forKey: .organizerId)
+        type = try values.decodeIfPresent(String.self, forKey: .type)
+    }
 
 }

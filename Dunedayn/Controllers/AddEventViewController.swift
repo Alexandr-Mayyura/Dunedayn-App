@@ -7,7 +7,12 @@
 
 import UIKit
 
-class AddEventViewController: UIViewController {
+
+
+class AddEventViewController: UIViewController{
+   
+    
+    weak var delegate: CalendarViewController?
     
     var calendarEvents = [EventBase]()
     
@@ -18,6 +23,7 @@ class AddEventViewController: UIViewController {
     var weight: Int?
     var id: Int?
     var type = String()
+    
     
     
     let nameGameTextfield = UITextField()
@@ -42,15 +48,118 @@ class AddEventViewController: UIViewController {
                 if let datePicker = self.dateGameTextfield.inputView as? UIDatePicker { // 2-1
                     let dateformatter = DateFormatter() // 2-2
                     dateformatter.dateStyle = .medium
-//                    dateformatter.locale = .init(identifier: "ru_RU_POSIX")
-                    dateformatter.dateFormat = "E, dd MMM yyyy HH:mm:ss Z"// 2-3
+                    dateformatter.locale = .init(identifier: "ru_RU_POSIX")
+                    dateformatter.dateFormat = "YYYY-MM-DD hh:mm:ss"// 2-3
                     self.dateGameTextfield.text = dateformatter.string(from: datePicker.date) //2-4
                 }
                 self.dateGameTextfield.resignFirstResponder() // 2-5
                 
             }
+
+    // scroll with keyboard
+        
+        func registerForKeyboardNotification() {
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        }
+
+        @objc func keyboardWillShow(notification:NSNotification) {
+
+            guard let userInfo = notification.userInfo else { return }
+            var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+            keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+
+            var contentInset:UIEdgeInsets = self.scrollView.contentInset
+            contentInset.bottom = keyboardFrame.size.height + 20
+            scrollView.contentInset = contentInset
+        }
+
+        @objc func keyboardWillHide(notification:NSNotification) {
+
+            let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+            scrollView.contentInset = contentInset
+        }
     
-    // constrint for view
+        
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func addEdit(complition: @escaping () -> ()) {
+        name = nameGameTextfield.text!
+        date = dateGameTextfield.text!
+//        organizer = organizerTextfield.text.flatMap(Int.init)!
+        info = infoTextview.text!
+        organizer = 1
+        
+        type = "Game"
+
+        
+        let datas = ["date": date, "type": type, "name" : name,  "organizerId": organizer!, "info": info] as Dictionary<String, AnyObject>
+        let param = ["records": [datas]] as Dictionary<String, AnyObject>
+        
+        if id != nil {
+            print(id)
+            let link = "\(URLs().eventURl)\(String(describing: id!) + "/")"
+            
+            EventSetup.asyncGetPostRequest(link, method: .put, parameters: param, header: nil) { (result: EventBase) in
+                    }
+
+         
+
+            print("PUT")
+        } else {
+            EventSetup.asyncGetPostRequest(URLs().eventURl, method: .post, parameters: param, header: nil) { [weak self] (result: EventBase) in
+                self?.calendarEvents = [result]
+                }
+            print("POST")
+        }
+        
+        
+        
+}
+    
+    let vc = CalendarViewController()
+    // post/edit data
+    @objc func postDateForBackend(sender: UIButton) {
+       
+        addEdit {
+            print("lalala")
+        }
+        self.navigationController?.popViewController(animated: true)
+          
+        
+            
+        
+        
+        
+    
+    }
+    
+    func popViewController(animated: Bool, completion: @escaping () -> Void) {
+       
+
+            guard animated, let coordinator = transitionCoordinator else {
+                DispatchQueue.main.async { completion() }
+                return
+            }
+
+            coordinator.animate(alongsideTransition: nil) { _ in completion() }
+        }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.title = "Добавьте игру"
+        positionViews()
+    }
+
+}
+
+
+extension AddEventViewController {
     
     func positionViews() {
         
@@ -164,90 +273,4 @@ class AddEventViewController: UIViewController {
         self.dateGameTextfield.setInputViewDatePicker(target: self, selector: #selector(tapDone))
     }
     
-    // scroll with keyboard
-        
-        func registerForKeyboardNotification() {
-            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-
-            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        }
-
-        @objc func keyboardWillShow(notification:NSNotification) {
-
-            guard let userInfo = notification.userInfo else { return }
-            var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-            keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-
-            var contentInset:UIEdgeInsets = self.scrollView.contentInset
-            contentInset.bottom = keyboardFrame.size.height + 20
-            scrollView.contentInset = contentInset
-        }
-
-        @objc func keyboardWillHide(notification:NSNotification) {
-
-            let contentInset:UIEdgeInsets = UIEdgeInsets.zero
-            scrollView.contentInset = contentInset
-        }
-    
-        
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    
-    func start() {
-        
-        name = nameGameTextfield.text ?? "no name"
-        date = dateGameTextfield.text ?? "no date"
-        organizer = organizerTextfield.text.flatMap(Int.init)
-        info = infoTextview.text ?? "no info"
-        weight = 1
-        type = "Game"
-        
-        
-    }
-    
-    
-    // post/edit data
-    @objc func postDateForBackend(sender: UIButton) {
-        
-        func addEdit(){
-            name = nameGameTextfield.text ?? "no name"
-            date = dateGameTextfield.text ?? "2222-22-22"
-            organizer = organizerTextfield.text.flatMap(Int.init)
-            info = infoTextview.text ?? "no info"
-            weight = 1
-            type = "Game"
-                          
-            let datas = ["date": date, "type": type, "name" : name,  "organizerId": organizer ?? 1, "weight": weight!, "info": info] as [String : Any]
-            let param = ["events": [datas]]
-            
-            if id != nil {
-        
-                let link = "\(URLs().eventURl)\(String(describing: id!) + "/")"
-                
-                EventSetup().asyncGetPostRequest(link, method: .put, parameters: param) { (result: EventBase) in
-                }
-            } else {
-                EventSetup().asyncGetPostRequest(URLs().eventURl, method: .post, parameters: param) { (result: EventBase) in
-                    }
-            }
-        }
-        addEdit()
-        navigationController?.popViewController(animated: true)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        start()
-        
-        
-        self.title = "Добавьте игру"
-        positionViews()
-    }
-    
-
-  
-
 }

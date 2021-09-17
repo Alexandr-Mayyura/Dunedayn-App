@@ -9,10 +9,15 @@ import Foundation
 import Alamofire
 
 class EventSetup{
+    
+   
+        
 
-    func asyncGetPostRequest<T>(_ URlString: String, method: HTTPMethod, parameters: Parameters?, completion: @escaping (T) -> Void) where T: Codable {
-
-        AF.request(URlString, method: method, parameters: parameters,  encoding: JSONEncoding.default).responseData(completionHandler: { respons in
+    static func asyncGetPostRequest<T: Codable>(_ URlString: String, method: HTTPMethod, parameters: Parameters?, header: HTTPHeaders?, completion: @escaping (T) -> Void) {
+        
+        
+        
+        AF.request(URlString, method: method, parameters: parameters,  encoding: JSONEncoding.prettyPrinted, headers: header ).responseData { respons in
             guard let data = respons.data else { return }
             
                 do {
@@ -20,12 +25,15 @@ class EventSetup{
                    
                     DispatchQueue.main.async {
                         completion(datas)
+                     
+
                     }
                     } catch let error {
                     print(error)
                     }
-                })
+                }
             }
+    
 }
 //switch response.result {
 //            case .success(let res):
