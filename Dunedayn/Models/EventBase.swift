@@ -9,7 +9,7 @@ import Foundation
 
 
 struct EventBase : Codable {
-    var records : [Records]?
+    var records : [Events]?
     let total : Int?
 
     enum CodingKeys: String, CodingKey {
@@ -20,7 +20,7 @@ struct EventBase : Codable {
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        records = try values.decodeIfPresent([Records].self, forKey: .records)
+        records = try values.decodeIfPresent([Events].self, forKey: .records)
         total = try values.decodeIfPresent(Int.self, forKey: .total)
     }
 

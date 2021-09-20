@@ -22,6 +22,7 @@ class CalendarViewController: UIViewController, reloadData {
     
     
     var calendarEvents = [EventBase]()
+    var evetns = [Events]()
 // create tableview
     private let tableview: UITableView = {
         let tv = UITableView(frame: .zero)
@@ -48,14 +49,14 @@ class CalendarViewController: UIViewController, reloadData {
 
     func addContetnt(){
         
- 
-        EventSetup.asyncGetPostRequest(URLs().eventURl, method: .get, parameters: nil, header: ["Offset": "0", "Count": "100"]) { [weak self] (result: EventBase) in
+        EventSetup.asyncGetPostRequest(URLs().eventURl, method: .get, parameters: nil, header: ["Accept" : "application/json, */*; q=0.01"]) { [weak self] (result: EventBase) in
             self?.calendarEvents = [result]
             self?.tableview.reloadData()
+            
             print("GET")
         }
         
-       
+        
         
     }
     
@@ -65,9 +66,9 @@ class CalendarViewController: UIViewController, reloadData {
             
             
             let id = self.calendarEvents[indexPath.section].records?[indexPath.row].id
-            let link = "\(URLs().eventURl)\(String(describing: id!) + "/")"
+            let link = "\(URLs().deleteURL)\(String(describing: id!) + "/")"
             
-            EventSetup.asyncGetPostRequest(link, method: .delete, parameters: nil, header: nil) { (result: EventBase) in
+            EventSetup.asyncGetPostRequest(link, method: .delete, parameters: nil, header: ["Accept" : "application/json, */*; q=0.01"]) { (result: Events) in
             }
             
 //            self.calendarEvents.remove(at: indexPath.section)
@@ -110,6 +111,7 @@ class CalendarViewController: UIViewController, reloadData {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
         addContetnt()
         view.addSubview(tableview)
         tableview.reloadData()
@@ -125,6 +127,7 @@ class CalendarViewController: UIViewController, reloadData {
        
         view.backgroundColor = .gray
     }
+   
 }
 
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
@@ -182,6 +185,8 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(vc, animated: true)        
     }
     
+ 
+    
 }
 
 
@@ -189,12 +194,11 @@ extension String {
     func dateFormated(data: String) -> String{
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E, dd MMM yyyy HH:mm:ss Z"
+        dateFormatter.dateFormat = "YYYY-MM-DD"
         let data = dateFormatter.date(from: data)!
-        let dateFormatted = DateFormatter()
-        dateFormatted.locale = .init(identifier: "ru_RU_POSIX")
-        dateFormatted.dateFormat = "d MMMM yyyy"
-        let dateForm = dateFormatted.string(from: data)
+        dateFormatter.locale = .init(identifier: "ru_RU_POSIX")
+        dateFormatter.dateFormat = "d MMMM yyyy"
+        let dateForm = dateFormatter.string(from: data)
         return dateForm
     }
 }

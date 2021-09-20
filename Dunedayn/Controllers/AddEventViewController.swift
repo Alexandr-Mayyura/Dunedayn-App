@@ -15,6 +15,7 @@ class AddEventViewController: UIViewController{
     weak var delegate: CalendarViewController?
     
     var calendarEvents = [EventBase]()
+    var events = [Events]()
     
     var name = String()
     var date = String()
@@ -45,14 +46,21 @@ class AddEventViewController: UIViewController{
     //  datePicker method
         
         @objc func tapDone() {
-                if let datePicker = self.dateGameTextfield.inputView as? UIDatePicker { // 2-1
-                    let dateformatter = DateFormatter() // 2-2
-                    dateformatter.dateStyle = .medium
-                    dateformatter.locale = .init(identifier: "ru_RU_POSIX")
-                    dateformatter.dateFormat = "YYYY-MM-DD hh:mm:ss"// 2-3
-                    self.dateGameTextfield.text = dateformatter.string(from: datePicker.date) //2-4
+                if let datePicker = self.dateGameTextfield.inputView as? UIDatePicker {
+                    
+                    print(datePicker.date)
+                    let isoFormatter = DateFormatter()
+                    isoFormatter.dateFormat = "YYYY-MM-DD"
+                    isoFormatter.locale = .init(identifier: "ru_RU_POSIX")
+                    isoFormatter.timeZone = TimeZone(abbreviation: "GMT+3")
+                    let date = isoFormatter.string(from: datePicker.date)
+                   
+                    
+                    self.dateGameTextfield.text = date
+                    
+                    
                 }
-                self.dateGameTextfield.resignFirstResponder() // 2-5
+                self.dateGameTextfield.resignFirstResponder()
                 
             }
 
@@ -90,6 +98,18 @@ class AddEventViewController: UIViewController{
     func addEdit(complition: @escaping () -> ()) {
         name = nameGameTextfield.text!
         date = dateGameTextfield.text!
+        
+//        let fomater = DateFormatter()
+//        fomater.dateFormat = "YYYY-MM-dd"
+//        let date = fomater.date(from: date)
+//        fomater.dateFormat = "YYYY-MM-DD"
+//        let dates = fomater.string(from: date!)
+//        print(dates)
+        
+        
+        
+        
+        print(date)
 //        organizer = organizerTextfield.text.flatMap(Int.init)!
         info = infoTextview.text!
         organizer = 1
@@ -97,22 +117,27 @@ class AddEventViewController: UIViewController{
         type = "Game"
 
         
-        let datas = ["date": date, "type": type, "name" : name,  "organizerId": organizer!, "info": info] as Dictionary<String, AnyObject>
-        let param = ["records": [datas]] as Dictionary<String, AnyObject>
+        let datas = ["date": date, "type": type, "name" : name,  "organizerId": organizer!, "info": info] as [String : Any]
+        let param = datas
+        print(datas)
         
         if id != nil {
             print(id)
-            let link = "\(URLs().eventURl)\(String(describing: id!) + "/")"
+            let link = "\(URLs().deleteURL)\(String(describing: id!) + "/")"
             
-            EventSetup.asyncGetPostRequest(link, method: .put, parameters: param, header: nil) { (result: EventBase) in
+            EventSetup.asyncGetPostRequest(link, method: .put, parameters: param, header: ["Accept" : "application/json, */*; q=0.01", "Content-Type" : "application/json; charset=UTF-8]"]) { [weak self] (result: Events) in
+                self?.events = [result]
                     }
 
          
 
             print("PUT")
         } else {
-            EventSetup.asyncGetPostRequest(URLs().eventURl, method: .post, parameters: param, header: nil) { [weak self] (result: EventBase) in
+            let link = "\(URLs().deleteURL)"
+            print(link)
+            EventSetup.asyncGetPostRequest(link, method: .post, parameters: datas, header: ["Accept" : "application/json, */*; q=0.01", "Content-Type" : "application/json; charset=UTF-8]"]) { [weak self] (result: EventBase) in
                 self?.calendarEvents = [result]
+                
                 }
             print("POST")
         }

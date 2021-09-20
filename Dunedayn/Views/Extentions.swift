@@ -26,8 +26,8 @@ extension UITextField {
         let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 216))//1
         datePicker.datePickerMode = .date //2
         // iOS 14 and above
-        if #available(iOS 14, *) {// Added condition for iOS 14
-            datePicker.preferredDatePickerStyle = .wheels
+        if #available(iOS 14.5, *) {// Added condition for iOS 14
+            datePicker.preferredDatePickerStyle = .inline
           datePicker.sizeToFit()
         }
         self.inputView = datePicker //3
