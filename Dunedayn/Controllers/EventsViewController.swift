@@ -9,7 +9,6 @@ import UIKit
 
 class EventsViewController: UIViewController, UITextViewDelegate {
     
-    
     let scrollView = UIScrollView()
     let firstView = UIView()
     let dateLabel = UILabel()
@@ -17,12 +16,32 @@ class EventsViewController: UIViewController, UITextViewDelegate {
     let nameLabel = UILabel()
     let infoTextview = UITextView()
     
-    var date = String()
-    var name = String()
-    var type = String()
-    var info = String()
+    var date: String?
+    var name: String?
+    var type: String?
+    var info: String?
  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadLabel()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .gray
+        
+        self.title = name
+        nameLabel.text = name
+        typeLabel.text = type
+        infoTextview.text = info
+        dateLabel.text = date
+    }
+}
+
+extension EventsViewController {
+    
     func loadLabel() {
+        
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         firstView.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -86,29 +105,11 @@ class EventsViewController: UIViewController, UITextViewDelegate {
         infoTextview.delegate = self
         infoTextview.font = infoTextview.font?.withSize(26)
         infoTextview.textColor = .black
-//        infoTextview.textAlignment = .center
         infoTextview.isEditable = false
         infoTextview.dataDetectorTypes = .link
         infoTextview.linkTextAttributes = [.foregroundColor: UIColor.black, .underlineStyle: NSUnderlineStyle.single.rawValue]
         infoTextview.backgroundColor = .gray
         infoTextview.isScrollEnabled = false
     
-  
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        loadLabel()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .gray
-        
-        self.title = name
-        nameLabel.text = name
-        typeLabel.text = type
-        infoTextview.text = info
-        dateLabel.text = date
     }
 }

@@ -7,34 +7,19 @@
 
 import UIKit
 
-protocol reloadData {
-    func reload(complition: EventSetup) -> ()
-}
-
-class CalendarViewController: UIViewController, reloadData {
-    
-    func reload(complition: EventSetup) {
-        EventSetup.asyncGetPostRequest(URLs().eventURl, method: .get, parameters: nil, header: ["Content-Type": "application/json"]) { (result: [EventBase]) in
-            self.calendarEvents = result
-            self.tableview.reloadData()
-        }
-    }
-    
-    
+class CalendarViewController: UIViewController {
+       
     var calendarEvents = [EventBase]()
     var evetns = [Events]()
+    
 // create tableview
     private let tableview: UITableView = {
         let tv = UITableView(frame: .zero)
+        tv.translatesAutoresizingMaskIntoConstraints = false
         tv.register(CalendarTableViewCell.self, forCellReuseIdentifier: "calendarCell")
         return tv
     }()
-    
-// add frame for tableview
-    func tableviewFrame() {
-        tableview.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height)
-    }
-    
+        
 // transition to AddEventViewController
     @objc func rightButtonAction(sender: UIBarButtonItem){
         
@@ -43,24 +28,17 @@ class CalendarViewController: UIViewController, reloadData {
         
     }
     
-    func reloadData(){
-        self.tableview.reloadData()
-    }
-
     func addContetnt(){
         
-        EventSetup.asyncGetPostRequest(URLs().eventURl, method: .get, parameters: nil, header: ["Accept" : "application/json, */*; q=0.01"]) { [weak self] (result: EventBase) in
+        EventSetup.asyncRequest(URLs().eventURl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader) { [weak self] (result: EventBase) in
             self?.calendarEvents = [result]
             self?.tableview.reloadData()
             
             print("GET")
         }
-        
-        
-        
     }
     
-    func deleteContetn(rowIndexPathAt indexPath: IndexPath) -> UIContextualAction {
+    func deleteContent(rowIndexPathAt indexPath: IndexPath) -> UIContextualAction {
         
         let actionDelet = UIContextualAction(style: .destructive, title: "delete") { _, _, _ in
             
@@ -68,10 +46,9 @@ class CalendarViewController: UIViewController, reloadData {
             let id = self.calendarEvents[indexPath.section].records?[indexPath.row].id
             let link = "\(URLs().deleteURL)\(String(describing: id!) + "/")"
             
-            EventSetup.asyncGetPostRequest(link, method: .delete, parameters: nil, header: ["Accept" : "application/json, */*; q=0.01"]) { (result: Events) in
+            EventSetup.asyncRequest(link, method: .delete, parameters: nil, header: EventSetup.GetDeleteHeader) { (result: Events) in
             }
-            
-//            self.calendarEvents.remove(at: indexPath.section)
+
             self.calendarEvents[indexPath.section].records?.remove(at: indexPath.row)
             self.tableview.deleteRows(at: [indexPath], with: .automatic)
         }
@@ -86,7 +63,7 @@ class CalendarViewController: UIViewController, reloadData {
             let ev = self.calendarEvents
             vc.nameGameTextfield.text = ev[indexPath.section].records?[indexPath.row].name ?? ""
             vc.infoTextview.text = ev[indexPath.section].records?[indexPath.row].info ?? ""
-            vc.dateGameTextfield.text = dates.dateFormated(data: (ev[indexPath.section].records?[indexPath.row].date)!)
+            vc.dateGameTextfield.text = dates.datesFormated(data: (ev[indexPath.section].records?[indexPath.row].date)!)
             vc.organizerTextfield.text = ev[indexPath.section].records?[indexPath.row].organizerId.flatMap(String.init)
             vc.id = ev[indexPath.section].records?[indexPath.row].id
             
@@ -97,29 +74,25 @@ class CalendarViewController: UIViewController, reloadData {
         return actionEdit
     }
 
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         tableview.reloadData()
-        
-       
-        
-        
-  
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
                 
         addContetnt()
-        view.addSubview(tableview)
+        tableviewFrame()
+        
         tableview.reloadData()
         tableview.dataSource = self
         tableview.delegate = self
         tableview.backgroundColor = .gray
-        tableviewFrame()
+        
         self.title = "Календарь"
+        
 // add button to navigationController
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector (rightButtonAction))
         self.navigationController?.navigationBar.backgroundColor = .black
@@ -146,11 +119,11 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableview.dequeueReusableCell(withIdentifier: "calendarCell", for: indexPath) as! CalendarTableViewCell
         
-        let ev = calendarEvents[indexPath.section].records?[indexPath.row]
-        cell.nameLabel?.text = ev?.name
+        let event = calendarEvents[indexPath.section].records?[indexPath.row]
+        cell.nameLabel?.text = event?.name
         
         let dates = String()
-        cell.dateLabel?.text = dates.dateFormated(data: (ev?.date)!)
+        cell.dateLabel?.text = dates.datesFormated(data: (event?.date)!)
         
         
         cell.backgroundColor = .gray
@@ -158,11 +131,9 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-   
-    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
-        let delete = self.deleteContetn(rowIndexPathAt: indexPath)
+        let delete = self.deleteContent(rowIndexPathAt: indexPath)
         let edit = self.editContent(rowIndexPathAt: indexPath)
         let swipe = UISwipeActionsConfiguration(actions: [delete, edit])
         return swipe
@@ -177,27 +148,37 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         vc.name = ev[indexPath.section].records?[indexPath.row].name ?? ""
         vc.type = ev[indexPath.section].records?[indexPath.row].type ?? ""
         vc.info = ev[indexPath.section].records?[indexPath.row].info ?? ""
-//        vc.date = ev[indexPath.section].records?[indexPath.row].date ?? ""
+
        let dates = String()
-        
-        vc.date = dates.dateFormated(data: (ev[indexPath.section].records?[indexPath.row].date)!)
+        vc.date = dates.datesFormated(data: (ev[indexPath.section].records?[indexPath.row].date)!)
         
         navigationController?.pushViewController(vc, animated: true)        
     }
-    
- 
-    
 }
 
+extension CalendarViewController {
+    func tableviewFrame() {
+        view.addSubview(tableview)
+        
+        NSLayoutConstraint.activate([
+        
+            tableview.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            tableview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            tableview.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            tableview.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+        ])
+    }
+}
 
 extension String {
-    func dateFormated(data: String) -> String{
+    func datesFormated(data: String) -> String{
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-DD"
+        dateFormatter.dateFormat = "YYYY-MM-dd"
         let data = dateFormatter.date(from: data)!
+        dateFormatter.dateFormat = "d MMMM YYYY"
         dateFormatter.locale = .init(identifier: "ru_RU_POSIX")
-        dateFormatter.dateFormat = "d MMMM yyyy"
+        
         let dateForm = dateFormatter.string(from: data)
         return dateForm
     }

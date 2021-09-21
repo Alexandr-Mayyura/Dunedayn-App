@@ -7,6 +7,12 @@
 
 import Foundation
 
+class URLs {
+    
+    let eventURl = "https://dunedayn.ru/api/events/?offset=0&count=20"
+    let deleteURL = "https://dunedayn.ru/api/events/"
+    
+}
 
 struct EventBase : Codable {
     var records : [Events]?

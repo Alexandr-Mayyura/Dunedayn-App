@@ -19,30 +19,13 @@ class TeamMenuViewController: UIViewController {
             
             return cv
         }()
-    
-    func collectionViewConstr() {
-        NSLayoutConstraint.activate (
-            [
-                collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-                collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-                collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
-                collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0)
-            ])
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        view.addSubview(collectionView)
-        collectionViewConstr()
-        collectionView.delegate = self
-        collectionView.dataSource = self
-    
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionViewConstr()
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
         self.title = "Dunedayn"
     }
@@ -77,5 +60,21 @@ extension TeamMenuViewController: UICollectionViewDelegateFlowLayout, UICollecti
         let vc = CalendarViewController()
         navigationController?.pushViewController(vc, animated: true)
         }
+    }
+}
+
+extension TeamMenuViewController {
+    
+    func collectionViewConstr() {
+        
+        view.addSubview(collectionView)
+        
+        NSLayoutConstraint.activate (
+            [
+                collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+                collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+                collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+                collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0)
+            ])
     }
 }

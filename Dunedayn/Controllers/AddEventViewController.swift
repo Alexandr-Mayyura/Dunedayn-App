@@ -10,22 +10,17 @@ import UIKit
 
 
 class AddEventViewController: UIViewController{
-   
-    
-    weak var delegate: CalendarViewController?
-    
+
     var calendarEvents = [EventBase]()
     var events = [Events]()
     
-    var name = String()
-    var date = String()
+    var name: String?
+    var date: String?
     var organizer : Int?
-    var info = String()
+    var info: String?
     var weight: Int?
     var id: Int?
-    var type = String()
-    
-    
+    var type: String?
     
     let nameGameTextfield = UITextField()
     let dateGameTextfield = UITextField()
@@ -44,28 +39,20 @@ class AddEventViewController: UIViewController{
     }()
 
     //  datePicker method
-        
         @objc func tapDone() {
                 if let datePicker = self.dateGameTextfield.inputView as? UIDatePicker {
-                    
-                    print(datePicker.date)
-                    let isoFormatter = DateFormatter()
-                    isoFormatter.dateFormat = "YYYY-MM-DD"
-                    isoFormatter.locale = .init(identifier: "ru_RU_POSIX")
-                    isoFormatter.timeZone = TimeZone(abbreviation: "GMT+3")
-                    let date = isoFormatter.string(from: datePicker.date)
-                   
-                    
-                    self.dateGameTextfield.text = date
-                    
-                    
+
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.locale = Locale(identifier: "ru_RU_POSIX")
+                    dateFormatter.dateFormat = "YYYY-MM-dd"
+                    dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+                    let dateString = dateFormatter.string(from: datePicker.date)
+                    self.dateGameTextfield.text = dateString
                 }
                 self.dateGameTextfield.resignFirstResponder()
-                
             }
 
     // scroll with keyboard
-        
         func registerForKeyboardNotification() {
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
 
@@ -95,84 +82,39 @@ class AddEventViewController: UIViewController{
         NotificationCenter.default.removeObserver(self)
     }
     
-    func addEdit(complition: @escaping () -> ()) {
+    func addEdit() {
+        
         name = nameGameTextfield.text!
         date = dateGameTextfield.text!
-        
-//        let fomater = DateFormatter()
-//        fomater.dateFormat = "YYYY-MM-dd"
-//        let date = fomater.date(from: date)
-//        fomater.dateFormat = "YYYY-MM-DD"
-//        let dates = fomater.string(from: date!)
-//        print(dates)
-        
-        
-        
-        
-        print(date)
-//        organizer = organizerTextfield.text.flatMap(Int.init)!
         info = infoTextview.text!
         organizer = 1
-        
         type = "Game"
 
-        
-        let datas = ["date": date, "type": type, "name" : name,  "organizerId": organizer!, "info": info] as [String : Any]
-        let param = datas
-        print(datas)
-        
+        let datas = ["date": date!, "type": type!, "name" : name!,  "organizerId": organizer!, "info": info!] as [String : Any]
+
         if id != nil {
-            print(id)
             let link = "\(URLs().deleteURL)\(String(describing: id!) + "/")"
             
-            EventSetup.asyncGetPostRequest(link, method: .put, parameters: param, header: ["Accept" : "application/json, */*; q=0.01", "Content-Type" : "application/json; charset=UTF-8]"]) { [weak self] (result: Events) in
-                self?.events = [result]
+            EventSetup.asyncRequest(link, method: .put, parameters: datas, header: EventSetup.PostPutHeader) { (result: Events) in
                     }
-
-         
-
             print("PUT")
+            
         } else {
+            
             let link = "\(URLs().deleteURL)"
-            print(link)
-            EventSetup.asyncGetPostRequest(link, method: .post, parameters: datas, header: ["Accept" : "application/json, */*; q=0.01", "Content-Type" : "application/json; charset=UTF-8]"]) { [weak self] (result: EventBase) in
-                self?.calendarEvents = [result]
-                
+         
+            EventSetup.asyncRequest(link, method: .post, parameters: datas, header: EventSetup.PostPutHeader) { (result: EventBase) in
                 }
             print("POST")
         }
-        
-        
-        
-}
-    
-    let vc = CalendarViewController()
+    }
     // post/edit data
     @objc func postDateForBackend(sender: UIButton) {
        
-        addEdit {
-            print("lalala")
-        }
+        addEdit()
         self.navigationController?.popViewController(animated: true)
-          
-        
-            
-        
-        
-        
-    
+
     }
-    
-    func popViewController(animated: Bool, completion: @escaping () -> Void) {
-       
-
-            guard animated, let coordinator = transitionCoordinator else {
-                DispatchQueue.main.async { completion() }
-                return
-            }
-
-            coordinator.animate(alongsideTransition: nil) { _ in completion() }
-        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -180,9 +122,7 @@ class AddEventViewController: UIViewController{
         self.title = "Добавьте игру"
         positionViews()
     }
-
 }
-
 
 extension AddEventViewController {
     
@@ -194,7 +134,6 @@ extension AddEventViewController {
         dateGameTextfield.translatesAutoresizingMaskIntoConstraints = false
         organizerTextfield.translatesAutoresizingMaskIntoConstraints = false
         infoTextview.translatesAutoresizingMaskIntoConstraints = false
-        
         
         view.addSubview(scrollView)
         scrollView.addSubview(secondView)
