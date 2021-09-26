@@ -26,7 +26,7 @@ class CalendarTableViewCell: UITableViewCell {
         dateLabel?.translatesAutoresizingMaskIntoConstraints = false
         
         nameLabel?.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10) .isActive = true
-        nameLabel?.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -150) .isActive = true
+        nameLabel?.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -180) .isActive = true
         nameLabel?.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10) .isActive = true
         nameLabel?.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10) .isActive = true
         
@@ -35,12 +35,12 @@ class CalendarTableViewCell: UITableViewCell {
         nameLabel?.font = nameLabel?.font.withSize(20)
         
         dateLabel?.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20) .isActive = true
-        dateLabel?.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 10) .isActive = true
-        dateLabel?.leadingAnchor.constraint(equalTo: nameLabel!.trailingAnchor, constant: 20) .isActive = true
+        dateLabel?.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5) .isActive = true
+        dateLabel?.leadingAnchor.constraint(equalTo: nameLabel!.trailingAnchor, constant: 10) .isActive = true
         dateLabel?.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20) .isActive = true
         
         dateLabel?.numberOfLines = 0
-        dateLabel?.textAlignment = .center
+        dateLabel?.textAlignment = .natural
         dateLabel?.font = nameLabel?.font.withSize(20)
     }
     

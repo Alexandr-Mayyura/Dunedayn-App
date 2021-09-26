@@ -7,18 +7,26 @@
 
 import Foundation
 
+
+let orgUrl = ""
+
+import Foundation
+
 struct OrganizerBase : Codable {
-    
-	let organizers : [Organizers]?
+    let records : [Organizer]?
+    let total : Int?
 
-	enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
 
-		case organizers = "organizers"
-	}
+        case records = "records"
+        case total = "total"
+    }
 
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		organizers = try values.decodeIfPresent([Organizers].self, forKey: .organizers)
-	}
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        records = try values.decodeIfPresent([Organizer].self, forKey: .records)
+        total = try values.decodeIfPresent(Int.self, forKey: .total)
+    }
 
 }
+

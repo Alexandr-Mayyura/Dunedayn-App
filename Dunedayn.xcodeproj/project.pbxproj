@@ -28,6 +28,8 @@
 		1F4DC4F726EBE144000F9A74 /* TeamMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4F626EBE144000F9A74 /* TeamMenuCollectionViewCell.swift */; };
 		1F4DC4F926EBF0FC000F9A74 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4F826EBF0FC000F9A74 /* CalendarViewController.swift */; };
 		1F4DC4FB26EBF702000F9A74 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4FA26EBF702000F9A74 /* CalendarTableViewCell.swift */; };
+		1FF0BC9726FEEF1E002FB1D9 /* AddEventViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0BC9626FEEF1E002FB1D9 /* AddEventViewLayout.swift */; };
+		1FF0BC9926FEF370002FB1D9 /* OrganozerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0BC9826FEF370002FB1D9 /* OrganozerPickerView.swift */; };
 		1FF8EBF526EE04DF004AF652 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8EBF426EE04DF004AF652 /* AddEventViewController.swift */; };
 		1FF8EBFD26EE2D50004AF652 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8EBFC26EE2D50004AF652 /* Extentions.swift */; };
 		8472E9955A7529BDBC217C9B /* Pods_Dunedayn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35E4A3A51731B15AC77B7B9 /* Pods_Dunedayn.framework */; };
@@ -57,6 +59,8 @@
 		1F4DC4F626EBE144000F9A74 /* TeamMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		1F4DC4F826EBF0FC000F9A74 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		1F4DC4FA26EBF702000F9A74 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		1FF0BC9626FEEF1E002FB1D9 /* AddEventViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewLayout.swift; sourceTree = "<group>"; };
+		1FF0BC9826FEF370002FB1D9 /* OrganozerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganozerPickerView.swift; sourceTree = "<group>"; };
 		1FF8EBF426EE04DF004AF652 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		1FF8EBFC26EE2D50004AF652 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		9EDD5988C3DD973A7CC4E7F3 /* Pods-Dunedayn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dunedayn.debug.xcconfig"; path = "Target Support Files/Pods-Dunedayn/Pods-Dunedayn.debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,7 +161,9 @@
 		1F4DC4E026E9E681000F9A74 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1FF0BC9826FEF370002FB1D9 /* OrganozerPickerView.swift */,
 				1FF8EBFC26EE2D50004AF652 /* Extentions.swift */,
+				1FF0BC9626FEEF1E002FB1D9 /* AddEventViewLayout.swift */,
 				1F4DC4F526EBE103000F9A74 /* Cells */,
 			);
 			path = Views;
@@ -318,6 +324,7 @@
 				1F4DC4DB26E9E55B000F9A74 /* Users.swift in Sources */,
 				1F4DC4D826E9E53D000F9A74 /* RolesBase.swift in Sources */,
 				1F4DC4FB26EBF702000F9A74 /* CalendarTableViewCell.swift in Sources */,
+				1FF0BC9726FEEF1E002FB1D9 /* AddEventViewLayout.swift in Sources */,
 				1F4DC4F226EBD791000F9A74 /* SingUpViewController.swift in Sources */,
 				1F4DC4F726EBE144000F9A74 /* TeamMenuCollectionViewCell.swift in Sources */,
 				1F4DC4F426EBDFD9000F9A74 /* TeamMenuViewController.swift in Sources */,
@@ -325,6 +332,7 @@
 				1F4DC4DC26E9E55B000F9A74 /* UserBase.swift in Sources */,
 				1F4DC4D726E9E53D000F9A74 /* Roles.swift in Sources */,
 				1F4DC4F926EBF0FC000F9A74 /* CalendarViewController.swift in Sources */,
+				1FF0BC9926FEF370002FB1D9 /* OrganozerPickerView.swift in Sources */,
 				1FF8EBFD26EE2D50004AF652 /* Extentions.swift in Sources */,
 				1F4DC4BB26E9D7BA000F9A74 /* SceneDelegate.swift in Sources */,
 				1F4DC4D426E9E37C000F9A74 /* Organizers.swift in Sources */,

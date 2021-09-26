@@ -8,18 +8,21 @@
 import UIKit
 
 class EventsViewController: UIViewController, UITextViewDelegate {
+
     
     let scrollView = UIScrollView()
     let firstView = UIView()
     let dateLabel = UILabel()
     let typeLabel = UILabel()
     let nameLabel = UILabel()
+    let organizerLabel = UILabel()
     let infoTextview = UITextView()
     
     var date: String?
     var name: String?
     var type: String?
     var info: String?
+    var organazerName: String?
  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,6 +38,7 @@ class EventsViewController: UIViewController, UITextViewDelegate {
         typeLabel.text = type
         infoTextview.text = info
         dateLabel.text = date
+        organizerLabel.text = organazerName
     }
 }
 
@@ -48,6 +52,7 @@ extension EventsViewController {
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         infoTextview.translatesAutoresizingMaskIntoConstraints = false
+        organizerLabel.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(scrollView)
         scrollView.addSubview(firstView)
@@ -55,6 +60,7 @@ extension EventsViewController {
         firstView.addSubview(nameLabel)
         firstView.addSubview(dateLabel)
         firstView.addSubview(infoTextview)
+        firstView.addSubview(organizerLabel)
         
         NSLayoutConstraint.activate([
             
@@ -84,7 +90,12 @@ extension EventsViewController {
             dateLabel.leadingAnchor.constraint(equalTo: firstView.leadingAnchor, constant: 20),
             dateLabel.heightAnchor.constraint(equalToConstant: 36),
             
-            infoTextview.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 20),
+            organizerLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 20),
+            organizerLabel.trailingAnchor.constraint(equalTo: firstView.trailingAnchor, constant: -20),
+            organizerLabel.leadingAnchor.constraint(equalTo: firstView.leadingAnchor, constant: 20),
+            organizerLabel.heightAnchor.constraint(equalToConstant: 36),
+            
+            infoTextview.topAnchor.constraint(equalTo: organizerLabel.bottomAnchor, constant: 20),
             infoTextview.trailingAnchor.constraint(equalTo: firstView.trailingAnchor, constant: -20),
             infoTextview.leadingAnchor.constraint(equalTo: firstView.leadingAnchor, constant: 20),
             infoTextview.bottomAnchor.constraint(equalTo: firstView.bottomAnchor, constant: 0)
@@ -102,9 +113,12 @@ extension EventsViewController {
         dateLabel.textAlignment = .center
         dateLabel.numberOfLines = 0
         
+        organizerLabel.font = organizerLabel.font.withSize(28)
+        organizerLabel.textAlignment = .center
+        organizerLabel.numberOfLines = 0
+        
         infoTextview.delegate = self
         infoTextview.font = infoTextview.font?.withSize(26)
-        infoTextview.textColor = .black
         infoTextview.isEditable = false
         infoTextview.dataDetectorTypes = .link
         infoTextview.linkTextAttributes = [.foregroundColor: UIColor.black, .underlineStyle: NSUnderlineStyle.single.rawValue]

@@ -7,23 +7,23 @@
 
 import Foundation
 
-struct Organizers : Codable {
-	let id : Int?
-	let name : String?
-	let info : String?
+struct Organizer : Codable {
+    let id : Int?
+    let info : String?
+    let name : String?
 
-	enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
 
-		case id = "id"
-		case name = "name"
-		case info = "info"
-	}
+        case id = "id"
+        case info = "info"
+        case name = "name"
+    }
 
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		id = try values.decodeIfPresent(Int.self, forKey: .id)
-		name = try values.decodeIfPresent(String.self, forKey: .name)
-		info = try values.decodeIfPresent(String.self, forKey: .info)
-	}
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decodeIfPresent(Int.self, forKey: .id)
+        info = try values.decodeIfPresent(String.self, forKey: .info)
+        name = try values.decodeIfPresent(String.self, forKey: .name)
+    }
 
 }

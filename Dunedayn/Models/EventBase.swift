@@ -11,6 +11,7 @@ class URLs {
     
     let eventURl = "https://dunedayn.ru/api/events/?offset=0&count=20"
     let deleteURL = "https://dunedayn.ru/api/events/"
+    let orgUrl = "https://dunedayn.ru/api/organizers/"
     
 }
 
