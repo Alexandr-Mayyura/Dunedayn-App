@@ -18,10 +18,9 @@ class OrganozerPickerView: UIPickerView {
     var delgate: MyPickerViewProtocol?
     
     var organizer = [OrganizerBase]()
-    var org = [Organizer]()
     
     let customWidth = 100
-    let customHeight = 100
+    let customHeight = 150
     
     
 }
@@ -38,7 +37,7 @@ extension OrganozerPickerView: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 50
+        return 30
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

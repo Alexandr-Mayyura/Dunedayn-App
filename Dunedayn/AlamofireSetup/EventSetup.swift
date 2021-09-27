@@ -8,11 +8,12 @@
 import Foundation
 import Alamofire
 
+
 class EventSetup: NSObject{
     
     static let GetDeleteHeader: HTTPHeaders = ["Accept" : "application/json, */*; q=0.01"]
     static let PostPutHeader: HTTPHeaders = ["Accept" : "application/json, */*; q=0.01", "Content-Type" : "application/json; charset=UTF-8]"]
-    
+  
 
     static func asyncRequest<T: Codable>(_ URlString: String, method: HTTPMethod, parameters: Parameters?, header: HTTPHeaders?, completion: @escaping (T) -> Void) {
         
@@ -31,4 +32,14 @@ class EventSetup: NSObject{
                     }
                 }
             }
+    
+    static func asyncResponse(_ URlString: String, method: HTTPMethod, parameters: Parameters?, header: HTTPHeaders?, completion: @escaping () -> ()) {
+        
+        AF.request(URlString, method: method, parameters: parameters,  encoding: JSONEncoding.default, headers: header).responseData { respons in
+   
+            DispatchQueue.main.async {
+                completion()
+            }
+        }
+    }
 }

@@ -109,13 +109,13 @@
 		1F4DC4B726E9D7BA000F9A74 /* Dunedayn */ = {
 			isa = PBXGroup;
 			children = (
+				1F4DC4E626EA7019000F9A74 /* AlamofireSetup */,
 				1F4DC4CC26E9E2DF000F9A74 /* Models */,
 				1F4DC4E126E9E6F5000F9A74 /* Storyboard */,
 				1F4DC4DE26E9E653000F9A74 /* Delegate */,
 				1F4DC4DF26E9E66C000F9A74 /* Controllers */,
 				1F4DC4E026E9E681000F9A74 /* Views */,
 				1F4DC4C626E9D7BE000F9A74 /* Info.plist */,
-				1F4DC4E626EA7019000F9A74 /* AlamofireSetup */,
 				1F4DC4C126E9D7BE000F9A74 /* Assets.xcassets */,
 			);
 			path = Dunedayn;

@@ -13,6 +13,8 @@ class CalendarViewController: UIViewController {
     var evetns = [Events]()
     var organizers = [OrganizerBase]()
     
+    var delegate: AddEventViewController?
+    
     
 // create tableview
     private let tableview: UITableView = {
@@ -30,6 +32,11 @@ class CalendarViewController: UIViewController {
         
     }
     
+    func reloadData() {
+        tableview.reloadData()
+        print("reload")
+    }
+    
     func addContetnt(){
         
         EventSetup.asyncRequest(URLs().orgUrl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: OrganizerBase) in
@@ -37,6 +44,7 @@ class CalendarViewController: UIViewController {
             EventSetup.asyncRequest(URLs().eventURl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader) { [weak self] (result: EventBase) in
                 self?.calendarEvents = [result]
                 self?.tableview.reloadData()
+                print("get")
             }
         }
     }
@@ -58,13 +66,13 @@ class CalendarViewController: UIViewController {
     
     func editContent(rowIndexPathAt indexPath: IndexPath) -> UIContextualAction {
         let actionEdit = UIContextualAction(style: .destructive, title: "Edit") { _, _, _ in
-            let dates = String()
+          
             let vc = AddEventViewController()
             let ev = self.calendarEvents
             let org = self.organizers
             vc.nameGameTextfield.text = ev[indexPath.section].records?[indexPath.row].name ?? ""
             vc.infoTextview.text = ev[indexPath.section].records?[indexPath.row].info ?? ""
-            vc.dateGameTextfield.text = dates.datesFormated(data: (ev[indexPath.section].records?[indexPath.row].date)!)
+            vc.dateGameTextfield.text = ev[indexPath.section].records?[indexPath.row].date
             
             let organ = self.organizers[indexPath.section]
             guard let itemId = (ev[indexPath.section].records?[indexPath.row].organizerId) else { return }
@@ -76,7 +84,7 @@ class CalendarViewController: UIViewController {
             }
             vc.organizerTextfield.text = org[indexPath.section].records?[neededItem].name
             vc.id = ev[indexPath.section].records?[indexPath.row].id
-            
+
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
@@ -88,16 +96,17 @@ class CalendarViewController: UIViewController {
         super.viewWillAppear(animated)
         
         tableview.reloadData()
+        addContetnt()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        addContetnt()
+//        addContetnt()
       
         tableviewFrame()
         
-        tableview.reloadData()
+//        tableview.reloadData()
         tableview.dataSource = self
         tableview.delegate = self
         tableview.backgroundColor = .gray
@@ -144,7 +153,9 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         
-        cell.nameLabel?.text = "\(event.records?[indexPath.row].name ?? "") \n\(organ.records?[neededItem].name ?? "") "
+        cell.nameLabel?.text = "\(event.records?[indexPath.row].name ?? "") \n\(organ.records?[neededItem].name ?? "")"
+        let dates = String()
+        cell.dateLabel?.text = dates.datesFormated(data: event.records?[indexPath.row].date ?? "2021-10-10")
 
         cell.backgroundColor = .gray
         cell.accessoryType = .disclosureIndicator
@@ -166,8 +177,9 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         vc.name = ev.records?[indexPath.row].name 
         vc.type = ev.records?[indexPath.row].type
         vc.info = ev.records?[indexPath.row].info
-        vc.date = ev.records?[indexPath.row].date
-        
+        let dates = String()
+        vc.date = dates.datesFormated(data: ev.records?[indexPath.row].date ?? "2021-10-10")
+
         let organ = organizers[indexPath.section]
         guard let itemId = (ev.records?[indexPath.row].organizerId) else { return }
         var neededItem = Int()
@@ -177,6 +189,8 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         vc.organazerName = organ.records?[neededItem].name
+        
+        
         
         navigationController?.pushViewController(vc, animated: true)        
     }

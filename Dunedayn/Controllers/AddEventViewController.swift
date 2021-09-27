@@ -10,6 +10,9 @@ import UIKit
 
 
 class AddEventViewController: UIViewController, MyPickerViewProtocol {
+    
+    
+    
     func myIdOrg(selectedRowValue: Int?) {
         organizer = selectedRowValue
     }
@@ -21,11 +24,21 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol {
     var calendarEvents = [EventBase]()
     var events = [Events]()
     var organizers = [OrganizerBase]()
+    
    
     
-    let organizerPicker = UIPickerView ()
+    let organizerPicker = UIPickerView()
+    let datePicker = UIDatePicker()
     
     var toolBar : UIToolbar = {
+        var toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.sizeToFit()
+        return toolBar
+    }()
+    
+    var dateToolBar : UIToolbar = {
         var toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
@@ -66,7 +79,6 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol {
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "ru_RU_POSIX")
             dateFormatter.dateFormat = "YYYY-MM-dd"
-            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
             let dateString = dateFormatter.string(from: datePicker.date)
             self.dateGameTextfield.text = dateString
         }
@@ -78,11 +90,11 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol {
    
     
     @objc func tapCancel() {
+        self.organizerTextfield.text = ""
         self.organizerTextfield.resignFirstResponder()
     }
     
     @objc func tapDoneOrganizer() {
-        
         self.organizerTextfield.resignFirstResponder()
     }
     
@@ -99,18 +111,19 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol {
         if id != nil {
             let link = "\(URLs().deleteURL)\(String(describing: id!) + "/")"
             
-            EventSetup.asyncRequest(link, method: .put, parameters: datas, header: EventSetup.PostPutHeader) { (result: Events) in
-                
+            EventSetup.asyncResponse(link, method: .post, parameters: datas, header: EventSetup.PostPutHeader) {
+                print("PUT")
                     }
-            print("PUT")
+            
             
         } else {
             
             let link = "\(URLs().deleteURL)"
-         
-            EventSetup.asyncRequest(link, method: .post, parameters: datas, header: EventSetup.PostPutHeader) { (result: EventBase) in
-                
-                }
+            
+            EventSetup.asyncResponse(link, method: .post, parameters: datas, header: EventSetup.PostPutHeader) {
+
+                print("post")
+            }
         }
     }
     
@@ -132,28 +145,38 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol {
     
     
     var organizerPickerView: OrganozerPickerView!
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         addOrganizer()
 
         organizerPickerView = OrganozerPickerView()
         organizerPickerView.delgate = self
-//        organizerPicker.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 250)
         organizerPicker.dataSource = organizerPickerView
         organizerPicker.delegate = organizerPickerView
         
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(tapDoneOrganizer))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(tapCancel))
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(tapDoneOrganizer))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(tapCancel))
+        toolBar.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 40)
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-
-        
         
         organizerTextfield.inputView = organizerPicker
         organizerTextfield.inputAccessoryView = toolBar
+        
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+                
+        let barButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(tapDoneDate))
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: #selector(tapCancel))
+        dateToolBar.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 40)
+        dateToolBar.setItems([cancel, flexible, barButton], animated: false)
+        
+        dateGameTextfield.inputView = datePicker
+        dateGameTextfield.inputAccessoryView = dateToolBar
 
         self.title = "Добавьте игру"
         
