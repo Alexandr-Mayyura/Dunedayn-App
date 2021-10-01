@@ -23,6 +23,7 @@ class EventsViewController: UIViewController, UITextViewDelegate {
     var type: String?
     var info: String?
     var organazerName: String?
+    
  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

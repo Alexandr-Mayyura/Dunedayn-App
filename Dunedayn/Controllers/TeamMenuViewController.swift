@@ -11,14 +11,14 @@ class TeamMenuViewController: UIViewController {
     
     let teamMenu = ["Статистика", "Календарь", "Устав", "Казна", "Памятка"]
     
-        private let collectionView: UICollectionView = {
-            let layout = UICollectionViewFlowLayout()
-            let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-            cv.translatesAutoresizingMaskIntoConstraints = false
-            cv.register(TeamMenuCollectionViewCell.self, forCellWithReuseIdentifier: "teamMenuCell")
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.register(TeamMenuCollectionViewCell.self, forCellWithReuseIdentifier: "teamMenuCell")
             
-            return cv
-        }()
+        return cv
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -12,6 +12,7 @@ class CalendarViewController: UIViewController {
     var calendarEvents = [EventBase]()
     var evetns = [Events]()
     var organizers = [OrganizerBase]()
+    var type = [TypeBase]()
     
     var delegate: AddEventViewController?
     
@@ -43,8 +44,10 @@ class CalendarViewController: UIViewController {
             self?.organizers = [result]
             EventSetup.asyncRequest(URLs().eventURl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader) { [weak self] (result: EventBase) in
                 self?.calendarEvents = [result]
-                self?.tableview.reloadData()
-                print("get")
+                EventSetup.asyncRequest(URLs().typeURL, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: TypeBase) in
+                    self?.type = [result]
+                    self?.tableview.reloadData()
+                }
             }
         }
     }
@@ -69,10 +72,11 @@ class CalendarViewController: UIViewController {
           
             let vc = AddEventViewController()
             let ev = self.calendarEvents
-            let org = self.organizers
             vc.nameGameTextfield.text = ev[indexPath.section].records?[indexPath.row].name ?? ""
             vc.infoTextview.text = ev[indexPath.section].records?[indexPath.row].info ?? ""
             vc.dateGameTextfield.text = ev[indexPath.section].records?[indexPath.row].date
+            vc.type = ev[indexPath.section].records?[indexPath.row].typeId
+            vc.organizer = ev[indexPath.section].records?[indexPath.row].organizerId
             
             let organ = self.organizers[indexPath.section]
             guard let itemId = (ev[indexPath.section].records?[indexPath.row].organizerId) else { return }
@@ -82,7 +86,17 @@ class CalendarViewController: UIViewController {
                     neededItem = index
                 }
             }
-            vc.organizerTextfield.text = org[indexPath.section].records?[neededItem].name
+            vc.organizerTextfield.text = self.organizers[indexPath.section].records?[neededItem].name
+
+            let types = self.type[indexPath.section]
+            guard let typeId = (ev[indexPath.section].records?[indexPath.row].typeId) else { return }
+            var neededType = Int()
+            for (index, item) in types.records!.enumerated() {
+                if item.id == typeId {
+                    neededType = index
+                    }
+                }
+            vc.typeTextfield.text = self.type[indexPath.section].records?[neededType].type
             vc.id = ev[indexPath.section].records?[indexPath.row].id
 
             self.navigationController?.pushViewController(vc, animated: true)
@@ -152,7 +166,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
                 neededItem = index
             }
         }
-        
+ 
         cell.nameLabel?.text = "\(event.records?[indexPath.row].name ?? "") \n\(organ.records?[neededItem].name ?? "")"
         let dates = String()
         cell.dateLabel?.text = dates.datesFormated(data: event.records?[indexPath.row].date ?? "2021-10-10")
@@ -175,7 +189,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = EventsViewController()
         let ev = calendarEvents[indexPath.section]
         vc.name = ev.records?[indexPath.row].name 
-        vc.type = ev.records?[indexPath.row].type
         vc.info = ev.records?[indexPath.row].info
         let dates = String()
         vc.date = dates.datesFormated(data: ev.records?[indexPath.row].date ?? "2021-10-10")
@@ -190,8 +203,16 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         }
         vc.organazerName = organ.records?[neededItem].name
         
-        
-        
+        let types = type[indexPath.section]
+        guard let typeId = (ev.records?[indexPath.row].typeId) else { return }
+        var neededType = Int()
+        for (index, item) in types.records!.enumerated() {
+            if item.id == typeId {
+                neededType = index
+            }
+        }
+        vc.type = types.records?[neededType].type
+
         navigationController?.pushViewController(vc, animated: true)        
     }
 }

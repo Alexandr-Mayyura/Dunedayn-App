@@ -18,6 +18,7 @@ extension AddEventViewController {
         dateGameTextfield.translatesAutoresizingMaskIntoConstraints = false
         organizerTextfield.translatesAutoresizingMaskIntoConstraints = false
         infoTextview.translatesAutoresizingMaskIntoConstraints = false
+        typeTextfield.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(scrollView)
         scrollView.addSubview(secondView)
@@ -25,6 +26,7 @@ extension AddEventViewController {
         secondView.addSubview(nameGameTextfield)
         secondView.addSubview(organizerTextfield)
         secondView.addSubview(infoTextview)
+        secondView.addSubview(typeTextfield)
         secondView.addSubview(addButton)
 
         secondView.backgroundColor = .gray
@@ -58,7 +60,13 @@ extension AddEventViewController {
             organizerTextfield.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: 30),
             organizerTextfield.heightAnchor.constraint(equalToConstant: 30),
             
-            infoTextview.topAnchor.constraint(equalTo: organizerTextfield.bottomAnchor, constant: 20),
+            typeTextfield.topAnchor.constraint(equalTo: organizerTextfield.bottomAnchor, constant: 20),
+            typeTextfield.trailingAnchor.constraint(equalTo: secondView.trailingAnchor, constant: -30),
+            typeTextfield.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: 30),
+            typeTextfield.heightAnchor.constraint(equalToConstant: 30),
+            
+            
+            infoTextview.topAnchor.constraint(equalTo: typeTextfield.bottomAnchor, constant: 20),
             infoTextview.trailingAnchor.constraint(equalTo: secondView.trailingAnchor, constant: -30),
             infoTextview.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: 30),
             
@@ -103,6 +111,17 @@ extension AddEventViewController {
         organizerTextfield.textColor = .black
         organizerTextfield.backgroundColor = .white
         
+        typeTextfield.placeholder = "Enter Type Game"
+        typeTextfield.font = .systemFont(ofSize: 20)
+        typeTextfield.borderStyle = .roundedRect
+        typeTextfield.autocorrectionType = .no
+        typeTextfield.keyboardType = .default
+        typeTextfield.returnKeyType = .done
+        typeTextfield.clearButtonMode = .whileEditing
+        typeTextfield.contentVerticalAlignment = .center
+        typeTextfield.textColor = .black
+        typeTextfield.backgroundColor = .white
+        
         infoTextview.font = .systemFont(ofSize: 20)
         infoTextview.layer.cornerRadius = 8
         infoTextview.autocorrectionType = .no
@@ -112,12 +131,6 @@ extension AddEventViewController {
         infoTextview.textColor = .black
         infoTextview.backgroundColor = .white
         infoTextview.isScrollEnabled = false
-        
-    
-        
-        
-//        self.dateGameTextfield.setInputViewDatePicker(target: self, selector: #selector(tapDoneDate))
-  
     }
     
 }

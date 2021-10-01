@@ -9,10 +9,11 @@ import UIKit
 
 
 
-class AddEventViewController: UIViewController, MyPickerViewProtocol {
-    
-    
-    
+class AddEventViewController: UIViewController, MyPickerViewProtocol, TypePickerViewProtocol {
+
+    var organizers = [OrganizerBase]()
+    var types = [TypeBase]()
+
     func myIdOrg(selectedRowValue: Int?) {
         organizer = selectedRowValue
     }
@@ -20,15 +21,17 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol {
     func myPickerDidSelectRow(selectedRowValue: String?) {
         organizerTextfield.text = selectedRowValue
     }
+    func typePickerDidSelectRow(selectedRowValue: String?) {
+        typeTextfield.text = selectedRowValue
+    }
+    
+    func myIdType(selectedRowValue: Int?) {
+        type = selectedRowValue
+    }
 
-    var calendarEvents = [EventBase]()
-    var events = [Events]()
-    var organizers = [OrganizerBase]()
-    
-   
-    
     let organizerPicker = UIPickerView()
     let datePicker = UIDatePicker()
+    let typePicker = UIPickerView()
     
     var toolBar : UIToolbar = {
         var toolBar = UIToolbar()
@@ -46,6 +49,14 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol {
         return toolBar
     }()
     
+    var typeToolBar : UIToolbar = {
+        var toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.sizeToFit()
+        return toolBar
+    }()
+    
     
     var name: String?
     var date: String?
@@ -53,13 +64,15 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol {
     var info: String?
     var weight: Int?
     var id: Int?
-    var type: String?
+    var type: Int?
+    var typeName: String?
     var organName: String?
     
     let nameGameTextfield = UITextField()
     let dateGameTextfield = UITextField()
     let organizerTextfield = UITextField()
     let infoTextview = UITextView()
+    let typeTextfield = UITextField()
     let scrollView = UIScrollView()
     let secondView = UIView()
     let addButton : UIButton = {
@@ -98,31 +111,38 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol {
         self.organizerTextfield.resignFirstResponder()
     }
     
+    @objc func tapCancelType() {
+        self.typeTextfield.text = ""
+        self.typeTextfield.resignFirstResponder()
+    }
+    
+    @objc func tapDoneType() {
+        self.typeTextfield.resignFirstResponder()
+    }
+    
     func addEdit() {
         
         name = nameGameTextfield.text!
         date = dateGameTextfield.text!
         info = infoTextview.text!
-        type = "Game"
         organName = organizerTextfield.text!
         
-        let datas = ["date": date!, "type": type!, "name" : name!,  "organizerId": organizer ?? 1, "info": info!] as [String : Any]
+        let datas = ["date": date ?? "2022-10-10", "typeId": type ?? 25, "name" : name ?? "Название игры",  "organizerId": organizer ?? 1, "info": info ?? "Информация"] as [String : Any]
 
         if id != nil {
+            
             let link = "\(URLs().deleteURL)\(String(describing: id!) + "/")"
             
-            EventSetup.asyncResponse(link, method: .post, parameters: datas, header: EventSetup.PostPutHeader) {
+            EventSetup.asyncResponse(link, method: .put, parameters: datas, header: EventSetup.PostPutHeader) {
                 print("PUT")
-                    }
-            
-            
+            }
         } else {
             
             let link = "\(URLs().deleteURL)"
             
             EventSetup.asyncResponse(link, method: .post, parameters: datas, header: EventSetup.PostPutHeader) {
-
                 print("post")
+                print(datas)
             }
         }
     }
@@ -131,10 +151,16 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol {
         EventSetup.asyncRequest(URLs().orgUrl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: OrganizerBase) in
             self?.organizers = [result]
             self?.organizerPickerView.organizer = self!.organizers
-
         }
-        
     }
+    
+    func addType() {
+        EventSetup.asyncRequest(URLs().typeURL, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: TypeBase) in
+            self?.types = [result]
+            self?.typePickerView.typeEvent = self!.types
+        }
+    }
+    
     // post/edit data
     @objc func postDateForBackend(sender: UIButton) {
        
@@ -143,14 +169,28 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol {
 
     }
     
-    
     var organizerPickerView: OrganozerPickerView!
+    var typePickerView: TypePickerView!
  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addOrganizer()
+        addType()
+        
+        typePickerView = TypePickerView()
+        typePickerView.typeDelegate = self
+        typePicker.dataSource = typePickerView
+        typePicker.delegate = typePickerView
+        
+        let doneButtonType = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(tapDoneType))
+        let spaceButtonType = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButtonType = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(tapCancelType))
+        typeToolBar.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 40)
+        typeToolBar.setItems([cancelButtonType, spaceButtonType, doneButtonType], animated: false)
+        
+        typeTextfield.inputView = typePicker
+        typeTextfield.inputAccessoryView = typeToolBar
 
         organizerPickerView = OrganozerPickerView()
         organizerPickerView.delgate = self
@@ -177,6 +217,8 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol {
         
         dateGameTextfield.inputView = datePicker
         dateGameTextfield.inputAccessoryView = dateToolBar
+        
+        
 
         self.title = "Добавьте игру"
         

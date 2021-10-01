@@ -13,7 +13,7 @@ struct Events : Codable {
     let info : String?
     let name : String?
     let organizerId : Int?
-    let type : String?
+    let typeId : Int?
 
     enum CodingKeys: String, CodingKey {
 
@@ -22,7 +22,7 @@ struct Events : Codable {
         case info = "info"
         case name = "name"
         case organizerId = "organizerId"
-        case type = "type"
+        case typeId = "typeId"
     }
 
     init(from decoder: Decoder) throws {
@@ -32,7 +32,7 @@ struct Events : Codable {
         info = try values.decodeIfPresent(String.self, forKey: .info)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         organizerId = try values.decodeIfPresent(Int.self, forKey: .organizerId)
-        type = try values.decodeIfPresent(String.self, forKey: .type)
+        typeId = try values.decodeIfPresent(Int.self, forKey: .typeId)
     }
 
 }
