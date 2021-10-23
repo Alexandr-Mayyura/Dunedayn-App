@@ -10,10 +10,7 @@ import UIKit
 class TeamMenuViewController: UIViewController {
     
     let teamMenu = ["Статистика", "Календарь", "Устав", "Казна", "Памятка"]
-    
-    let image = UIImage(named: "Background")
-    let backgraundImage = UIImageView(frame: UIScreen.main.bounds)
-    
+
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -28,13 +25,7 @@ class TeamMenuViewController: UIViewController {
         
         collectionViewConstr()
         collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .clear
-        backgraundImage.image = image
-        backgraundImage.contentMode = .scaleAspectFill
-        view.insertSubview(backgraundImage, at: 0)
-
-        self.title = "Dunedayn"
+        collectionView.dataSource = self  
     }
 }
 

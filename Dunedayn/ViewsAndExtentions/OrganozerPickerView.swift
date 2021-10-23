@@ -7,22 +7,20 @@
 
 import UIKit
 
-protocol MyPickerViewProtocol {
-    func myPickerDidSelectRow(selectedRowValue: String?)
-    func myIdOrg(selectedRowValue: Int?)
+protocol OrgPickerViewProtocol {
+    func orgPickerDidSelectRow(selectedRowValue: String?)
+    func idOrg(selectedRowValue: Int?)
     
 }
 
 class OrganozerPickerView: UIPickerView {
     
-    var delgate: MyPickerViewProtocol?
+    var delgate: OrgPickerViewProtocol?
     
     var organizer = [OrganizerBase]()
     
     let customWidth = 100
     let customHeight = 150
-    
-    
 }
 
 extension OrganozerPickerView: UIPickerViewDataSource, UIPickerViewDelegate {
@@ -50,8 +48,8 @@ extension OrganozerPickerView: UIPickerViewDataSource, UIPickerViewDelegate {
         let nameOrg = organizer[0].records?[row].name
         let idOrg = organizer[0].records?[row].id
         
-        delgate?.myIdOrg(selectedRowValue: idOrg)
-        delgate?.myPickerDidSelectRow(selectedRowValue: nameOrg)
+        delgate?.idOrg(selectedRowValue: idOrg)
+        delgate?.orgPickerDidSelectRow(selectedRowValue: nameOrg)
     }
     
 }

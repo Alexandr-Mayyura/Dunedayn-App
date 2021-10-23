@@ -10,7 +10,15 @@ import UIKit
 
 extension CalendarViewController {
     func tableviewFrame() {
+        
         view.addSubview(tableview)
+        let images = Images()
+        images.backgraundImage.image = images.image
+        images.backgraundImage.contentMode = .scaleAspectFill
+        tableview.backgroundView = images.backgraundImage
+        
+
+        self.title = "Календарь"
         
         NSLayoutConstraint.activate([
         

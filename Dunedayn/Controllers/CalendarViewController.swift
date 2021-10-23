@@ -16,9 +16,6 @@ class CalendarViewController: UIViewController {
     
     var delegate: AddEventViewController?
     
-    let image = UIImage(named: "Background")
-    let backgraundImage = UIImageView(frame: UIScreen.main.bounds)
-    
 // create tableview
      let tableview: UITableView = {
         let tv = UITableView(frame: .zero)
@@ -120,19 +117,12 @@ class CalendarViewController: UIViewController {
 
         tableview.dataSource = self
         tableview.delegate = self
-        
-        tableview.backgroundView = backgraundImage
-        backgraundImage.image = image
-        backgraundImage.contentMode = .scaleAspectFill
-
-        self.title = "Календарь"
-        
+      
 // add button to navigationController
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector (rightButtonAction))
         self.navigationController?.navigationBar.backgroundColor = .black
         self.navigationController?.navigationBar.tintColor = .white
     }
-   
 }
 
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {

@@ -33,6 +33,7 @@
 		1FB75E4127246612002E1300 /* CalendarViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E4027246612002E1300 /* CalendarViewLayout.swift */; };
 		1FB75E45272466A0002E1300 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E44272466A0002E1300 /* ExtensionString.swift */; };
 		1FB75E4727246884002E1300 /* TeamMenuViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E4627246884002E1300 /* TeamMenuViewLayout.swift */; };
+		1FB75E4C2724733F002E1300 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E4B2724733F002E1300 /* Images.swift */; };
 		1FF0BC9726FEEF1E002FB1D9 /* AddEventViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0BC9626FEEF1E002FB1D9 /* AddEventViewLayout.swift */; };
 		1FF0BC9926FEF370002FB1D9 /* OrganozerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0BC9826FEF370002FB1D9 /* OrganozerPickerView.swift */; };
 		1FF0BC9D2704E86F002FB1D9 /* TypeBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0BC9C2704E86E002FB1D9 /* TypeBase.swift */; };
@@ -71,6 +72,7 @@
 		1FB75E4027246612002E1300 /* CalendarViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewLayout.swift; sourceTree = "<group>"; };
 		1FB75E44272466A0002E1300 /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
 		1FB75E4627246884002E1300 /* TeamMenuViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMenuViewLayout.swift; sourceTree = "<group>"; };
+		1FB75E4B2724733F002E1300 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		1FF0BC9626FEEF1E002FB1D9 /* AddEventViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewLayout.swift; sourceTree = "<group>"; };
 		1FF0BC9826FEF370002FB1D9 /* OrganozerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganozerPickerView.swift; sourceTree = "<group>"; };
 		1FF0BC9C2704E86E002FB1D9 /* TypeBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeBase.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		1F4DC4B726E9D7BA000F9A74 /* Dunedayn */ = {
 			isa = PBXGroup;
 			children = (
+				1FB75E482724717C002E1300 /* Helpers */,
 				1F4DC4E626EA7019000F9A74 /* AlamofireSetup */,
 				1F4DC4CC26E9E2DF000F9A74 /* Models */,
 				1F4DC4E126E9E6F5000F9A74 /* Storyboard */,
@@ -214,6 +217,14 @@
 				1F4DC4FA26EBF702000F9A74 /* CalendarTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		1FB75E482724717C002E1300 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1FB75E4B2724733F002E1300 /* Images.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		FA356C336E3CE79DE9FE78E6 /* Pods */ = {
@@ -346,6 +357,7 @@
 				1F4DC4DB26E9E55B000F9A74 /* Users.swift in Sources */,
 				1FB75E3D27246523002E1300 /* CloseKeyboard.swift in Sources */,
 				1FF0BCA12704F35B002FB1D9 /* TypePickerView.swift in Sources */,
+				1FB75E4C2724733F002E1300 /* Images.swift in Sources */,
 				1F4DC4D826E9E53D000F9A74 /* RolesBase.swift in Sources */,
 				1F4DC4FB26EBF702000F9A74 /* CalendarTableViewCell.swift in Sources */,
 				1FF0BC9726FEEF1E002FB1D9 /* AddEventViewLayout.swift in Sources */,

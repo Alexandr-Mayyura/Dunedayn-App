@@ -11,8 +11,18 @@ import UIKit
 extension TeamMenuViewController {
     
     func collectionViewConstr() {
-        
+
         view.addSubview(collectionView)
+        collectionView.backgroundColor = .clear
+        
+        let images = Images()
+        view.insertSubview(images.backgraundImage, at: 0)
+        images.backgraundImage.image = images.image
+        images.backgraundImage.contentMode = .scaleAspectFill
+        
+        
+        
+        self.title = "Dunedayn"
         
         NSLayoutConstraint.activate (
             [

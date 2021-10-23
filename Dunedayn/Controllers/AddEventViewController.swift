@@ -9,16 +9,16 @@ import UIKit
 
 
 
-class AddEventViewController: UIViewController, MyPickerViewProtocol, TypePickerViewProtocol {
+class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerViewProtocol, TypePickerViewProtocol {
 
     var organizers = [OrganizerBase]()
     var types = [TypeBase]()
 
-    func myIdOrg(selectedRowValue: Int?) {
+    func idOrg(selectedRowValue: Int?) {
         organizer = selectedRowValue
     }
     
-    func myPickerDidSelectRow(selectedRowValue: String?) {
+    func orgPickerDidSelectRow(selectedRowValue: String?) {
         organizerTextfield.text = selectedRowValue
     }
     func typePickerDidSelectRow(selectedRowValue: String?) {
@@ -68,6 +68,12 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol, TypePicker
     var typeName: String?
     var organName: String?
     
+    let nameLabel = UILabel()
+    let dateLabel = UILabel()
+    let organizerLabel = UILabel()
+    let infoLabel = UILabel()
+    let typeLabel = UILabel()
+    
     let nameGameTextfield = UITextField()
     let dateGameTextfield = UITextField()
     let organizerTextfield = UITextField()
@@ -96,19 +102,22 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol, TypePicker
             self.dateGameTextfield.text = dateString
         }
         self.dateGameTextfield.resignFirstResponder()
+        self.organizerTextfield.becomeFirstResponder()
     }
     
     let screenWidth = UIScreen.main.bounds.width
-    
-   
-    
+
     @objc func tapCancel() {
         self.organizerTextfield.text = ""
         self.organizerTextfield.resignFirstResponder()
     }
     
     @objc func tapDoneOrganizer() {
+        if organizerTextfield.text == "" {
+        self.organizerTextfield.text = organizers[0].records?[0].name
+        }
         self.organizerTextfield.resignFirstResponder()
+        self.typeTextfield.becomeFirstResponder()
     }
     
     @objc func tapCancelType() {
@@ -117,7 +126,11 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol, TypePicker
     }
     
     @objc func tapDoneType() {
+        if typeTextfield.text == "" {
+        self.typeTextfield.text = types[0].records?[0].type
+        }
         self.typeTextfield.resignFirstResponder()
+        self.infoTextview.becomeFirstResponder()
     }
     
     func addEdit() {
@@ -163,17 +176,44 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol, TypePicker
     
     // post/edit data
     @objc func postDateForBackend(sender: UIButton) {
-       
+        let date = NSDate()
+        if nameGameTextfield.text == "" || dateGameTextfield.text == "" || typeTextfield.text == "" || organizerTextfield.text == "" {
+            
+            let av = UIAlertController(title: "Заполните все поля!", message: "", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Закрыть", style: .cancel)
+            
+            av.addAction(cancelAction)
+            self.present(av, animated: true, completion: nil)
+            
+        } else if datePicker.date <= date as Date {
+                let av = UIAlertController(title: "Неверная дата!", message: "", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Закрыть", style: .cancel)
+                
+                av.addAction(cancelAction)
+                self.present(av, animated: true, completion: nil)
+        } else {
+            
         addEdit()
         self.navigationController?.popViewController(animated: true)
-
+            
+        }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nameGameTextfield {
+           textField.resignFirstResponder()
+            dateGameTextfield.becomeFirstResponder()
+        }
+       return true
+      }
     
     var organizerPickerView: OrganozerPickerView!
     var typePickerView: TypePickerView!
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nameGameTextfield.delegate = self
         
         addOrganizer()
         addType()
@@ -217,45 +257,18 @@ class AddEventViewController: UIViewController, MyPickerViewProtocol, TypePicker
         
         dateGameTextfield.inputView = datePicker
         dateGameTextfield.inputAccessoryView = dateToolBar
-        
-        
 
         self.title = "Добавьте игру"
         
         positionViews()
-        
-        
+
         // scroll with keyboard
+        
             registerForKeyboardNotification()
         // close keyboard
             addTapGestureToHideKeyboard()
     }
-    
-    // scroll with keyboard
-        func registerForKeyboardNotification() {
-            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
 
-            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        }
-
-        @objc func keyboardWillShow(notification: NSNotification) {
-
-            guard let userInfo = notification.userInfo else { return }
-            var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-            keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-
-            var contentInset:UIEdgeInsets = self.scrollView.contentInset
-            contentInset.bottom = keyboardFrame.size.height + 20
-            scrollView.contentInset = contentInset
-        }
-
-        @objc func keyboardWillHide(notification:NSNotification) {
-
-            let contentInset:UIEdgeInsets = UIEdgeInsets.zero
-            scrollView.contentInset = contentInset
-        }
-    
-        
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
