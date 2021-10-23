@@ -11,7 +11,10 @@ class TeamMenuViewController: UIViewController {
     
     let teamMenu = ["Статистика", "Календарь", "Устав", "Казна", "Памятка"]
     
-    private let collectionView: UICollectionView = {
+    let image = UIImage(named: "Background")
+    let backgraundImage = UIImageView(frame: UIScreen.main.bounds)
+    
+    let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +29,11 @@ class TeamMenuViewController: UIViewController {
         collectionViewConstr()
         collectionView.delegate = self
         collectionView.dataSource = self
-        
+        collectionView.backgroundColor = .clear
+        backgraundImage.image = image
+        backgraundImage.contentMode = .scaleAspectFill
+        view.insertSubview(backgraundImage, at: 0)
+
         self.title = "Dunedayn"
     }
 }
@@ -46,7 +53,7 @@ extension TeamMenuViewController: UICollectionViewDelegateFlowLayout, UICollecti
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "teamMenuCell", for: indexPath) as! TeamMenuCollectionViewCell
-        cell.backgroundColor = .darkGray
+        cell.backgroundColor = UIColor(red: 0.094, green: 0.094, blue: 0.051, alpha: 0.90)
         cell.layer.cornerRadius = 10
         
         let nameMenu = teamMenu[indexPath.row]
@@ -54,27 +61,28 @@ extension TeamMenuViewController: UICollectionViewDelegateFlowLayout, UICollecti
         
         return cell
     }
+
+     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.1) {
+            if let cell = collectionView.cellForItem(at: indexPath) {
+                cell.transform = .init(scaleX: 0.90, y: 0.90)
+                cell.contentView.backgroundColor = UIColor(red: 0.094, green: 0.094, blue: 0.051, alpha: 1)
+            }
+        }
+    }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == 1 {
-        let vc = CalendarViewController()
-        navigationController?.pushViewController(vc, animated: true)
+     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.1) {
+            if let cell = collectionView.cellForItem(at: indexPath) {
+                cell.transform = .identity
+                cell.contentView.backgroundColor = .clear
+                
+            }
+            if indexPath.row == 1 {
+                 let vc = CalendarViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
 }
 
-extension TeamMenuViewController {
-    
-    func collectionViewConstr() {
-        
-        view.addSubview(collectionView)
-        
-        NSLayoutConstraint.activate (
-            [
-                collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-                collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-                collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
-                collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0)
-            ])
-    }
-}

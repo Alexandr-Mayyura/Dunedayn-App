@@ -32,7 +32,8 @@ class CalendarTableViewCell: UITableViewCell {
         
         nameLabel?.numberOfLines = 0
         nameLabel?.textAlignment = .left
-        nameLabel?.font = nameLabel?.font.withSize(20)
+        nameLabel?.textColor = .white
+        nameLabel?.font = nameLabel?.font.withSize(22)
         
         dateLabel?.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20) .isActive = true
         dateLabel?.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5) .isActive = true
@@ -41,6 +42,7 @@ class CalendarTableViewCell: UITableViewCell {
         
         dateLabel?.numberOfLines = 0
         dateLabel?.textAlignment = .natural
+        dateLabel?.textColor = .white
         dateLabel?.font = nameLabel?.font.withSize(20)
     }
     

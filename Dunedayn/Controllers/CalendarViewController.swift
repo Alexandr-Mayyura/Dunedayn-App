@@ -16,9 +16,11 @@ class CalendarViewController: UIViewController {
     
     var delegate: AddEventViewController?
     
+    let image = UIImage(named: "Background")
+    let backgraundImage = UIImageView(frame: UIScreen.main.bounds)
     
 // create tableview
-    private let tableview: UITableView = {
+     let tableview: UITableView = {
         let tv = UITableView(frame: .zero)
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.register(CalendarTableViewCell.self, forCellReuseIdentifier: "calendarCell")
@@ -33,11 +35,7 @@ class CalendarViewController: UIViewController {
         
     }
     
-    func reloadData() {
-        tableview.reloadData()
-        print("reload")
-    }
-    
+    // load data from server (dunedayn.ru)
     func addContetnt(){
         
         EventSetup.asyncRequest(URLs().orgUrl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: OrganizerBase) in
@@ -52,6 +50,7 @@ class CalendarViewController: UIViewController {
         }
     }
     
+    // delete content in tableview and server
     func deleteContent(rowIndexPathAt indexPath: IndexPath) -> UIContextualAction {
         
         let actionDelet = UIContextualAction(style: .destructive, title: "delete") { _, _, _ in
@@ -67,6 +66,7 @@ class CalendarViewController: UIViewController {
         return actionDelet
     }
     
+    // transition for AddEventViewController and edit content in tableview and server
     func editContent(rowIndexPathAt indexPath: IndexPath) -> UIContextualAction {
         let actionEdit = UIContextualAction(style: .destructive, title: "Edit") { _, _, _ in
           
@@ -115,24 +115,22 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-//        addContetnt()
-      
+
         tableviewFrame()
-        
-//        tableview.reloadData()
+
         tableview.dataSource = self
         tableview.delegate = self
-        tableview.backgroundColor = .gray
         
+        tableview.backgroundView = backgraundImage
+        backgraundImage.image = image
+        backgraundImage.contentMode = .scaleAspectFill
+
         self.title = "Календарь"
         
 // add button to navigationController
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector (rightButtonAction))
         self.navigationController?.navigationBar.backgroundColor = .black
         self.navigationController?.navigationBar.tintColor = .white
-       
-        view.backgroundColor = .gray
     }
    
 }
@@ -155,23 +153,11 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         
         let event = calendarEvents[indexPath.section]
 
-        let organ = organizers[indexPath.section]
-
-        guard let itemId = (event.records?[indexPath.row].organizerId) else { return UITableViewCell()}
-
-        var neededItem = Int()
-        
-        for (index, item) in organ.records!.enumerated() {
-            if item.id == itemId {
-                neededItem = index
-            }
-        }
- 
-        cell.nameLabel?.text = "\(event.records?[indexPath.row].name ?? "") \n\(organ.records?[neededItem].name ?? "")"
+        cell.nameLabel?.text = "\(event.records?[indexPath.row].name ?? "")"
         let dates = String()
         cell.dateLabel?.text = dates.datesFormated(data: event.records?[indexPath.row].date ?? "2021-10-10")
-
-        cell.backgroundColor = .gray
+    
+        cell.backgroundColor = UIColor(red: 0.094, green: 0.094, blue: 0.051, alpha: 0.85)
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -185,7 +171,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
         let vc = EventsViewController()
         let ev = calendarEvents[indexPath.section]
         vc.name = ev.records?[indexPath.row].name 
@@ -217,30 +203,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension CalendarViewController {
-    func tableviewFrame() {
-        view.addSubview(tableview)
-        
-        NSLayoutConstraint.activate([
-        
-            tableview.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            tableview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            tableview.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            tableview.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
-        ])
-    }
-}
 
-extension String {
-    func datesFormated(data: String) -> String{
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-dd"
-        let data = dateFormatter.date(from: data)!
-        dateFormatter.dateFormat = "d MMMM YYYY"
-        dateFormatter.locale = .init(identifier: "ru_RU_POSIX")
-        
-        let dateForm = dateFormatter.string(from: data)
-        return dateForm
-    }
-}
+
+
