@@ -194,6 +194,16 @@ extension AddEventViewController {
         addButton.titleLabel?.font = UIFont.init(name: "Helvetica Neue", size: 34)
         addButton.setTitle("Сохранить", for: .normal)
         title = "Добавьте игру"
+        
+        func toolBarStyle(_ toolBar: UIToolbar){
+            toolBar.barStyle = UIBarStyle.default
+            toolBar.isTranslucent = true
+            toolBar.sizeToFit()
+        }
+        
+        toolBarStyle(orgToolBar)
+        toolBarStyle(typeToolBar)
+        toolBarStyle(dateToolBar)
     }
 }
 

@@ -27,4 +27,12 @@ extension String {
         let dateString = dateFormatter.string(from: date)
         return dateString
     }
+    func dateFormatforDate(date: String) -> Date {
+        let dates = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU_POSIX")
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        guard let dateDate = dateFormatter.date(from: date) else { return dates as Date}
+        return dateDate
+    }
 }

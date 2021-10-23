@@ -68,33 +68,33 @@ class CalendarViewController: UIViewController {
         let actionEdit = UIContextualAction(style: .destructive, title: "Edit") { _, _, _ in
           
             let vc = AddEventViewController()
-            let ev = self.calendarEvents
-            vc.nameGameTextfield.text = ev[indexPath.section].records?[indexPath.row].name ?? ""
-            vc.infoTextview.text = ev[indexPath.section].records?[indexPath.row].info ?? ""
-            vc.dateGameTextfield.text = ev[indexPath.section].records?[indexPath.row].date
-            vc.type = ev[indexPath.section].records?[indexPath.row].typeId
-            vc.organizer = ev[indexPath.section].records?[indexPath.row].organizerId
+            guard let ev = self.calendarEvents[indexPath.section].records else {return}
+            vc.nameGameTextfield.text = ev[indexPath.row].name
+            vc.infoTextview.text = ev[indexPath.row].info
+            vc.dateGameTextfield.text = ev[indexPath.row].date
+            vc.type = ev[indexPath.row].typeId
+            vc.organizer = ev[indexPath.row].organizerId
             
-            let organ = self.organizers[indexPath.section]
-            guard let itemId = (ev[indexPath.section].records?[indexPath.row].organizerId) else { return }
+            guard let organ = self.organizers[indexPath.section].records else {return}
+            guard let itemId = (ev[indexPath.row].organizerId) else { return }
             var neededItem = Int()
-            for (index, item) in organ.records!.enumerated() {
+            for (index, item) in organ.enumerated() {
                 if item.id == itemId {
                     neededItem = index
                 }
             }
-            vc.organizerTextfield.text = self.organizers[indexPath.section].records?[neededItem].name
+            vc.organizerTextfield.text = organ[neededItem].name
 
-            let types = self.type[indexPath.section]
-            guard let typeId = (ev[indexPath.section].records?[indexPath.row].typeId) else { return }
+            guard let types = self.type[indexPath.section].records else {return}
+            guard let typeId = (ev[indexPath.row].typeId) else { return }
             var neededType = Int()
-            for (index, item) in types.records!.enumerated() {
+            for (index, item) in types.enumerated() {
                 if item.id == typeId {
                     neededType = index
                     }
                 }
-            vc.typeTextfield.text = self.type[indexPath.section].records?[neededType].type
-            vc.id = ev[indexPath.section].records?[indexPath.row].id
+            vc.typeTextfield.text = types[neededType].type
+            vc.id = ev[indexPath.row].id
 
             self.navigationController?.pushViewController(vc, animated: true)
             
@@ -163,31 +163,31 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let vc = EventsViewController()
-        let ev = calendarEvents[indexPath.section]
-        vc.name = ev.records?[indexPath.row].name 
-        vc.info = ev.records?[indexPath.row].info
+        guard let ev = calendarEvents[indexPath.section].records else {return}
+        vc.name = ev[indexPath.row].name
+        vc.info = ev[indexPath.row].info
         let dates = String()
-        vc.date = dates.datesFormatedInString(data: ev.records?[indexPath.row].date ?? "2021-10-10")
+        vc.date = dates.datesFormatedInString(data: ev[indexPath.row].date ?? "2021-10-10")
 
-        let organ = organizers[indexPath.section]
-        guard let itemId = (ev.records?[indexPath.row].organizerId) else { return }
+        guard let organ = organizers[indexPath.section].records else {return}
+        guard let itemId = ev[indexPath.row].organizerId else { return }
         var neededItem = Int()
-        for (index, item) in organ.records!.enumerated() {
+        for (index, item) in organ.enumerated() {
             if item.id == itemId {
                 neededItem = index
             }
         }
-        vc.organazerName = organ.records?[neededItem].name
+        vc.organazerName = organ[neededItem].name
         
-        let types = type[indexPath.section]
-        guard let typeId = (ev.records?[indexPath.row].typeId) else { return }
+        guard let types = type[indexPath.section].records else {return}
+        guard let typeId = ev[indexPath.row].typeId else { return }
         var neededType = Int()
-        for (index, item) in types.records!.enumerated() {
+        for (index, item) in types.enumerated() {
             if item.id == typeId {
                 neededType = index
             }
         }
-        vc.type = types.records?[neededType].type
+        vc.type = types[neededType].type
 
         navigationController?.pushViewController(vc, animated: true)        
     }
