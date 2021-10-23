@@ -145,7 +145,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
 
         cell.nameLabel?.text = "\(event.records?[indexPath.row].name ?? "")"
         let dates = String()
-        cell.dateLabel?.text = dates.datesFormated(data: event.records?[indexPath.row].date ?? "2021-10-10")
+        cell.dateLabel?.text = dates.datesFormatedInString(data: event.records?[indexPath.row].date ?? "2021-10-10")
     
         cell.backgroundColor = UIColor(red: 0.094, green: 0.094, blue: 0.051, alpha: 0.85)
         cell.accessoryType = .disclosureIndicator
@@ -167,7 +167,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         vc.name = ev.records?[indexPath.row].name 
         vc.info = ev.records?[indexPath.row].info
         let dates = String()
-        vc.date = dates.datesFormated(data: ev.records?[indexPath.row].date ?? "2021-10-10")
+        vc.date = dates.datesFormatedInString(data: ev.records?[indexPath.row].date ?? "2021-10-10")
 
         let organ = organizers[indexPath.section]
         guard let itemId = (ev.records?[indexPath.row].organizerId) else { return }

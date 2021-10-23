@@ -19,7 +19,6 @@ extension EventsViewController {
         infoTextview.translatesAutoresizingMaskIntoConstraints = false
         typeOrganizerLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        
         let images = Images()
         images.backgraundImage.translatesAutoresizingMaskIntoConstraints = false
         images.backgraundImage.image = images.image
@@ -80,7 +79,7 @@ extension EventsViewController {
         nameLabel.layer.masksToBounds = true
         nameLabel.layer.cornerRadius = 10
         
-        dateLabel.font = dateLabel.font.withSize(15)
+        dateLabel.font = dateLabel.font.withSize(17)
         dateLabel.textAlignment = .center
         dateLabel.numberOfLines = 0
         dateLabel.textColor = .white
@@ -88,7 +87,7 @@ extension EventsViewController {
         dateLabel.layer.masksToBounds = true
         dateLabel.layer.cornerRadius = 10
             
-        typeOrganizerLabel.font = typeOrganizerLabel.font.withSize(15)
+        typeOrganizerLabel.font = typeOrganizerLabel.font.withSize(17)
         typeOrganizerLabel.textAlignment = .center
         typeOrganizerLabel.numberOfLines = 0
         typeOrganizerLabel.textColor = .white
@@ -106,7 +105,5 @@ extension EventsViewController {
         infoTextview.layer.masksToBounds = true
         infoTextview.layer.cornerRadius = 10
         infoTextview.isScrollEnabled = false
-        
-        
     }
 }

@@ -8,23 +8,22 @@
 import UIKit
 
 
-
 class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerViewProtocol, TypePickerViewProtocol {
 
     var organizers = [OrganizerBase]()
     var types = [TypeBase]()
-
+    
+    // protocol OrgPickerViewProtocol metods
     func idOrg(selectedRowValue: Int?) {
         organizer = selectedRowValue
     }
-    
     func orgPickerDidSelectRow(selectedRowValue: String?) {
         organizerTextfield.text = selectedRowValue
     }
+    // protocol TypePickerViewProtocol metods
     func typePickerDidSelectRow(selectedRowValue: String?) {
         typeTextfield.text = selectedRowValue
     }
-    
     func myIdType(selectedRowValue: Int?) {
         type = selectedRowValue
     }
@@ -33,7 +32,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
     let datePicker = UIDatePicker()
     let typePicker = UIPickerView()
     
-    var toolBar : UIToolbar = {
+    let toolBar : UIToolbar = {
         var toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
@@ -41,7 +40,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
         return toolBar
     }()
     
-    var dateToolBar : UIToolbar = {
+    let dateToolBar : UIToolbar = {
         var toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
@@ -49,7 +48,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
         return toolBar
     }()
     
-    var typeToolBar : UIToolbar = {
+    let typeToolBar : UIToolbar = {
         var toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
@@ -68,6 +67,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
     var typeName: String?
     var organName: String?
     
+    // views
     let nameLabel = UILabel()
     let dateLabel = UILabel()
     let organizerLabel = UILabel()
@@ -84,40 +84,28 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
     let addButton : UIButton = {
         let bt = UIButton()
         bt.addTarget(self, action: #selector(postDateForBackend), for: .touchUpInside)
-        bt.translatesAutoresizingMaskIntoConstraints = false
-        bt.setTitle("Сохранить", for: .normal)
-        bt.backgroundColor = .systemGray
-        bt.layer.cornerRadius = 8
         return bt
     }()
 
-    //  datePicker method
+    //  tap datePicker method
     @objc func tapDoneDate() {
         if let datePicker = self.dateGameTextfield.inputView as? UIDatePicker {
-
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "ru_RU_POSIX")
-            dateFormatter.dateFormat = "YYYY-MM-dd"
-            let dateString = dateFormatter.string(from: datePicker.date)
-            self.dateGameTextfield.text = dateString
+            let dates = String()
+            let date = dates.dateFormatInDate(date: datePicker.date)
+            self.dateGameTextfield.text = date
         }
         self.dateGameTextfield.resignFirstResponder()
         self.organizerTextfield.becomeFirstResponder()
     }
-    
-    let screenWidth = UIScreen.main.bounds.width
-
-    @objc func tapCancel() {
-        self.organizerTextfield.text = ""
-        self.organizerTextfield.resignFirstResponder()
+// tap cancel picker mothod
+    @objc func tapCancelDate() {
+        self.dateGameTextfield.text = ""
+        self.dateGameTextfield.resignFirstResponder()
     }
     
-    @objc func tapDoneOrganizer() {
-        if organizerTextfield.text == "" {
-        self.organizerTextfield.text = organizers[0].records?[0].name
-        }
+    @objc func tapCancelOrg() {
+        self.organizerTextfield.text = ""
         self.organizerTextfield.resignFirstResponder()
-        self.typeTextfield.becomeFirstResponder()
     }
     
     @objc func tapCancelType() {
@@ -125,6 +113,15 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
         self.typeTextfield.resignFirstResponder()
     }
     
+    // tap done picker mothod
+    @objc func tapDoneOrganizer() {
+        if organizerTextfield.text == "" {
+        self.organizerTextfield.text = organizers[0].records?[0].name
+        }
+        self.organizerTextfield.resignFirstResponder()
+        self.typeTextfield.becomeFirstResponder()
+    }
+
     @objc func tapDoneType() {
         if typeTextfield.text == "" {
         self.typeTextfield.text = types[0].records?[0].type
@@ -133,6 +130,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
         self.infoTextview.becomeFirstResponder()
     }
     
+    // put\post mothods
     func addEdit() {
         
         name = nameGameTextfield.text!
@@ -149,6 +147,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
             EventSetup.asyncResponse(link, method: .put, parameters: datas, header: EventSetup.PostPutHeader) {
                 print("PUT")
             }
+            
         } else {
             
             let link = "\(URLs().deleteURL)"
@@ -160,6 +159,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
         }
     }
     
+    // getting organizers for OrganizerPicker
     func addOrganizer() {
         EventSetup.asyncRequest(URLs().orgUrl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: OrganizerBase) in
             self?.organizers = [result]
@@ -167,6 +167,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
         }
     }
     
+    // getting type for TypePicker
     func addType() {
         EventSetup.asyncRequest(URLs().typeURL, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: TypeBase) in
             self?.types = [result]
@@ -174,7 +175,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
         }
     }
     
-    // post/edit data
+    // tap button "Сохранить"
     @objc func postDateForBackend(sender: UIButton) {
         let date = NSDate()
         if nameGameTextfield.text == "" || dateGameTextfield.text == "" || typeTextfield.text == "" || organizerTextfield.text == "" {
@@ -198,7 +199,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
             
         }
     }
-    
+    // next textfield
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == nameGameTextfield {
            textField.resignFirstResponder()
@@ -207,8 +208,8 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
        return true
       }
     
-    var organizerPickerView: OrganozerPickerView!
-    var typePickerView: TypePickerView!
+    let organizerPickerView = OrganozerPickerView()
+    let typePickerView = TypePickerView()
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -218,7 +219,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
         addOrganizer()
         addType()
         
-        typePickerView = TypePickerView()
+// MARK: add pickerViews and add button in pickers
         typePickerView.typeDelegate = self
         typePicker.dataSource = typePickerView
         typePicker.delegate = typePickerView
@@ -232,14 +233,13 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
         typeTextfield.inputView = typePicker
         typeTextfield.inputAccessoryView = typeToolBar
 
-        organizerPickerView = OrganozerPickerView()
         organizerPickerView.delgate = self
         organizerPicker.dataSource = organizerPickerView
         organizerPicker.delegate = organizerPickerView
         
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(tapDoneOrganizer))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(tapCancel))
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(tapCancelOrg))
         toolBar.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 40)
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         
@@ -251,19 +251,17 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
                 
         let barButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(tapDoneDate))
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: #selector(tapCancel))
+        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: #selector(tapCancelDate))
         dateToolBar.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 40)
         dateToolBar.setItems([cancel, flexible, barButton], animated: false)
         
         dateGameTextfield.inputView = datePicker
         dateGameTextfield.inputAccessoryView = dateToolBar
-
-        self.title = "Добавьте игру"
         
+        // extention from AddEventViewLayout
         positionViews()
 
         // scroll with keyboard
-        
             registerForKeyboardNotification()
         // close keyboard
             addTapGestureToHideKeyboard()
@@ -271,6 +269,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        // removeObserver
         NotificationCenter.default.removeObserver(self)
     }
 }

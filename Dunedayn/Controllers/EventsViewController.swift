@@ -39,7 +39,7 @@ class EventsViewController: UIViewController, UITextViewDelegate {
         nameLabel.text = " \(name ?? "")   "
         infoTextview.text = info
         dateLabel.text = " \(date ?? "")   "
-        typeOrganizerLabel.text = " \(type ?? "") / \(organazerName ?? "") "
+        typeOrganizerLabel.text = " \(type ?? "") / \(organazerName ?? "")   "
     }
 }
 

@@ -31,7 +31,7 @@
 		1FB75E3D27246523002E1300 /* CloseKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E3C27246523002E1300 /* CloseKeyboard.swift */; };
 		1FB75E3F27246599002E1300 /* EventViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E3E27246599002E1300 /* EventViewLayout.swift */; };
 		1FB75E4127246612002E1300 /* CalendarViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E4027246612002E1300 /* CalendarViewLayout.swift */; };
-		1FB75E45272466A0002E1300 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E44272466A0002E1300 /* ExtensionString.swift */; };
+		1FB75E45272466A0002E1300 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E44272466A0002E1300 /* DateFormatters.swift */; };
 		1FB75E4727246884002E1300 /* TeamMenuViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E4627246884002E1300 /* TeamMenuViewLayout.swift */; };
 		1FB75E4C2724733F002E1300 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E4B2724733F002E1300 /* Images.swift */; };
 		1FF0BC9726FEEF1E002FB1D9 /* AddEventViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0BC9626FEEF1E002FB1D9 /* AddEventViewLayout.swift */; };
@@ -70,7 +70,7 @@
 		1FB75E3C27246523002E1300 /* CloseKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseKeyboard.swift; sourceTree = "<group>"; };
 		1FB75E3E27246599002E1300 /* EventViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewLayout.swift; sourceTree = "<group>"; };
 		1FB75E4027246612002E1300 /* CalendarViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewLayout.swift; sourceTree = "<group>"; };
-		1FB75E44272466A0002E1300 /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
+		1FB75E44272466A0002E1300 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		1FB75E4627246884002E1300 /* TeamMenuViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMenuViewLayout.swift; sourceTree = "<group>"; };
 		1FB75E4B2724733F002E1300 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		1FF0BC9626FEEF1E002FB1D9 /* AddEventViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewLayout.swift; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 				1FF0BC9626FEEF1E002FB1D9 /* AddEventViewLayout.swift */,
 				1FF0BC9826FEF370002FB1D9 /* OrganozerPickerView.swift */,
 				1FF0BCA02704F35B002FB1D9 /* TypePickerView.swift */,
-				1FB75E44272466A0002E1300 /* ExtensionString.swift */,
+				1FB75E44272466A0002E1300 /* DateFormatters.swift */,
 				1FB75E3C27246523002E1300 /* CloseKeyboard.swift */,
 				1F4DC4F526EBE103000F9A74 /* Cells */,
 			);
@@ -364,7 +364,7 @@
 				1F4DC4F226EBD791000F9A74 /* SingUpViewController.swift in Sources */,
 				1FB75E4727246884002E1300 /* TeamMenuViewLayout.swift in Sources */,
 				1F4DC4F726EBE144000F9A74 /* TeamMenuCollectionViewCell.swift in Sources */,
-				1FB75E45272466A0002E1300 /* ExtensionString.swift in Sources */,
+				1FB75E45272466A0002E1300 /* DateFormatters.swift in Sources */,
 				1F4DC4F426EBDFD9000F9A74 /* TeamMenuViewController.swift in Sources */,
 				1FB75E4127246612002E1300 /* CalendarViewLayout.swift in Sources */,
 				1F4DC4E526EA6E50000F9A74 /* EventBase.swift in Sources */,

@@ -24,6 +24,7 @@ extension AddEventViewController {
         organizerTextfield.translatesAutoresizingMaskIntoConstraints = false
         infoTextview.translatesAutoresizingMaskIntoConstraints = false
         typeTextfield.translatesAutoresizingMaskIntoConstraints = false
+        addButton.translatesAutoresizingMaskIntoConstraints = false
         
         let images = Images()
         images.backgraundImage.translatesAutoresizingMaskIntoConstraints = false
@@ -191,8 +192,9 @@ extension AddEventViewController {
         addButton.tintColor = .white
         addButton.backgroundColor = .clear
         addButton.titleLabel?.font = UIFont.init(name: "Helvetica Neue", size: 34)
+        addButton.setTitle("Сохранить", for: .normal)
+        title = "Добавьте игру"
     }
-    
 }
 
 extension AddEventViewController {

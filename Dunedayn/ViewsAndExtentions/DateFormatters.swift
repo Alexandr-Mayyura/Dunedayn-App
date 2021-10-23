@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-    func datesFormated(data: String) -> String{
+    func datesFormatedInString(data: String) -> String {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
@@ -18,5 +18,13 @@ extension String {
         
         let dateForm = dateFormatter.string(from: data)
         return dateForm
+    }
+    
+    func dateFormatInDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU_POSIX")
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
     }
 }
