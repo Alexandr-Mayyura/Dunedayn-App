@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F433FC02725566B0098A371 /* SingInAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F433FBF2725566B0098A371 /* SingInAttributes.swift */; };
+		1F433FC327259BA00098A371 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F433FC227259BA00098A371 /* RealmManager.swift */; };
 		1F4DC4B926E9D7BA000F9A74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4B826E9D7BA000F9A74 /* AppDelegate.swift */; };
 		1F4DC4BB26E9D7BA000F9A74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4BA26E9D7BA000F9A74 /* SceneDelegate.swift */; };
 		1F4DC4C026E9D7BA000F9A74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DC4BE26E9D7BA000F9A74 /* Main.storyboard */; };
@@ -46,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F433FBF2725566B0098A371 /* SingInAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingInAttributes.swift; sourceTree = "<group>"; };
+		1F433FC227259BA00098A371 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		1F4DC4B526E9D7BA000F9A74 /* Dunedayn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dunedayn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F4DC4B826E9D7BA000F9A74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F4DC4BA26E9D7BA000F9A74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +112,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1F433FC127259B730098A371 /* RealmSetup */ = {
+			isa = PBXGroup;
+			children = (
+				1F433FC227259BA00098A371 /* RealmManager.swift */,
+			);
+			path = RealmSetup;
+			sourceTree = "<group>";
+		};
 		1F4DC4AC26E9D7BA000F9A74 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +141,7 @@
 		1F4DC4B726E9D7BA000F9A74 /* Dunedayn */ = {
 			isa = PBXGroup;
 			children = (
+				1F433FC127259B730098A371 /* RealmSetup */,
 				1FB75E482724717C002E1300 /* Helpers */,
 				1F4DC4E626EA7019000F9A74 /* AlamofireSetup */,
 				1F4DC4CC26E9E2DF000F9A74 /* Models */,
@@ -184,6 +197,7 @@
 		1F4DC4E026E9E681000F9A74 /* ViewsAndExtentions */ = {
 			isa = PBXGroup;
 			children = (
+				1F433FBF2725566B0098A371 /* SingInAttributes.swift */,
 				1FB75E4627246884002E1300 /* TeamMenuViewLayout.swift */,
 				1FDB4CBF2724BD1100FD7F34 /* AlertViews.swift */,
 				1FB75E4027246612002E1300 /* CalendarViewLayout.swift */,
@@ -379,9 +393,11 @@
 				1F4DC4DC26E9E55B000F9A74 /* UserBase.swift in Sources */,
 				1FB75E3F27246599002E1300 /* EventViewLayout.swift in Sources */,
 				1F4DC4D726E9E53D000F9A74 /* Roles.swift in Sources */,
+				1F433FC327259BA00098A371 /* RealmManager.swift in Sources */,
 				1F4DC4F926EBF0FC000F9A74 /* CalendarViewController.swift in Sources */,
 				1FF0BC9926FEF370002FB1D9 /* OrganozerPickerView.swift in Sources */,
 				1F4DC4BB26E9D7BA000F9A74 /* SceneDelegate.swift in Sources */,
+				1F433FC02725566B0098A371 /* SingInAttributes.swift in Sources */,
 				1F4DC4D426E9E37C000F9A74 /* Organizers.swift in Sources */,
 				1F4DC4F026EBD49F000F9A74 /* SingInViewController.swift in Sources */,
 				1F4DC4EC26EA9A05000F9A74 /* EventsViewController.swift in Sources */,

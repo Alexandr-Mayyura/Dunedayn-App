@@ -188,11 +188,12 @@ extension AddEventViewController {
         infoTextview.textColor = .black
         infoTextview.backgroundColor = .white
         infoTextview.isScrollEnabled = false
-        
+                
         addButton.tintColor = .white
         addButton.backgroundColor = .clear
         addButton.titleLabel?.font = UIFont.init(name: "Helvetica Neue", size: 34)
         addButton.setTitle("Сохранить", for: .normal)
+        
         title = "Добавьте игру"
         
         func toolBarStyle(_ toolBar: UIToolbar){

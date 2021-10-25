@@ -189,7 +189,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         }
         vc.type = types[neededType].type
 
-        navigationController?.pushViewController(vc, animated: true)        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

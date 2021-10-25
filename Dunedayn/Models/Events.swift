@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct Events : Codable {
     let date : String?
