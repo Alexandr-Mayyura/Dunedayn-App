@@ -1,26 +1,27 @@
 //
-//  Type.swift
+//  TypeRealm.swift
 //  Dunedayn
 //
-//  Created by Aleksandr Mayyura on 29.09.2021.
+//  Created by Aleksandr Mayyura on 25.10.2021.
 //
 
 import Foundation
+import RealmSwift
 
-//struct Type : Codable {
-//    let id : Int?
-//    let type : String?
-//
-//    enum CodingKeys: String, CodingKey {
-//
-//        case id = "id"
-//        case type = "type"
-//    }
-//
+class Types: Object, Codable {
+    @objc dynamic var id : Int
+    @objc dynamic var type : String
+
+    enum CodingKeys: String, CodingKey {
+
+        case id = "id"
+        case type = "type"
+    }
+
 //    init(from decoder: Decoder) throws {
 //        let values = try decoder.container(keyedBy: CodingKeys.self)
 //        id = try values.decodeIfPresent(Int.self, forKey: .id)
 //        type = try values.decodeIfPresent(String.self, forKey: .type)
 //    }
-//
-//}
+
+}

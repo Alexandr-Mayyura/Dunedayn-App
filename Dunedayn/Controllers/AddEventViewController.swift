@@ -10,8 +10,8 @@ import UIKit
 
 class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerViewProtocol, TypePickerViewProtocol {
 
-    var organizers = [OrganizerBase]()
-    var types = [TypeBase]()
+    var organizers = OrganizerBase()
+    var types = TypeBase()
     
     let organizerPickerView = OrganozerPickerView()
     let typePickerView = TypePickerView()
@@ -92,7 +92,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
     // tap done picker mothod
     @objc func tapDoneOrganizer() {
         if organizerTextfield.text == "" {
-        self.organizerTextfield.text = organizers[0].records?[0].name
+            self.organizerTextfield.text = RealmManager.sharedInstance.get(object: self.organizers)[0].records[0].name
         }
         self.organizerTextfield.resignFirstResponder()
         self.typeTextfield.becomeFirstResponder()
@@ -100,7 +100,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
 
     @objc func tapDoneType() {
         if typeTextfield.text == "" {
-        self.typeTextfield.text = types[0].records?[0].type
+            self.typeTextfield.text = RealmManager.sharedInstance.get(object: self.types)[0].records[0].type
         }
         self.typeTextfield.resignFirstResponder()
         self.infoTextview.becomeFirstResponder()
@@ -133,22 +133,6 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
         }
     }
     
-    // getting organizers for OrganizerPicker
-    func addOrganizer() {
-        EventSetup.asyncRequest(URLs().orgUrl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: OrganizerBase) in
-            self?.organizers = [result]
-            self?.organizerPickerView.organizer = self!.organizers
-        }
-    }
-    
-    // getting type for TypePicker
-    func addType() {
-        EventSetup.asyncRequest(URLs().typeURL, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: TypeBase) in
-            self?.types = [result]
-            self?.typePickerView.typeEvent = self!.types
-        }
-    }
-    
     // tap button "Сохранить"
     @objc func postDateForBackend(sender: UIButton) {
         let dateDate = NSDate()
@@ -162,16 +146,27 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
             
         } else if dates > dateDate as Date {
 
-            addEdit()
-            self.navigationController?.popViewController(animated: true)
+            let status = Reach().connectionStatus()
+
+            switch status {
+            case .unknown, .offline:
+                self.present(alertString.alertView("Нет подключения к сети!"), animated: true, completion: nil)
+                break
+            case .online(.wwan):
+                addEdit()
+                self.navigationController?.popViewController(animated: true)
+            case .online(.wiFi):
+                addEdit()
+                self.navigationController?.popViewController(animated: true)
+            }
             
         } else if datePicker.date <= dateDate as Date {
             self.present(alertString.alertView("Неверная дата!"), animated: true, completion: nil)
             
-        } else {
+        
             
-            addEdit()
-            self.navigationController?.popViewController(animated: true)
+            
+            
             
         }
     }
@@ -186,9 +181,6 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        addOrganizer()
-        addType()
         
         // extention from AddEventPicker
         extetionPicker()

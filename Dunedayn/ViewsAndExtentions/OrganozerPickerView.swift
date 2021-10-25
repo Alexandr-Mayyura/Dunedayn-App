@@ -17,7 +17,7 @@ class OrganozerPickerView: UIPickerView {
     
     var delgate: OrgPickerViewProtocol?
     
-    var organizer = [OrganizerBase]()
+    var organizer = OrganizerBase()
     
     let customWidth = 100
     let customHeight = 150
@@ -30,7 +30,7 @@ extension OrganozerPickerView: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        return organizer[0].records!.count
+        return RealmManager.sharedInstance.get(object: self.organizer)[0].records.count
         
     }
 
@@ -40,13 +40,13 @@ extension OrganozerPickerView: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        return organizer[0].records?[row].name
+        return RealmManager.sharedInstance.get(object: self.organizer)[0].records[row].name
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     
-        let nameOrg = organizer[0].records?[row].name
-        let idOrg = organizer[0].records?[row].id
+        let nameOrg = RealmManager.sharedInstance.get(object: self.organizer)[0].records[row].name
+        let idOrg = RealmManager.sharedInstance.get(object: self.organizer)[0].records[row].id
         
         delgate?.idOrg(selectedRowValue: idOrg)
         delgate?.orgPickerDidSelectRow(selectedRowValue: nameOrg)

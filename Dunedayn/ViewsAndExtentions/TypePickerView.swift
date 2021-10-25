@@ -17,7 +17,7 @@ class TypePickerView: UIPickerView {
     
     var typeDelegate: TypePickerViewProtocol?
 
-    var typeEvent = [TypeBase]()
+    var typeEvent = TypeBase()
     
     let customWidth = 100
     let customHeight = 150
@@ -31,7 +31,7 @@ extension TypePickerView: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        return typeEvent[0].records!.count
+        return RealmManager.sharedInstance.get(object: self.typeEvent)[0].records.count
         
     }
 
@@ -41,13 +41,13 @@ extension TypePickerView: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        return typeEvent[0].records?[row].type
+        return RealmManager.sharedInstance.get(object: self.typeEvent)[0].records[row].type
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     
-        let nameType = typeEvent[0].records?[row].type
-        let idType = typeEvent[0].records?[row].id
+        let nameType = RealmManager.sharedInstance.get(object: self.typeEvent)[0].records[row].type
+        let idType = RealmManager.sharedInstance.get(object: self.typeEvent)[0].records[row].id
         
         typeDelegate?.myIdType(selectedRowValue: idType)
         typeDelegate?.typePickerDidSelectRow(selectedRowValue: nameType)
