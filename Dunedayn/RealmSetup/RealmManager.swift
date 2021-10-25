@@ -11,10 +11,10 @@ import RealmSwift
 public class RealmManager {
     private let database: Realm
     
-    // Общий экземпляр менеджера realm
+    // singleton
     static let sharedInstance = RealmManager()
     
-   // Частный инициализатор для realm. Вылетает, если не может открыть базу данных.
+   // инициализатор для realm
     private init() {
         do {
             database = try Realm()
@@ -23,19 +23,13 @@ public class RealmManager {
             fatalError(error.localizedDescription)
         }
     }
-    
-    // Извлекает данный тип объекта из базы данных.
-  
-    // Объект параметра: тип объекта для извлечения.
-    
+    //извлечь данные
     public func get<T: Object>(object: T) -> Results<T> {
         let result: Results<T> = database.objects(T.self)
         return result
     }
     
-    // Записывает данный объект в базу данных.
-    // Пользовательская обработка ошибок доступна как параметр закрытия (по умолчанию просто возвращается).
- 
+    // записать данные
     public func save<T: Object>(object: T) {
        
             try! database.write {
@@ -43,23 +37,15 @@ public class RealmManager {
             }
     }
     
-    // Заменяет указанный объект в базе данных, если он существует. Если нет, он запишет его как новый объект.
-    // Пользовательская обработка ошибок доступна как параметр закрытия (по умолчанию просто возвращается).
-  
-    public func update<T: Object>(object: T, errorHandler: @escaping ((_ error : Swift.Error) -> Void) = { _ in return }) {
-        do {
-            try database.write {
+    // изменить данные
+    public func update<T: Object>(object: T) {
+   
+            try! database.write {
                 database.add(object, update: .all)
             }
-        }
-        catch {
-            errorHandler(error)
-        }
     }
     
-    /// Deletes the given object from the database if it exists.
-    /// Custom error handling available as a closure parameter (default just returns).
-  
+    // удалить объект
     public func delete<T: Object>(object: T)  {
       
             try! database.write {
@@ -67,9 +53,7 @@ public class RealmManager {
             }
     }
     
-    // Deletes all existing data from the database. This includes all objects of all types.
-    // Custom error handling available as a closure parameter (default just returns).
-  
+    // удалить все
     public func deleteAll(errorHandler: @escaping ((_ error : Swift.Error) -> Void) = { _ in return }) {
         do {
             try database.write {
