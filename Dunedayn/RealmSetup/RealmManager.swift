@@ -64,27 +64,5 @@ public class RealmManager {
             errorHandler(error)
         }
     }
-    
-    // Метод записи (поддерживает сохранение, обновление + удаление) для использования в асинхронных ситуациях. Логика записи передается через параметр закрытия.
-    
-    public func asyncWrite<T: ThreadConfined>(object: T, errorHandler: @escaping ((_ error : Swift.Error) -> Void) = { _ in return }, action: @escaping ((Realm, T?) -> Void)) {
-        let threadSafeRef = ThreadSafeReference(to: object)
-        let config = self.database.configuration
-        DispatchQueue(label: "background").async {
-            autoreleasepool {
-                do {
-                    let realm = try Realm(configuration: config)
-                    let obj = realm.resolve(threadSafeRef)
-                    
-                    try realm.write {
-                        action(realm, obj)
-                    }
-                }
-                catch {
-                    errorHandler(error)
-                }
-            }
-        }
-    }
 }
-
+   

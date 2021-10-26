@@ -10,7 +10,7 @@ import UIKit
 
 extension TeamMenuViewController {
     
-    func collectionViewConstr() {
+    func attributes() {
 
         view.addSubview(collectionView)
         collectionView.backgroundColor = .clear
@@ -19,9 +19,7 @@ extension TeamMenuViewController {
         view.insertSubview(images.backgraundImage, at: 0)
         images.backgraundImage.image = images.image
         images.backgraundImage.contentMode = .scaleAspectFill
-        
-        
-        
+
         self.title = "Dunedayn"
         
         NSLayoutConstraint.activate (

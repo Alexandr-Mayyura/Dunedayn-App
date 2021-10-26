@@ -22,13 +22,11 @@ class TeamMenuViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionViewConstr()
+        attributes()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         collectionView.delegate = self
         collectionView.dataSource = self  
     }
@@ -43,7 +41,6 @@ extension TeamMenuViewController: UICollectionViewDelegateFlowLayout, UICollecti
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return teamMenu.count
-       
     }
     
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

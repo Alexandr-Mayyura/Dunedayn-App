@@ -9,7 +9,6 @@ import UIKit
 
 class EventsViewController: UIViewController, UITextViewDelegate {
 
-    
     let scrollView = UIScrollView()
     let firstView = UIView()
     let dateLabel = UILabel()
@@ -28,7 +27,7 @@ class EventsViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        loadLabel()
+        attributes()
     }
  
     override func viewWillAppear(_ animated: Bool) {
@@ -38,8 +37,7 @@ class EventsViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+   
         self.title = name
         nameLabel.text = " \(name ?? "")   "
         infoTextview.text = info

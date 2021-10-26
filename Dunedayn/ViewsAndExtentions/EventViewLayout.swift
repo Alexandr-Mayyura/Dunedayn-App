@@ -10,7 +10,7 @@ import UIKit
 
 extension EventsViewController {
     
-    func loadLabel() {
+    func attributes() {
             
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         firstView.translatesAutoresizingMaskIntoConstraints = false

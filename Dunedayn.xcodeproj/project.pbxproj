@@ -20,14 +20,10 @@
 		1F4DC4C026E9D7BA000F9A74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DC4BE26E9D7BA000F9A74 /* Main.storyboard */; };
 		1F4DC4C226E9D7BE000F9A74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DC4C126E9D7BE000F9A74 /* Assets.xcassets */; };
 		1F4DC4C526E9D7BE000F9A74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DC4C326E9D7BE000F9A74 /* LaunchScreen.storyboard */; };
-		1F4DC4D326E9E37C000F9A74 /* OrganizerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4D126E9E37C000F9A74 /* OrganizerBase.swift */; };
-		1F4DC4D426E9E37C000F9A74 /* Organizers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4D226E9E37C000F9A74 /* Organizers.swift */; };
 		1F4DC4D726E9E53D000F9A74 /* Roles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4D526E9E53D000F9A74 /* Roles.swift */; };
 		1F4DC4D826E9E53D000F9A74 /* RolesBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4D626E9E53D000F9A74 /* RolesBase.swift */; };
 		1F4DC4DB26E9E55B000F9A74 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4D926E9E55B000F9A74 /* Users.swift */; };
 		1F4DC4DC26E9E55B000F9A74 /* UserBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4DA26E9E55B000F9A74 /* UserBase.swift */; };
-		1F4DC4E326EA6E47000F9A74 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4E226EA6E47000F9A74 /* Events.swift */; };
-		1F4DC4E526EA6E50000F9A74 /* EventBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4E426EA6E50000F9A74 /* EventBase.swift */; };
 		1F4DC4E826EA7036000F9A74 /* EventSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4E726EA7036000F9A74 /* EventSetup.swift */; };
 		1F4DC4EC26EA9A05000F9A74 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4EB26EA9A05000F9A74 /* EventsViewController.swift */; };
 		1F4DC4F026EBD49F000F9A74 /* SingInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4EF26EBD49F000F9A74 /* SingInViewController.swift */; };
@@ -49,8 +45,6 @@
 		1FDB4CC02724BD1100FD7F34 /* AlertViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDB4CBF2724BD1100FD7F34 /* AlertViews.swift */; };
 		1FF0BC9726FEEF1E002FB1D9 /* AddEventViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0BC9626FEEF1E002FB1D9 /* AddEventViewLayout.swift */; };
 		1FF0BC9926FEF370002FB1D9 /* OrganozerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0BC9826FEF370002FB1D9 /* OrganozerPickerView.swift */; };
-		1FF0BC9D2704E86F002FB1D9 /* TypeBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0BC9C2704E86E002FB1D9 /* TypeBase.swift */; };
-		1FF0BC9F2704E878002FB1D9 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0BC9E2704E878002FB1D9 /* Type.swift */; };
 		1FF0BCA12704F35B002FB1D9 /* TypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0BCA02704F35B002FB1D9 /* TypePickerView.swift */; };
 		1FF8EBF526EE04DF004AF652 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8EBF426EE04DF004AF652 /* AddEventViewController.swift */; };
 		8472E9955A7529BDBC217C9B /* Pods_Dunedayn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35E4A3A51731B15AC77B7B9 /* Pods_Dunedayn.framework */; };
@@ -72,14 +66,10 @@
 		1F4DC4C126E9D7BE000F9A74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F4DC4C426E9D7BE000F9A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F4DC4C626E9D7BE000F9A74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F4DC4D126E9E37C000F9A74 /* OrganizerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizerBase.swift; sourceTree = "<group>"; };
-		1F4DC4D226E9E37C000F9A74 /* Organizers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organizers.swift; sourceTree = "<group>"; };
 		1F4DC4D526E9E53D000F9A74 /* Roles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roles.swift; sourceTree = "<group>"; };
 		1F4DC4D626E9E53D000F9A74 /* RolesBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RolesBase.swift; sourceTree = "<group>"; };
 		1F4DC4D926E9E55B000F9A74 /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		1F4DC4DA26E9E55B000F9A74 /* UserBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserBase.swift; sourceTree = "<group>"; };
-		1F4DC4E226EA6E47000F9A74 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
-		1F4DC4E426EA6E50000F9A74 /* EventBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBase.swift; sourceTree = "<group>"; };
 		1F4DC4E726EA7036000F9A74 /* EventSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSetup.swift; sourceTree = "<group>"; };
 		1F4DC4EB26EA9A05000F9A74 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		1F4DC4EF26EBD49F000F9A74 /* SingInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingInViewController.swift; sourceTree = "<group>"; };
@@ -101,8 +91,6 @@
 		1FDB4CBF2724BD1100FD7F34 /* AlertViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViews.swift; sourceTree = "<group>"; };
 		1FF0BC9626FEEF1E002FB1D9 /* AddEventViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewLayout.swift; sourceTree = "<group>"; };
 		1FF0BC9826FEF370002FB1D9 /* OrganozerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganozerPickerView.swift; sourceTree = "<group>"; };
-		1FF0BC9C2704E86E002FB1D9 /* TypeBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeBase.swift; sourceTree = "<group>"; };
-		1FF0BC9E2704E878002FB1D9 /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		1FF0BCA02704F35B002FB1D9 /* TypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePickerView.swift; sourceTree = "<group>"; };
 		1FF8EBF426EE04DF004AF652 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		9EDD5988C3DD973A7CC4E7F3 /* Pods-Dunedayn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dunedayn.debug.xcconfig"; path = "Target Support Files/Pods-Dunedayn/Pods-Dunedayn.debug.xcconfig"; sourceTree = "<group>"; };
@@ -190,14 +178,8 @@
 		1F4DC4CC26E9E2DF000F9A74 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1F4DC4E226EA6E47000F9A74 /* Events.swift */,
-				1F4DC4E426EA6E50000F9A74 /* EventBase.swift */,
 				1F4DC4D626E9E53D000F9A74 /* RolesBase.swift */,
 				1F4DC4D526E9E53D000F9A74 /* Roles.swift */,
-				1FF0BC9C2704E86E002FB1D9 /* TypeBase.swift */,
-				1FF0BC9E2704E878002FB1D9 /* Type.swift */,
-				1F4DC4D126E9E37C000F9A74 /* OrganizerBase.swift */,
-				1F4DC4D226E9E37C000F9A74 /* Organizers.swift */,
 				1F4DC4DA26E9E55B000F9A74 /* UserBase.swift */,
 				1F4DC4D926E9E55B000F9A74 /* Users.swift */,
 			);
@@ -406,10 +388,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F0BEA922726C08300BB17BB /* OrganizerBaseRealm.swift in Sources */,
-				1F4DC4E326EA6E47000F9A74 /* Events.swift in Sources */,
 				1FF8EBF526EE04DF004AF652 /* AddEventViewController.swift in Sources */,
 				1F4DC4B926E9D7BA000F9A74 /* AppDelegate.swift in Sources */,
-				1FF0BC9D2704E86F002FB1D9 /* TypeBase.swift in Sources */,
 				1F4DC4DB26E9E55B000F9A74 /* Users.swift in Sources */,
 				1FB75E3D27246523002E1300 /* CloseKeyboard.swift in Sources */,
 				1FF0BCA12704F35B002FB1D9 /* TypePickerView.swift in Sources */,
@@ -430,7 +410,6 @@
 				1FDB4CBE2724B9ED00FD7F34 /* ExtentionAddEventPickers.swift in Sources */,
 				1F9D94BD27271E59007BCF2D /* TypeBaseRealm.swift in Sources */,
 				1F0BEA902726C01C00BB17BB /* OrganizerRealm.swift in Sources */,
-				1F4DC4E526EA6E50000F9A74 /* EventBase.swift in Sources */,
 				1F4DC4DC26E9E55B000F9A74 /* UserBase.swift in Sources */,
 				1F0BEA8C2726B80500BB17BB /* EventsRealm.swift in Sources */,
 				1FB75E3F27246599002E1300 /* EventViewLayout.swift in Sources */,
@@ -442,12 +421,9 @@
 				1F4DC4BB26E9D7BA000F9A74 /* SceneDelegate.swift in Sources */,
 				1F0BEA872726946E00BB17BB /* SingUpAttributes.swift in Sources */,
 				1F433FC02725566B0098A371 /* SingInAttributes.swift in Sources */,
-				1F4DC4D426E9E37C000F9A74 /* Organizers.swift in Sources */,
 				1F4DC4F026EBD49F000F9A74 /* SingInViewController.swift in Sources */,
 				1F4DC4EC26EA9A05000F9A74 /* EventsViewController.swift in Sources */,
 				1F4DC4E826EA7036000F9A74 /* EventSetup.swift in Sources */,
-				1F4DC4D326E9E37C000F9A74 /* OrganizerBase.swift in Sources */,
-				1FF0BC9F2704E878002FB1D9 /* Type.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

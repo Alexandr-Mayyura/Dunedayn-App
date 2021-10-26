@@ -27,7 +27,7 @@ extension String {
         let dateString = dateFormatter.string(from: date)
         return dateString
     }
-    func dateFormatforDate(date: String) -> Date {
+    func dateFormatForDate(date: String) -> Date {
         let dates = NSDate()
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_RU_POSIX")

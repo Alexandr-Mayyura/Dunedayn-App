@@ -38,9 +38,6 @@ class SingInViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-     
-     
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -51,10 +48,7 @@ class SingInViewController: UIViewController, UITextFieldDelegate{
            textField.resignFirstResponder()
         }
        return true
-      }
-    
-   
-    
+      } 
 }
 
 

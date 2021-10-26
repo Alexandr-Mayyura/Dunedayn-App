@@ -15,7 +15,6 @@ class AlertView: UIView {
         let cancelAction = UIAlertAction(title: "Закрыть", style: .cancel)
         
         av.addAction(cancelAction)
-//        present(av, animated: true, completion: nil)
         return av
     }
     

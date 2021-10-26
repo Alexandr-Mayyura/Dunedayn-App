@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension CalendarViewController {
-    func tableviewFrame() {
+    func attributes() {
         
         view.addSubview(tableview)
         let images = Images()
@@ -17,11 +17,9 @@ extension CalendarViewController {
         images.backgraundImage.contentMode = .scaleAspectFill
         tableview.backgroundView = images.backgraundImage
         
-
         self.title = "Календарь"
         
         NSLayoutConstraint.activate([
-        
             tableview.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             tableview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             tableview.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),

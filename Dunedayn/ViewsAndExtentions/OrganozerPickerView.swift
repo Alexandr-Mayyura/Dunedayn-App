@@ -10,7 +10,6 @@ import UIKit
 protocol OrgPickerViewProtocol {
     func orgPickerDidSelectRow(selectedRowValue: String?)
     func idOrg(selectedRowValue: Int?)
-    
 }
 
 class OrganozerPickerView: UIPickerView {

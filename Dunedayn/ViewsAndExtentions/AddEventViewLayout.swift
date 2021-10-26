@@ -10,7 +10,7 @@ import UIKit
 
 extension AddEventViewController {
     
-    func positionViews() {
+    func attributes() {
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         secondView.translatesAutoresizingMaskIntoConstraints = false

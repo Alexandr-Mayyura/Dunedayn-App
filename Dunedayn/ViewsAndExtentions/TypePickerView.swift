@@ -10,7 +10,6 @@ import UIKit
 protocol TypePickerViewProtocol {
     func typePickerDidSelectRow(selectedRowValue: String?)
     func myIdType(selectedRowValue: Int?)
-    
 }
 
 class TypePickerView: UIPickerView {

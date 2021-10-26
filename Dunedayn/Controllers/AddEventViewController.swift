@@ -121,10 +121,6 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
             let link = "\(URLs().deleteURL)\(String(describing: id!) + "/")"
             
             EventSetup.asyncResponse(link, method: .put, parameters: datas, header: EventSetup.PostPutHeader) {
-            
-                RealmManager.sharedInstance.update(object: self.calendar)
-
-                print("PUT")
             }
             
         } else {
@@ -132,8 +128,6 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
             let link = "\(URLs().deleteURL)"
             
             EventSetup.asyncResponse(link, method: .post, parameters: datas, header: EventSetup.PostPutHeader) {
-                
-                print("post")
             }
         }
     }
@@ -142,7 +136,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
     @objc func postDateForBackend(sender: UIButton) {
         let dateDate = NSDate()
         let dateString = String()
-        let dates = dateString.dateFormatforDate(date: dateGameTextfield.text ?? "2025-12-12")
+        let dates = dateString.dateFormatForDate(date: dateGameTextfield.text ?? "2025-12-12")
         
         let alertString = AlertView()
         if nameGameTextfield.text == "" || dateGameTextfield.text == "" || typeTextfield.text == "" || organizerTextfield.text == "" {
@@ -157,7 +151,6 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
             case .unknown, .offline:
                 self.present(alertString.alertView("Нет подключения к сети!"), animated: true, completion: nil)
             case .online(.wwan):
-                
                 addEdit()
                 self.navigationController?.popViewController(animated: true)
             case .online(.wiFi):
@@ -181,12 +174,11 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         // extention from AddEventViewLayout
-        positionViews()
+        attributes()
         // extention from AddEventPicker
         extetionPicker()
         // scroll with keyboard
         registerForKeyboardNotification()
-        
         // close keyboard
         addTapGestureToHideKeyboard()
     }

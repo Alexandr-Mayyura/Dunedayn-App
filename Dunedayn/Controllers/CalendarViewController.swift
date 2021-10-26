@@ -26,10 +26,8 @@ class CalendarViewController: UIViewController {
         
 // transition to AddEventViewController
     @objc func rightButtonAction(sender: UIBarButtonItem){
-        
         let vc = AddEventViewController()
         navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     // load data from server (dunedayn.ru)
@@ -111,7 +109,7 @@ class CalendarViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tableviewFrame()
+        attributes()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -123,7 +121,6 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         tableview.dataSource = self
         tableview.delegate = self

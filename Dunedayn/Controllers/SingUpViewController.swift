@@ -8,9 +8,7 @@
 import UIKit
 
 class SingUpViewController: UIViewController, UITextFieldDelegate {
-    
-    
-    
+
     @IBOutlet var imageSoldier: UIImageView!
     
     @IBOutlet var nicknameLabel: UILabel!
