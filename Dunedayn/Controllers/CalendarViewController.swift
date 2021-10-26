@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CalendarViewController: UIViewController {
        
@@ -29,22 +30,27 @@ class CalendarViewController: UIViewController {
         let vc = AddEventViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+
     // load data from server (dunedayn.ru)
     func addContetnt(){
         
         EventSetup.asyncRequest(URLs().orgUrl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: OrganizerBase) in
-            self?.organizers = result
+            guard let self = self else { return }
+            self.organizers = result
                 EventSetup.asyncRequest(URLs().typeURL, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: TypeBase) in
-                    self?.type = result
+                    guard let self = self else { return }
+                    self.type = result
                     EventSetup.asyncRequest(URLs().eventURl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader) { [weak self] (result: EventBase) in
-                        self?.calendarEvents = result
+                        guard let self = self else { return }
+                        self.calendarEvents = result
+                        
                         RealmManager.sharedInstance.deleteAll()
-                        RealmManager.sharedInstance.save(object: self!.organizers)
-                        RealmManager.sharedInstance.save(object: self!.calendarEvents)
-                        RealmManager.sharedInstance.save(object: self!.type)
+                        RealmManager.sharedInstance.save(object: self.organizers)
+                        RealmManager.sharedInstance.save(object: self.calendarEvents)
+                        RealmManager.sharedInstance.save(object: self.type)
+                    
         
-                    self?.tableview.reloadData()
+                    self.tableview.reloadData()
                 }
             }
         }
@@ -110,18 +116,19 @@ class CalendarViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         attributes()
+        self.tableview.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableview.reloadData()
         addContetnt()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableview.dataSource = self
         tableview.delegate = self
       

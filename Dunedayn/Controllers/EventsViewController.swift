@@ -9,6 +9,7 @@ import UIKit
 
 class EventsViewController: UIViewController, UITextViewDelegate {
 
+    
     let scrollView = UIScrollView()
     let firstView = UIView()
     let dateLabel = UILabel()
@@ -22,23 +23,18 @@ class EventsViewController: UIViewController, UITextViewDelegate {
     var info: String?
     var organazerName: String?
     
-    let image = UIImage(named: "Background")
-    let backgraundImage = UIImageView()
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        attributes()
-    }
- 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+        loadLabel()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        
+        infoTextview.delegate = self
+        
         self.title = name
+        
         nameLabel.text = " \(name ?? "")   "
         infoTextview.text = info
         dateLabel.text = " \(date ?? "")   "

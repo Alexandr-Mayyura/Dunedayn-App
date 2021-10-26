@@ -109,7 +109,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
     
     // put\post mothods
     func addEdit() {
-        
+
         guard let name = nameGameTextfield.text else {return}
         guard let date = dateGameTextfield.text else {return}
         guard let info = infoTextview.text else {return}
@@ -122,6 +122,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
             
             EventSetup.asyncResponse(link, method: .put, parameters: datas, header: EventSetup.PostPutHeader) {
             }
+           
             
         } else {
             
@@ -129,11 +130,13 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
             
             EventSetup.asyncResponse(link, method: .post, parameters: datas, header: EventSetup.PostPutHeader) {
             }
+            
         }
     }
     
     // tap button "Сохранить"
     @objc func postDateForBackend(sender: UIButton) {
+        
         let dateDate = NSDate()
         let dateString = String()
         let dates = dateString.dateFormatForDate(date: dateGameTextfield.text ?? "2025-12-12")
@@ -155,6 +158,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
                 self.navigationController?.popViewController(animated: true)
             case .online(.wiFi):
                 addEdit()
+
                 self.navigationController?.popViewController(animated: true)
             }
             

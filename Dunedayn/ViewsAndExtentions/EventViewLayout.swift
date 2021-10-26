@@ -10,7 +10,7 @@ import UIKit
 
 extension EventsViewController {
     
-    func attributes() {
+    func loadLabel() {
             
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         firstView.translatesAutoresizingMaskIntoConstraints = false
@@ -19,11 +19,8 @@ extension EventsViewController {
         infoTextview.translatesAutoresizingMaskIntoConstraints = false
         typeOrganizerLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let images = Images()
-        images.backgraundImage.translatesAutoresizingMaskIntoConstraints = false
-        images.backgraundImage.image = images.image
-        
-        view.addSubview(images.backgraundImage)
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background")!)
+ 
         view.addSubview(scrollView)
         scrollView.addSubview(firstView)
        
@@ -33,11 +30,6 @@ extension EventsViewController {
         firstView.addSubview(typeOrganizerLabel)
             
         NSLayoutConstraint.activate([
-                
-            images.backgraundImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            images.backgraundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            images.backgraundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            images.backgraundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
                 
             scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
@@ -95,7 +87,6 @@ extension EventsViewController {
         typeOrganizerLabel.layer.masksToBounds = true
         typeOrganizerLabel.layer.cornerRadius = 10
             
-        infoTextview.delegate = self
         infoTextview.font = infoTextview.font?.withSize(16)
         infoTextview.isEditable = false
         infoTextview.textColor = .white
