@@ -37,16 +37,14 @@ class CalendarViewController: UIViewController {
         
         EventSetup.asyncRequest(URLs().orgUrl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: OrganizerBase) in
             self?.organizers = result
-            RealmManager.sharedInstance.deleteAll()
-            RealmManager.sharedInstance.save(object: self!.organizers)
-
                 EventSetup.asyncRequest(URLs().typeURL, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: TypeBase) in
                     self?.type = result
-                    RealmManager.sharedInstance.save(object: self!.type)
-                    
                     EventSetup.asyncRequest(URLs().eventURl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader) { [weak self] (result: EventBase) in
                         self?.calendarEvents = result
+                        RealmManager.sharedInstance.deleteAll()
+                        RealmManager.sharedInstance.save(object: self!.organizers)
                         RealmManager.sharedInstance.save(object: self!.calendarEvents)
+                        RealmManager.sharedInstance.save(object: self!.type)
         
                     self?.tableview.reloadData()
                 }
@@ -57,20 +55,15 @@ class CalendarViewController: UIViewController {
     // delete content in tableview and server
     func deleteContent(rowIndexPathAt indexPath: IndexPath) -> UIContextualAction {
         
-        let actionDelet = UIContextualAction(style: .destructive, title: "delete") { _, _, _ in
+        let actionDelet = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
             let calendar = RealmManager.sharedInstance.get(object: self.calendarEvents)
             let id = calendar[indexPath.section].records[indexPath.row].id
             let link = "\(URLs().deleteURL)\(String(describing: id) + "/")"
             
             EventSetup.asyncRequest(link, method: .delete, parameters: nil, header: EventSetup.GetDeleteHeader) { (result: Events) in
-                
-                self.tableview.deleteRows(at: [indexPath], with: .automatic)
-                
             }
             RealmManager.sharedInstance.delete(object: self.calendarEvents.records[indexPath.row])
-//            self.tableview.reloadData()
-//            calendar[indexPath.section].records.remove(at: indexPath.row)
-            self.tableview.reloadData()
+            self.tableview.deleteRows(at: [indexPath], with: .automatic)
         }
         return actionDelet
     }
@@ -116,6 +109,11 @@ class CalendarViewController: UIViewController {
         return actionEdit
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableviewFrame()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -125,8 +123,7 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableviewFrame()
+        
 
         tableview.dataSource = self
         tableview.delegate = self
@@ -172,7 +169,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         let swipe = UISwipeActionsConfiguration(actions: [delete, edit])
         return swipe
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let vc = EventsViewController()
@@ -202,7 +198,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         vc.type = types[neededType].type
-
         navigationController?.pushViewController(vc, animated: true)
     }
 }

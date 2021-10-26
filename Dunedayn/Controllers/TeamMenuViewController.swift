@@ -19,11 +19,16 @@ class TeamMenuViewController: UIViewController {
             
         return cv
     }()
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionViewConstr()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionViewConstr()
+        
         collectionView.delegate = self
         collectionView.dataSource = self  
     }

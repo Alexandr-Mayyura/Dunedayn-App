@@ -183,7 +183,7 @@ extension AddEventViewController {
         infoTextview.layer.cornerRadius = 8
         infoTextview.autocorrectionType = .no
         infoTextview.keyboardType = .default
-        infoTextview.returnKeyType = .done
+        infoTextview.returnKeyType = .default
         infoTextview.scrollIndicatorInsets = .zero
         infoTextview.textColor = .black
         infoTextview.backgroundColor = .white
@@ -223,7 +223,7 @@ extension AddEventViewController {
         keyboardFrame = view.convert(keyboardFrame, from: nil)
 
         var contentInset:UIEdgeInsets = scrollView.contentInset
-        contentInset.bottom = keyboardFrame.size.height + 40
+            contentInset.bottom = keyboardFrame.size.height + infoTextview.bounds.height + 40
         scrollView.contentInset = contentInset
     }
 

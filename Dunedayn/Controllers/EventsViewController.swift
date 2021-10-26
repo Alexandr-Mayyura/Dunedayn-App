@@ -25,10 +25,15 @@ class EventsViewController: UIViewController, UITextViewDelegate {
     
     let image = UIImage(named: "Background")
     let backgraundImage = UIImageView()
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        loadLabel()
+    }
  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadLabel()
+        
     }
     
     override func viewDidLoad() {

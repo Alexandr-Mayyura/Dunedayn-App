@@ -31,10 +31,15 @@ class SingInViewController: UIViewController, UITextFieldDelegate{
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        attributes()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-     attributes()
+     
      
     }
     

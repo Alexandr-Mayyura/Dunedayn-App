@@ -121,7 +121,9 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
             let link = "\(URLs().deleteURL)\(String(describing: id!) + "/")"
             
             EventSetup.asyncResponse(link, method: .put, parameters: datas, header: EventSetup.PostPutHeader) {
-                
+            
+                RealmManager.sharedInstance.update(object: self.calendar)
+
                 print("PUT")
             }
             
@@ -157,22 +159,14 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
             case .online(.wwan):
                 
                 addEdit()
-                RealmManager.sharedInstance.update(object: self.calendar)
                 self.navigationController?.popViewController(animated: true)
             case .online(.wiFi):
                 addEdit()
-                RealmManager.sharedInstance.update(object: self.calendar)
                 self.navigationController?.popViewController(animated: true)
             }
             
         } else if datePicker.date <= dateDate as Date {
             self.present(alertString.alertView("Неверная дата!"), animated: true, completion: nil)
-            
-        
-            
-            
-            
-            
         }
     }
     // next textfield
@@ -184,20 +178,21 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
        return true
       }
  
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // extention from AddEventPicker
-        extetionPicker()
-        
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         // extention from AddEventViewLayout
         positionViews()
-
+        // extention from AddEventPicker
+        extetionPicker()
         // scroll with keyboard
         registerForKeyboardNotification()
         
         // close keyboard
         addTapGestureToHideKeyboard()
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
     }
 
     override func viewWillDisappear(_ animated: Bool) {

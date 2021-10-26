@@ -24,10 +24,15 @@ class SingUpViewController: UIViewController, UITextFieldDelegate {
     @IBAction func registrationButton(_ sender: Any) {
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        attributes()
+        textfieldLine()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        attributes()
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -42,10 +47,5 @@ class SingUpViewController: UIViewController, UITextFieldDelegate {
         }
        return true
       }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        textfieldLine()
-    }
 }
 
