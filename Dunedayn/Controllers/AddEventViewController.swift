@@ -12,6 +12,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
 
     var organizers = OrganizerBase()
     var types = TypeBase()
+    var calendar = EventBase()
     
     let organizerPickerView = OrganozerPickerView()
     let typePickerView = TypePickerView()
@@ -120,6 +121,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
             let link = "\(URLs().deleteURL)\(String(describing: id!) + "/")"
             
             EventSetup.asyncResponse(link, method: .put, parameters: datas, header: EventSetup.PostPutHeader) {
+                
                 print("PUT")
             }
             
@@ -128,6 +130,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
             let link = "\(URLs().deleteURL)"
             
             EventSetup.asyncResponse(link, method: .post, parameters: datas, header: EventSetup.PostPutHeader) {
+                
                 print("post")
             }
         }
@@ -151,12 +154,14 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
             switch status {
             case .unknown, .offline:
                 self.present(alertString.alertView("Нет подключения к сети!"), animated: true, completion: nil)
-                break
             case .online(.wwan):
+                
                 addEdit()
+                RealmManager.sharedInstance.update(object: self.calendar)
                 self.navigationController?.popViewController(animated: true)
             case .online(.wiFi):
                 addEdit()
+                RealmManager.sharedInstance.update(object: self.calendar)
                 self.navigationController?.popViewController(animated: true)
             }
             

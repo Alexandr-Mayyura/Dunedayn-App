@@ -37,18 +37,17 @@ class CalendarViewController: UIViewController {
         
         EventSetup.asyncRequest(URLs().orgUrl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: OrganizerBase) in
             self?.organizers = result
-            
-            EventSetup.asyncRequest(URLs().eventURl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader) { [weak self] (result: EventBase) in
-                self?.calendarEvents = result
-                
+            RealmManager.sharedInstance.deleteAll()
+            RealmManager.sharedInstance.save(object: self!.organizers)
+
                 EventSetup.asyncRequest(URLs().typeURL, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: TypeBase) in
                     self?.type = result
-                    
-                    RealmManager.sharedInstance.deleteAll()
-                    RealmManager.sharedInstance.save(object: self!.organizers)
-                    RealmManager.sharedInstance.save(object: self!.calendarEvents)
                     RealmManager.sharedInstance.save(object: self!.type)
-
+                    
+                    EventSetup.asyncRequest(URLs().eventURl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader) { [weak self] (result: EventBase) in
+                        self?.calendarEvents = result
+                        RealmManager.sharedInstance.save(object: self!.calendarEvents)
+        
                     self?.tableview.reloadData()
                 }
             }
@@ -64,9 +63,14 @@ class CalendarViewController: UIViewController {
             let link = "\(URLs().deleteURL)\(String(describing: id) + "/")"
             
             EventSetup.asyncRequest(link, method: .delete, parameters: nil, header: EventSetup.GetDeleteHeader) { (result: Events) in
+                
+                self.tableview.deleteRows(at: [indexPath], with: .automatic)
+                
             }
-            calendar[indexPath.section].records.remove(at: indexPath.row)
-            self.tableview.deleteRows(at: [indexPath], with: .automatic)
+            RealmManager.sharedInstance.delete(object: self.calendarEvents.records[indexPath.row])
+//            self.tableview.reloadData()
+//            calendar[indexPath.section].records.remove(at: indexPath.row)
+            self.tableview.reloadData()
         }
         return actionDelet
     }
