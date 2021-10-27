@@ -25,12 +25,8 @@ extension AddEventViewController {
         infoTextview.translatesAutoresizingMaskIntoConstraints = false
         typeTextfield.translatesAutoresizingMaskIntoConstraints = false
         addButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        let images = Images()
-        images.backgraundImage.translatesAutoresizingMaskIntoConstraints = false
-        images.backgraundImage.image = images.image
-        
-        view.addSubview(images.backgraundImage)
+
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background max")!)
         view.addSubview(scrollView)
         
         scrollView.addSubview(secondView)
@@ -47,11 +43,6 @@ extension AddEventViewController {
         secondView.addSubview(addButton)
         
         NSLayoutConstraint.activate([
-            
-            images.backgraundImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            images.backgraundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            images.backgraundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            images.backgraundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
             
             scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),

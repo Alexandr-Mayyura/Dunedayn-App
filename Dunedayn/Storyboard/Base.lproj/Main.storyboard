@@ -287,11 +287,57 @@
                     </tabBar>
                     <connections>
                         <segue destination="u7e-7j-4Jl" kind="relationship" relationship="viewControllers" id="lmU-9B-cbu"/>
+                        <segue destination="7Gv-6L-btG" kind="relationship" relationship="viewControllers" id="2C4-YU-MHD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Mi-qY-pQw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="39" y="445"/>
+        </scene>
+        <!--User Menu View Controller-->
+        <scene sceneID="Xz7-F0-Yd1">
+            <objects>
+                <viewController id="giW-ov-AJk" customClass="UserMenuViewController" customModule="Dunedayn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zZg-CC-vEz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="734"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="p7f-4C-dYt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="El2-bL-yD2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iuz-4h-P7U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1823" y="721"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="jfV-rN-Bbj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Gv-6L-btG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="солдат 30" id="Z8q-lk-uCB">
+                        <color key="badgeColor" systemColor="systemGrayColor"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="hNh-56-TSM"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" largeTitles="YES" id="lqu-PG-fyZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="giW-ov-AJk" kind="relationship" relationship="rootViewController" id="YyI-9o-vjY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wO1-NL-K5w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="929" y="721"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -299,6 +345,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="дерево" width="30" height="30"/>
+        <image name="солдат 30" width="12.5" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

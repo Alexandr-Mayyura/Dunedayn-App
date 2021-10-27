@@ -9,7 +9,6 @@ import UIKit
 
 class EventsViewController: UIViewController, UITextViewDelegate {
 
-    
     let scrollView = UIScrollView()
     let firstView = UIView()
     let dateLabel = UILabel()

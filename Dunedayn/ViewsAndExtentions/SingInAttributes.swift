@@ -19,11 +19,7 @@ extension SingInViewController {
             ]
         )
         
-        let backImage = Images()
-        
-        view.insertSubview(backImage.backgraundImage, at: 0)
-        backImage.backgraundImage.image = backImage.image
-        backImage.backgraundImage.contentMode = .scaleAspectFill
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background max")!)
            
         firstView.backgroundColor = .clear
         logoImageView.image = logoImage

@@ -205,7 +205,3 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(vc, animated: true)
     }
 }
-
-
-
-

@@ -14,11 +14,7 @@ extension TeamMenuViewController {
 
         view.addSubview(collectionView)
         collectionView.backgroundColor = .clear
-        
-        let images = Images()
-        view.insertSubview(images.backgraundImage, at: 0)
-        images.backgraundImage.image = images.image
-        images.backgraundImage.contentMode = .scaleAspectFill
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background max")!)
 
         self.title = "Dunedayn"
         

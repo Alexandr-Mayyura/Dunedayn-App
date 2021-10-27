@@ -9,6 +9,6 @@ import Foundation
 import UIKit
 class Images {
 
-    let image = UIImage(named: "Background")
+    let image = UIImage(named: "Background max")
     let backgraundImage = UIImageView(frame: UIScreen.main.bounds)
 }

@@ -32,6 +32,8 @@
 		1F4DC4F726EBE144000F9A74 /* TeamMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4F626EBE144000F9A74 /* TeamMenuCollectionViewCell.swift */; };
 		1F4DC4F926EBF0FC000F9A74 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4F826EBF0FC000F9A74 /* CalendarViewController.swift */; };
 		1F4DC4FB26EBF702000F9A74 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4FA26EBF702000F9A74 /* CalendarTableViewCell.swift */; };
+		1F60B2282729258800EDB3E2 /* UserMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F60B2272729258800EDB3E2 /* UserMenuViewController.swift */; };
+		1F60B22A2729288B00EDB3E2 /* UserMenuViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F60B2292729288B00EDB3E2 /* UserMenuViewLayout.swift */; };
 		1F9D94BB27271DBF007BCF2D /* TypeRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D94BA27271DBF007BCF2D /* TypeRealm.swift */; };
 		1F9D94BD27271E59007BCF2D /* TypeBaseRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D94BC27271E59007BCF2D /* TypeBaseRealm.swift */; };
 		1F9D94BF27272588007BCF2D /* CheckingInternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D94BE27272588007BCF2D /* CheckingInternetConnection.swift */; };
@@ -39,7 +41,7 @@
 		1FB75E3F27246599002E1300 /* EventViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E3E27246599002E1300 /* EventViewLayout.swift */; };
 		1FB75E4127246612002E1300 /* CalendarViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E4027246612002E1300 /* CalendarViewLayout.swift */; };
 		1FB75E45272466A0002E1300 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E44272466A0002E1300 /* DateFormatters.swift */; };
-		1FB75E4727246884002E1300 /* TeamMenuViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E4627246884002E1300 /* TeamMenuViewLayout.swift */; };
+		1FB75E4727246884002E1300 /* TeamUserMenuViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E4627246884002E1300 /* TeamUserMenuViewLayout.swift */; };
 		1FB75E4C2724733F002E1300 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E4B2724733F002E1300 /* Images.swift */; };
 		1FDB4CBE2724B9ED00FD7F34 /* ExtentionAddEventPickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDB4CBD2724B9ED00FD7F34 /* ExtentionAddEventPickers.swift */; };
 		1FDB4CC02724BD1100FD7F34 /* AlertViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDB4CBF2724BD1100FD7F34 /* AlertViews.swift */; };
@@ -78,6 +80,8 @@
 		1F4DC4F626EBE144000F9A74 /* TeamMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		1F4DC4F826EBF0FC000F9A74 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		1F4DC4FA26EBF702000F9A74 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		1F60B2272729258800EDB3E2 /* UserMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuViewController.swift; sourceTree = "<group>"; };
+		1F60B2292729288B00EDB3E2 /* UserMenuViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuViewLayout.swift; sourceTree = "<group>"; };
 		1F9D94BA27271DBF007BCF2D /* TypeRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeRealm.swift; sourceTree = "<group>"; };
 		1F9D94BC27271E59007BCF2D /* TypeBaseRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeBaseRealm.swift; sourceTree = "<group>"; };
 		1F9D94BE27272588007BCF2D /* CheckingInternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckingInternetConnection.swift; sourceTree = "<group>"; };
@@ -85,7 +89,7 @@
 		1FB75E3E27246599002E1300 /* EventViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewLayout.swift; sourceTree = "<group>"; };
 		1FB75E4027246612002E1300 /* CalendarViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewLayout.swift; sourceTree = "<group>"; };
 		1FB75E44272466A0002E1300 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
-		1FB75E4627246884002E1300 /* TeamMenuViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMenuViewLayout.swift; sourceTree = "<group>"; };
+		1FB75E4627246884002E1300 /* TeamUserMenuViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamUserMenuViewLayout.swift; sourceTree = "<group>"; };
 		1FB75E4B2724733F002E1300 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		1FDB4CBD2724B9ED00FD7F34 /* ExtentionAddEventPickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionAddEventPickers.swift; sourceTree = "<group>"; };
 		1FDB4CBF2724BD1100FD7F34 /* AlertViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViews.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 				1F4DC4F126EBD791000F9A74 /* SingUpViewController.swift */,
 				1F4DC4EF26EBD49F000F9A74 /* SingInViewController.swift */,
 				1F4DC4F326EBDFD9000F9A74 /* TeamMenuViewController.swift */,
+				1F60B2272729258800EDB3E2 /* UserMenuViewController.swift */,
 				1F4DC4F826EBF0FC000F9A74 /* CalendarViewController.swift */,
 				1F4DC4EB26EA9A05000F9A74 /* EventsViewController.swift */,
 				1FF8EBF426EE04DF004AF652 /* AddEventViewController.swift */,
@@ -213,7 +218,8 @@
 			children = (
 				1F433FBF2725566B0098A371 /* SingInAttributes.swift */,
 				1F0BEA862726946E00BB17BB /* SingUpAttributes.swift */,
-				1FB75E4627246884002E1300 /* TeamMenuViewLayout.swift */,
+				1FB75E4627246884002E1300 /* TeamUserMenuViewLayout.swift */,
+				1F60B2292729288B00EDB3E2 /* UserMenuViewLayout.swift */,
 				1FB75E4027246612002E1300 /* CalendarViewLayout.swift */,
 				1FB75E3E27246599002E1300 /* EventViewLayout.swift */,
 				1FF0BC9626FEEF1E002FB1D9 /* AddEventViewLayout.swift */,
@@ -400,7 +406,7 @@
 				1F4DC4FB26EBF702000F9A74 /* CalendarTableViewCell.swift in Sources */,
 				1FF0BC9726FEEF1E002FB1D9 /* AddEventViewLayout.swift in Sources */,
 				1F4DC4F226EBD791000F9A74 /* SingUpViewController.swift in Sources */,
-				1FB75E4727246884002E1300 /* TeamMenuViewLayout.swift in Sources */,
+				1FB75E4727246884002E1300 /* TeamUserMenuViewLayout.swift in Sources */,
 				1F9D94BF27272588007BCF2D /* CheckingInternetConnection.swift in Sources */,
 				1F4DC4F726EBE144000F9A74 /* TeamMenuCollectionViewCell.swift in Sources */,
 				1FB75E45272466A0002E1300 /* DateFormatters.swift in Sources */,
@@ -414,6 +420,7 @@
 				1F0BEA8C2726B80500BB17BB /* EventsRealm.swift in Sources */,
 				1FB75E3F27246599002E1300 /* EventViewLayout.swift in Sources */,
 				1F4DC4D726E9E53D000F9A74 /* Roles.swift in Sources */,
+				1F60B22A2729288B00EDB3E2 /* UserMenuViewLayout.swift in Sources */,
 				1F0BEA89272694C200BB17BB /* TextFieldLine.swift in Sources */,
 				1F433FC327259BA00098A371 /* RealmManager.swift in Sources */,
 				1F4DC4F926EBF0FC000F9A74 /* CalendarViewController.swift in Sources */,
@@ -423,6 +430,7 @@
 				1F433FC02725566B0098A371 /* SingInAttributes.swift in Sources */,
 				1F4DC4F026EBD49F000F9A74 /* SingInViewController.swift in Sources */,
 				1F4DC4EC26EA9A05000F9A74 /* EventsViewController.swift in Sources */,
+				1F60B2282729258800EDB3E2 /* UserMenuViewController.swift in Sources */,
 				1F4DC4E826EA7036000F9A74 /* EventSetup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

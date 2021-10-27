@@ -19,23 +19,23 @@ extension EventsViewController {
         infoTextview.translatesAutoresizingMaskIntoConstraints = false
         typeOrganizerLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background")!)
- 
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background max")!)
+
         view.addSubview(scrollView)
         scrollView.addSubview(firstView)
-       
         firstView.addSubview(nameLabel)
         firstView.addSubview(dateLabel)
         firstView.addSubview(infoTextview)
         firstView.addSubview(typeOrganizerLabel)
             
         NSLayoutConstraint.activate([
-                
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
-                
+              
+            scrollView.topAnchor.constraint(equalTo:  view.topAnchor, constant: 0),
+            scrollView.trailingAnchor.constraint(equalTo:  view.trailingAnchor, constant: 0),
+            scrollView.leadingAnchor.constraint(equalTo:  view.leadingAnchor, constant: 0),
+            scrollView.bottomAnchor.constraint(equalTo:  view.bottomAnchor, constant: 0),
+            
+            
             firstView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0),
             firstView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
             firstView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
@@ -51,7 +51,7 @@ extension EventsViewController {
             dateLabel.heightAnchor.constraint(equalToConstant: 36),
   
             typeOrganizerLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 20),
-            typeOrganizerLabel.centerXAnchor.constraint(equalTo: dateLabel.centerXAnchor, constant: 0),
+            typeOrganizerLabel.centerXAnchor.constraint(equalTo: firstView.centerXAnchor, constant: 0),
             typeOrganizerLabel.heightAnchor.constraint(equalToConstant: 36),
                 
             infoTextview.topAnchor.constraint(equalTo: typeOrganizerLabel.bottomAnchor, constant: 20),
