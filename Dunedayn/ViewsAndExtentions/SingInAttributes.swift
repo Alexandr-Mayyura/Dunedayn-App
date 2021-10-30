@@ -18,8 +18,9 @@ extension SingInViewController {
                 NSAttributedString.Key.strokeWidth: -2.0
             ]
         )
-        
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background max")!)
+        let image = Images()
+        image.backgraundImage.image = image.image
+        view.insertSubview(image.backgraundImage, at: 0)
            
         firstView.backgroundColor = .clear
         logoImageView.image = logoImage

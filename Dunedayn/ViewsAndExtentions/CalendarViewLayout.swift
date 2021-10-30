@@ -17,7 +17,7 @@ extension CalendarViewController {
         images.backgraundImage.contentMode = .scaleAspectFill
         tableview.backgroundView = images.backgraundImage
         
-        self.title = "Календарь"
+       title = "Календарь"
         
         NSLayoutConstraint.activate([
             tableview.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),

@@ -49,8 +49,7 @@ class CalendarViewController: UIViewController {
                         RealmManager.sharedInstance.save(object: self.calendarEvents)
                         RealmManager.sharedInstance.save(object: self.type)
                     
-        
-                    self.tableview.reloadData()
+                        self.tableview.reloadData()
                 }
             }
         }
@@ -116,22 +115,21 @@ class CalendarViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         attributes()
-        self.tableview.reloadData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.tableview.reloadData()
         addContetnt()
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tableview.dataSource = self
         tableview.delegate = self
-      
+
 // add button to navigationController
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector (rightButtonAction))
         self.navigationController?.navigationBar.backgroundColor = .black

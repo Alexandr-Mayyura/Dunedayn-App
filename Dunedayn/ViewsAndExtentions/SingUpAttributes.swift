@@ -14,7 +14,9 @@ extension SingUpViewController {
         let imageSold = UIImage(named: "LogoDND")
         imageSoldier.image = imageSold
         
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background max")!)
+        let image = Images()
+        image.backgraundImage.image = image.image
+        view.insertSubview(image.backgraundImage, at: 0)
         
         nicknameTextfield.delegate = self
         firstPasswordTextfield.delegate = self

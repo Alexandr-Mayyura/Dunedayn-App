@@ -153,12 +153,13 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
             switch status {
             case .unknown, .offline:
                 self.present(alertString.alertView("Нет подключения к сети!"), animated: true, completion: nil)
+                
             case .online(.wwan):
                 addEdit()
                 self.navigationController?.popViewController(animated: true)
+                
             case .online(.wiFi):
                 addEdit()
-
                 self.navigationController?.popViewController(animated: true)
             }
             
@@ -189,6 +190,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
     }
 
     override func viewWillDisappear(_ animated: Bool) {

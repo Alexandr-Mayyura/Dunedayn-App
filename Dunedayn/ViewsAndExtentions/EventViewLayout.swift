@@ -19,8 +19,11 @@ extension EventsViewController {
         infoTextview.translatesAutoresizingMaskIntoConstraints = false
         typeOrganizerLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "Background max")!)
-
+        let images = Images()
+             images.backgraundImage.translatesAutoresizingMaskIntoConstraints = false
+             images.backgraundImage.image = images.image
+             view.addSubview(images.backgraundImage)
+        
         view.addSubview(scrollView)
         scrollView.addSubview(firstView)
         firstView.addSubview(nameLabel)
@@ -29,6 +32,11 @@ extension EventsViewController {
         firstView.addSubview(typeOrganizerLabel)
             
         NSLayoutConstraint.activate([
+            
+            images.backgraundImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            images.backgraundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            images.backgraundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            images.backgraundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
               
             scrollView.topAnchor.constraint(equalTo:  view.topAnchor, constant: 0),
             scrollView.trailingAnchor.constraint(equalTo:  view.trailingAnchor, constant: 0),

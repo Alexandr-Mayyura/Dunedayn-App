@@ -310,11 +310,11 @@
             </objects>
             <point key="canvasLocation" x="1823" y="721"/>
         </scene>
-        <!--Item-->
+        <!--Игрок-->
         <scene sceneID="jfV-rN-Bbj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Gv-6L-btG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="солдат 30" id="Z8q-lk-uCB">
+                    <tabBarItem key="tabBarItem" title="Игрок" image="солдат 30" id="Z8q-lk-uCB">
                         <color key="badgeColor" systemColor="systemGrayColor"/>
                     </tabBarItem>
                     <toolbarItems/>
