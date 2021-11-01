@@ -8,6 +8,11 @@
 import UIKit
 
 class SingInViewController: UIViewController, UITextFieldDelegate{
+    
+    var calendarEvents = EventBase()
+    var evetns = [Events]()
+    var organizers = OrganizerBase()
+    var type = TypeBase()
 
     let logoImage = UIImage(named: "LogoDND")
     
@@ -25,6 +30,30 @@ class SingInViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet var firstView: UIView!
     
     @IBOutlet var scrollView: UIScrollView!
+    
+    
+    func addContetnt(){
+        
+        EventSetup.asyncRequest(URLs().orgUrl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: OrganizerBase) in
+            guard let self = self else { return }
+            self.organizers = result
+                EventSetup.asyncRequest(URLs().typeURL, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: TypeBase) in
+                    guard let self = self else { return }
+                    self.type = result
+                    EventSetup.asyncRequest(URLs().eventURl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader) { [weak self] (result: EventBase) in
+                        guard let self = self else { return }
+                        self.calendarEvents = result
+                        
+                        RealmManager.sharedInstance.deleteAll()
+                        RealmManager.sharedInstance.save(object: self.organizers)
+                        RealmManager.sharedInstance.save(object: self.calendarEvents)
+                        RealmManager.sharedInstance.save(object: self.type)
+                    
+                        
+                }
+            }
+        }
+    }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -38,6 +67,7 @@ class SingInViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addContetnt()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

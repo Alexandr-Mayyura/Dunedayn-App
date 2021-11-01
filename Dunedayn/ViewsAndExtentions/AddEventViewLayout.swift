@@ -139,7 +139,6 @@ extension AddEventViewController {
         nameGameTextfield.font = .systemFont(ofSize: 20)
         nameGameTextfield.borderStyle = .roundedRect
         nameGameTextfield.autocorrectionType = .no
-        nameGameTextfield.keyboardType = .default
         nameGameTextfield.returnKeyType = .continue
         nameGameTextfield.clearButtonMode = .whileEditing
         nameGameTextfield.contentVerticalAlignment = .center
@@ -150,7 +149,6 @@ extension AddEventViewController {
         dateGameTextfield.font = .systemFont(ofSize: 20)
         dateGameTextfield.borderStyle = .roundedRect
         dateGameTextfield.autocorrectionType = .no
-        dateGameTextfield.keyboardType = .default
         dateGameTextfield.returnKeyType = .done
         dateGameTextfield.clearButtonMode = .whileEditing
         dateGameTextfield.contentVerticalAlignment = .center
@@ -161,7 +159,6 @@ extension AddEventViewController {
         organizerTextfield.font = .systemFont(ofSize: 20)
         organizerTextfield.borderStyle = .roundedRect
         organizerTextfield.autocorrectionType = .no
-        organizerTextfield.keyboardType = .default
         organizerTextfield.returnKeyType = .done
         organizerTextfield.clearButtonMode = .whileEditing
         organizerTextfield.contentVerticalAlignment = .center
@@ -172,7 +169,6 @@ extension AddEventViewController {
         typeTextfield.font = .systemFont(ofSize: 20)
         typeTextfield.borderStyle = .roundedRect
         typeTextfield.autocorrectionType = .no
-        typeTextfield.keyboardType = .default
         typeTextfield.returnKeyType = .done
         typeTextfield.clearButtonMode = .whileEditing
         typeTextfield.contentVerticalAlignment = .center
@@ -181,9 +177,6 @@ extension AddEventViewController {
         
         infoTextview.font = .systemFont(ofSize: 20)
         infoTextview.layer.cornerRadius = 8
-        infoTextview.autocorrectionType = .no
-        infoTextview.keyboardType = .default
-        infoTextview.returnKeyType = .default
         infoTextview.scrollIndicatorInsets = .zero
         infoTextview.textColor = .black
         infoTextview.backgroundColor = .white
@@ -223,7 +216,7 @@ extension AddEventViewController {
         keyboardFrame = view.convert(keyboardFrame, from: nil)
 
         var contentInset:UIEdgeInsets = scrollView.contentInset
-            contentInset.bottom = keyboardFrame.size.height + infoTextview.bounds.height + 40
+            contentInset.bottom = keyboardFrame.size.height + infoTextview.bounds.height + addButton.bounds.height + 5
         scrollView.contentInset = contentInset
     }
 

@@ -37,6 +37,7 @@
 		1F9D94BB27271DBF007BCF2D /* TypeRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D94BA27271DBF007BCF2D /* TypeRealm.swift */; };
 		1F9D94BD27271E59007BCF2D /* TypeBaseRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D94BC27271E59007BCF2D /* TypeBaseRealm.swift */; };
 		1F9D94BF27272588007BCF2D /* CheckingInternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D94BE27272588007BCF2D /* CheckingInternetConnection.swift */; };
+		1FA49A04272ECBA400BE68C0 /* TickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA49A03272ECBA400BE68C0 /* TickerCollectionViewCell.swift */; };
 		1FB75E3D27246523002E1300 /* CloseKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E3C27246523002E1300 /* CloseKeyboard.swift */; };
 		1FB75E3F27246599002E1300 /* EventViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E3E27246599002E1300 /* EventViewLayout.swift */; };
 		1FB75E4127246612002E1300 /* CalendarViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E4027246612002E1300 /* CalendarViewLayout.swift */; };
@@ -85,6 +86,7 @@
 		1F9D94BA27271DBF007BCF2D /* TypeRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeRealm.swift; sourceTree = "<group>"; };
 		1F9D94BC27271E59007BCF2D /* TypeBaseRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeBaseRealm.swift; sourceTree = "<group>"; };
 		1F9D94BE27272588007BCF2D /* CheckingInternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckingInternetConnection.swift; sourceTree = "<group>"; };
+		1FA49A03272ECBA400BE68C0 /* TickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		1FB75E3C27246523002E1300 /* CloseKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseKeyboard.swift; sourceTree = "<group>"; };
 		1FB75E3E27246599002E1300 /* EventViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewLayout.swift; sourceTree = "<group>"; };
 		1FB75E4027246612002E1300 /* CalendarViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewLayout.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				1F4DC4F626EBE144000F9A74 /* TeamMenuCollectionViewCell.swift */,
+				1FA49A03272ECBA400BE68C0 /* TickerCollectionViewCell.swift */,
 				1F4DC4FA26EBF702000F9A74 /* CalendarTableViewCell.swift */,
 			);
 			path = Cells;
@@ -419,6 +422,7 @@
 				1F4DC4DC26E9E55B000F9A74 /* UserBase.swift in Sources */,
 				1F0BEA8C2726B80500BB17BB /* EventsRealm.swift in Sources */,
 				1FB75E3F27246599002E1300 /* EventViewLayout.swift in Sources */,
+				1FA49A04272ECBA400BE68C0 /* TickerCollectionViewCell.swift in Sources */,
 				1F4DC4D726E9E53D000F9A74 /* Roles.swift in Sources */,
 				1F60B22A2729288B00EDB3E2 /* UserMenuViewLayout.swift in Sources */,
 				1F0BEA89272694C200BB17BB /* TextFieldLine.swift in Sources */,
