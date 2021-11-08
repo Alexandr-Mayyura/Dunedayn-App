@@ -60,14 +60,13 @@ extension SettingUserViewController: UINavigationControllerDelegate, UIImagePick
     func fileInDocumentsDirectory(filename: String) -> String {
         return documentsDirectory().appending(filename)
     }
-    
-    
-    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
         let tempImage = info[.originalImage] as! UIImage
         let pngImageData = tempImage.pngData()! as NSData
-        pngImageData.write(toFile: fileInDocumentsDirectory(filename: "tempImage"), atomically: true)
+        pngImageData.write(toFile: fileInDocumentsDirectory(filename: "/tempImage"), atomically: true)
+        print(fileInDocumentsDirectory(filename: "/tempImage"))
         userImage.image = tempImage
         
         self.dismiss(animated: true, completion: nil)
@@ -75,7 +74,13 @@ extension SettingUserViewController: UINavigationControllerDelegate, UIImagePick
     
     func loadImageFromPath(path: String) -> UIImage? {
         let image = UIImage(contentsOfFile: path)
-        return image
+
+            if image == nil {
+
+                print("missing image at: (path)")
+            }
+            print("\(path)") // this is just for you to see the path in case you want to go to the directory, using Finder.
+            return image
     }
     
     
@@ -98,7 +103,7 @@ extension SettingUserViewController: UINavigationControllerDelegate, UIImagePick
         userImage.layer.cornerRadius = 10
         userImage.clipsToBounds = true
         userImage.contentMode = .scaleAspectFill
-        
+        userImage.backgroundColor = UIColor(patternImage: UIImage(systemName: "camera.viewfinder")!)
         addImageButton.translatesAutoresizingMaskIntoConstraints = false
         addImageButton.tintColor = .white
         addImageButton.backgroundColor = .clear

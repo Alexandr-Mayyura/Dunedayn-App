@@ -47,7 +47,7 @@ class SettingUserViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.userImage.image = loadImageFromPath(path: fileInDocumentsDirectory(filename: "/tempImage"))
     }
     
     override func viewDidLoad() {
@@ -57,12 +57,6 @@ class SettingUserViewController: UIViewController {
         } else {
             self.myNameLabel.text = RealmManager.sharedInstance.get(object: name)[0].name
         }
-        
-        if loadImageFromPath(path: fileInDocumentsDirectory(filename: "tempImage")) == nil {
-            userImage.image = UIImage(systemName: "camera.viewfinder")
-        } else {
-            
-        self.userImage.image = loadImageFromPath(path: fileInDocumentsDirectory(filename: "tempImage"))
-        }
+ 
     }
 }
