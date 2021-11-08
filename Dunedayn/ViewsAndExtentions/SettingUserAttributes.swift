@@ -44,13 +44,13 @@ extension SettingUserViewController: UINavigationControllerDelegate, UIImagePick
         
     }
     
-    func saveImage (image: UIImage, path: String ) -> Bool{
-
-        let pngImageData = image.pngData()! as NSData
-//        let jpgImageData = image.jpegData(compressionQuality: 1.0)! as NSData
-        let result = pngImageData.write(toFile: path, atomically: true)
-        return result
-    }
+//    func saveImage (image: UIImage, path: String ) -> Bool{
+//
+//        let pngImageData = image.pngData()! as NSData
+////        let jpgImageData = image.jpegData(compressionQuality: 1.0)! as NSData
+//        let result = pngImageData.write(toFile: path, atomically: true)
+//        return result
+//    }
     
     func documentsDirectory() -> String {
         let documentsFolderPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
@@ -65,7 +65,18 @@ extension SettingUserViewController: UINavigationControllerDelegate, UIImagePick
 
         let tempImage = info[.originalImage] as! UIImage
         let pngImageData = tempImage.pngData()! as NSData
+        
         pngImageData.write(toFile: fileInDocumentsDirectory(filename: "/tempImage"), atomically: true)
+        let fileManger = FileManager.default
+        if fileManger.fileExists(atPath: "/tempImage"){
+            do{
+                try fileManger.removeItem(atPath: "/tempImage")
+            }catch let error {
+                print("error occurred, here are the details:\n \(error)")
+            }
+        }
+        
+        
         print(fileInDocumentsDirectory(filename: "/tempImage"))
         userImage.image = tempImage
         
