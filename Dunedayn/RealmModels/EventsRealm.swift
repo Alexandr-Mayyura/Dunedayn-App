@@ -15,6 +15,10 @@ class Events: Object, Codable {
     @objc dynamic var organizerId : Int
     @objc dynamic var typeId : Int
 
+    override static func primaryKey() -> String? {
+          return "id"
+      }
+    
     enum CodingKeys: String, CodingKey {
 
         case date = "date"

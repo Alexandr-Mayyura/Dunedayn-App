@@ -19,6 +19,11 @@ class UserMenuViewController: UIViewController {
             
         return cv
     }()
+    
+    @objc func rightButtonAction(sender: UIBarButtonItem){
+        let vc = SettingUserViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
     
     override func viewDidLayoutSubviews() {
@@ -30,6 +35,10 @@ class UserMenuViewController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .done, target: self, action: #selector (rightButtonAction))
+        self.navigationController?.navigationBar.backgroundColor = .black
+        self.navigationController?.navigationBar.tintColor = .white
     }
 }
 

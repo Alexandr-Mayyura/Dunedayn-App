@@ -12,6 +12,10 @@ class Organizer: Object, Codable {
     @objc dynamic var id : Int
     @objc dynamic var info : String?
     @objc dynamic var name : String
+    
+    override static func primaryKey() -> String? {
+          return "id"
+      }
 
     enum CodingKeys: String, CodingKey {
 

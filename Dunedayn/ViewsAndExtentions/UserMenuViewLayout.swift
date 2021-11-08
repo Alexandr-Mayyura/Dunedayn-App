@@ -14,11 +14,12 @@ extension UserMenuViewController {
 
         view.addSubview(collectionView)
         collectionView.backgroundColor = .clear
-        let image = Images()
+        let image = BackgroundImages()
         image.backgraundImage.image = image.image
         view.insertSubview(image.backgraundImage, at: 0)
-
-        self.title = "Игрок"
+        
+        self.title = "Dundenbay"
+        
         
         NSLayoutConstraint.activate (
             [

@@ -10,7 +10,6 @@ import UIKit
 class SingInViewController: UIViewController, UITextFieldDelegate{
     
     var calendarEvents = EventBase()
-    var evetns = [Events]()
     var organizers = OrganizerBase()
     var type = TypeBase()
 
@@ -21,7 +20,14 @@ class SingInViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet var nameTextfield: UITextField!
     @IBOutlet var passwordTextfield: UITextField!
     
+    func animation() {
+        UIView.animate(withDuration: 0.3, animations: { [weak self]() -> Void in
+            self?.logoImageView.transform = .init(scaleX: 0.3, y: 0.3)
+        })
+    }
+    
     @IBAction func singInButton(_ sender: Any) {
+        animation()
     }
     
     @IBAction func singUpButton(_ sender: Any) {
@@ -43,13 +49,10 @@ class SingInViewController: UIViewController, UITextFieldDelegate{
                     EventSetup.asyncRequest(URLs().eventURl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader) { [weak self] (result: EventBase) in
                         guard let self = self else { return }
                         self.calendarEvents = result
-                        
-                        RealmManager.sharedInstance.deleteAll()
+
                         RealmManager.sharedInstance.save(object: self.organizers)
                         RealmManager.sharedInstance.save(object: self.calendarEvents)
                         RealmManager.sharedInstance.save(object: self.type)
-                    
-                        
                 }
             }
         }
@@ -58,6 +61,7 @@ class SingInViewController: UIViewController, UITextFieldDelegate{
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -67,6 +71,7 @@ class SingInViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         addContetnt()
     }
     

@@ -16,7 +16,7 @@ extension TeamMenuViewController {
         view.addSubview(collectionViewTicker)
         collectionViewMenu.backgroundColor = .clear
         collectionViewTicker.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.50)
-        let image = Images()
+        let image = BackgroundImages()
         image.backgraundImage.image = image.image
         view.insertSubview(image.backgraundImage, at: 0)
 

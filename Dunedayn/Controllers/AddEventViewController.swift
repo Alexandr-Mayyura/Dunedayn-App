@@ -123,14 +123,12 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, OrgPickerVi
             EventSetup.asyncResponse(link, method: .put, parameters: datas, header: EventSetup.PostPutHeader) {
             }
            
-            
         } else {
             
             let link = "\(URLs().deleteURL)"
             
             EventSetup.asyncResponse(link, method: .post, parameters: datas, header: EventSetup.PostPutHeader) {
             }
-            
         }
     }
     

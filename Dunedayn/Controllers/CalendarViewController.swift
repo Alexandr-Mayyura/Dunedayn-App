@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class CalendarViewController: UIViewController {
        
@@ -14,9 +13,7 @@ class CalendarViewController: UIViewController {
     var evetns = [Events]()
     var organizers = OrganizerBase()
     var type = TypeBase()
-    
-    var delegate: AddEventViewController?
-    
+        
 // create tableview
      let tableview: UITableView = {
         let tv = UITableView(frame: .zero)
@@ -33,7 +30,7 @@ class CalendarViewController: UIViewController {
 
     // load data from server (dunedayn.ru)
     func addContetnt(){
-        
+
         EventSetup.asyncRequest(URLs().orgUrl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader)  { [weak self] (result: OrganizerBase) in
             guard let self = self else { return }
             self.organizers = result
@@ -43,8 +40,7 @@ class CalendarViewController: UIViewController {
                     EventSetup.asyncRequest(URLs().eventURl, method: .get, parameters: nil, header: EventSetup.GetDeleteHeader) { [weak self] (result: EventBase) in
                         guard let self = self else { return }
                         self.calendarEvents = result
-                        
-                        RealmManager.sharedInstance.deleteAll()
+
                         RealmManager.sharedInstance.save(object: self.organizers)
                         RealmManager.sharedInstance.save(object: self.calendarEvents)
                         RealmManager.sharedInstance.save(object: self.type)

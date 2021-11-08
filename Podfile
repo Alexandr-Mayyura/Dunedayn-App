@@ -8,4 +8,5 @@ target 'Dunedayn' do
   # Pods for Dunedayn
 pod 'RealmSwift', '~>10'
 pod 'Alamofire', '~> 5.4'
+pod 'SDWebImage', '~> 5.0'
 end

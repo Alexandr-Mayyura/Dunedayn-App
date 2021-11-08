@@ -18,7 +18,7 @@ extension SingInViewController {
                 NSAttributedString.Key.strokeWidth: -2.0
             ]
         )
-        let image = Images()
+        let image = BackgroundImages()
         image.backgraundImage.image = image.image
         view.insertSubview(image.backgraundImage, at: 0)
            

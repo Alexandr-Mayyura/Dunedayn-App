@@ -11,6 +11,8 @@ class TeamMenuViewController: UIViewController {
     
     let teamMenu = ["Статистика", "Календарь", "Устав", "Казна", "Памятка"]
     
+    let logosName = ["5У", "Линия Фронта", "Пыка (ATG)", "Разные орги с форума airsoftclub", "Совет Командиров СК", "СтрАтеГ (З.Л.О.)", "AirsoftClub2",    "Borgame (Бор)", "Privatka club", "Sokolgames", "Strike 37"]
+    
     let vc = SingInViewController()
     
     let collectionViewMenu: UICollectionView = {
@@ -80,13 +82,15 @@ extension TeamMenuViewController: UICollectionViewDelegateFlowLayout, UICollecti
         if collectionView == collectionViewMenu {
             return CGSize(width: collectionView.frame.width - 20, height: collectionView.frame.width/4)
         } else {
-            return CGSize(width: 140, height: 60)
+            return CGSize(width: 200, height: 60)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == collectionViewMenu {
             return teamMenu.count
+        } else if RealmManager.sharedInstance.get(object: self.vc.calendarEvents).count <= 0 {
+           return 0
         } else {
             return RealmManager.sharedInstance.get(object: self.vc.calendarEvents)[section].records.count + 999
         }
@@ -110,15 +114,35 @@ extension TeamMenuViewController: UICollectionViewDelegateFlowLayout, UICollecti
          }
         
         return cell
+             
          } else {
+                 
              let event  = RealmManager.sharedInstance.get(object: self.vc.calendarEvents)[indexPath.section].records[indexPath.row % RealmManager.sharedInstance.get(object: self.vc.calendarEvents)[indexPath.section].records.count]
              
              let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tickerMenuCell", for: indexPath) as! TickerCollectionViewCell
              cell.backgroundColor = .clear
              let dates = String()
              cell.tickerNameLabel?.text = "\(event.name) \n \(dates.datesFormatedInString(data: event.date))"
-    
-        return cell
+             
+             let organ = RealmManager.sharedInstance.get(object: self.vc.organizers)[indexPath.section].records
+             let itemId = event.organizerId
+             var neededItem = Int()
+             for (index, item) in organ.enumerated() {
+                 if item.id == itemId {
+                     neededItem = index
+                 }
+             }
+             let org = organ[neededItem].name
+             var imageName: String?
+             for value in logosName{
+                 imageName = value
+                 
+                 if org == imageName {
+                             
+                cell.logoImage?.image = UIImage(named: imageName!)
+                }
+             }
+            return cell
          }
     }
 
@@ -129,7 +153,7 @@ extension TeamMenuViewController: UICollectionViewDelegateFlowLayout, UICollecti
                      if let cell = collectionView.cellForItem(at: indexPath) {
                          cell.transform = .init(scaleX: 0.90, y: 0.90)
                          cell.contentView.layer.cornerRadius = 10
-                         cell.contentView.backgroundColor = UIColor(red: 0.094, green: 0.094,       blue: 0.051, alpha: 1)
+                         cell.contentView.backgroundColor = UIColor(red: 0.094, green: 0.094, blue: 0.051, alpha: 1)
                      }
                 }
              }

@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-class Images {
+class BackgroundImages {
 
     let image = UIImage(named: "Background")
     let backgraundImage = UIImageView(frame: UIScreen.main.bounds)

@@ -19,7 +19,7 @@ extension EventsViewController {
         infoTextview.translatesAutoresizingMaskIntoConstraints = false
         typeOrganizerLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let images = Images()
+        let images = BackgroundImages()
              images.backgraundImage.translatesAutoresizingMaskIntoConstraints = false
              images.backgraundImage.image = images.image
              view.addSubview(images.backgraundImage)

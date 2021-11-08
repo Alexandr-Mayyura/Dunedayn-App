@@ -11,10 +11,14 @@ import RealmSwift
 class OrganizerBase: Object, Codable {
     var records = RealmSwift.List<Organizer>()
     @objc dynamic var total : Int = 0
+    @objc dynamic var id: Int = 0
     
     override static func primaryKey() -> String? {
-          return "total"
+          return "id"
       }
+//    override static func primaryKey() -> String? {
+//          return "total"
+//      }
 
     enum CodingKeys: String, CodingKey {
 

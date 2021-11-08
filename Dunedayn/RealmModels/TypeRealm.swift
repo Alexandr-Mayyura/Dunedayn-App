@@ -11,6 +11,10 @@ import RealmSwift
 class Types: Object, Codable {
     @objc dynamic var id : Int
     @objc dynamic var type : String
+    
+    override static func primaryKey() -> String? {
+          return "id"
+      }
 
     enum CodingKeys: String, CodingKey {
 

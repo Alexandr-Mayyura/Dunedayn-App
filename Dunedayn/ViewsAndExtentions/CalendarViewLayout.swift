@@ -12,7 +12,7 @@ extension CalendarViewController {
     func attributes() {
         
         view.addSubview(tableview)
-        let images = Images()
+        let images = BackgroundImages()
         images.backgraundImage.image = images.image
         images.backgraundImage.contentMode = .scaleAspectFill
         tableview.backgroundView = images.backgraundImage

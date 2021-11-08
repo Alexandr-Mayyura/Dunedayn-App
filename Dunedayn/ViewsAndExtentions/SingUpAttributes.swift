@@ -14,7 +14,7 @@ extension SingUpViewController {
         let imageSold = UIImage(named: "LogoDND")
         imageSoldier.image = imageSold
         
-        let image = Images()
+        let image = BackgroundImages()
         image.backgraundImage.image = image.image
         view.insertSubview(image.backgraundImage, at: 0)
         
@@ -32,8 +32,5 @@ extension SingUpViewController {
         nicknameTextfield.setUnderLine()
         firstPasswordTextfield.setUnderLine()
         secondPasswordTextfield.setUnderLine()
-    }
-    
-    
-    
+    } 
 }
