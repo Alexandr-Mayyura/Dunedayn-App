@@ -122,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vG2-vr-wTf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1101.449275362319" y="-13.392857142857142"/>
+            <point key="canvasLocation" x="-2106" y="-13"/>
         </scene>
         <!--Team Menu View Controller-->
         <scene sceneID="wZd-r3-6Rd">
@@ -180,18 +180,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaN-Ml-iTr">
-                                <rect key="frame" x="119.5" y="214.5" width="175" height="34"/>
+                                <rect key="frame" x="84" y="214.5" width="246" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="Зарегистрироваться">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="registrationButton:" destination="usJ-2r-Rsw" eventType="touchUpInside" id="jeR-T2-8uo"/>
-                                    <segue destination="H7R-40-AyN" kind="show" id="F3F-cb-5ba"/>
+                                    <segue destination="H7R-40-AyN" kind="show" id="rAT-eC-Ec5"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tiy-7p-WHZ">
-                                <rect key="frame" x="87" y="268.5" width="240" height="322.5"/>
+                                <rect key="frame" x="87" y="278.5" width="240" height="312.5"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="INZ-A1-tWh">
                                 <rect key="frame" x="198.5" y="163.5" width="195.5" height="21"/>
@@ -239,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Agx-3d-TUz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1101.449275362319" y="707.8125"/>
+            <point key="canvasLocation" x="-2107" y="721"/>
         </scene>
         <!--Item-->
         <scene sceneID="IiH-lA-1Uh">
@@ -273,7 +274,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="k0V-Yf-JE8">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="H7R-40-AyN" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBar" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="H7R-40-AyN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="7yj-Kw-LUl"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ecR-d3-NlU">
@@ -285,18 +286,18 @@
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="u7e-7j-4Jl" kind="relationship" relationship="viewControllers" id="lmU-9B-cbu"/>
                         <segue destination="7Gv-6L-btG" kind="relationship" relationship="viewControllers" id="2C4-YU-MHD"/>
+                        <segue destination="u7e-7j-4Jl" kind="relationship" relationship="viewControllers" id="lmU-9B-cbu"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Mi-qY-pQw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="39" y="445"/>
+            <point key="canvasLocation" x="-178" y="337"/>
         </scene>
         <!--User Menu View Controller-->
         <scene sceneID="Xz7-F0-Yd1">
             <objects>
-                <viewController id="giW-ov-AJk" customClass="UserMenuViewController" customModule="Dunedayn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuUser" modalPresentationStyle="fullScreen" id="giW-ov-AJk" customClass="UserMenuViewController" customModule="Dunedayn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zZg-CC-vEz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="734"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -307,13 +308,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iuz-4h-P7U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1823" y="721"/>
+            <point key="canvasLocation" x="1897" y="721"/>
         </scene>
-        <!--Игрок-->
+        <!--Dundanday-->
         <scene sceneID="jfV-rN-Bbj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Gv-6L-btG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Игрок" image="солдат 30" id="Z8q-lk-uCB">
+                    <tabBarItem key="tabBarItem" title="Dundanday" image="солдат 30" id="Z8q-lk-uCB">
                         <color key="badgeColor" systemColor="systemGrayColor"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -340,7 +341,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="F3F-cb-5ba"/>
+        <segue reference="rAT-eC-Ec5"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="дерево" width="30" height="30"/>

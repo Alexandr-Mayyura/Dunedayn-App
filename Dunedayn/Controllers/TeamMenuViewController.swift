@@ -11,7 +11,7 @@ class TeamMenuViewController: UIViewController {
     
     let teamMenu = ["Статистика", "Календарь", "Устав", "Казна", "Памятка"]
     
-    let logosName = ["5У", "Линия Фронта", "Пыка (ATG)", "Разные орги с форума airsoftclub", "Совет Командиров СК", "СтрАтеГ (З.Л.О.)", "AirsoftClub2",    "Borgame (Бор)", "Privatka club", "Sokolgames", "Strike 37"]
+    let logosName = ["5У", "Линия Фронта", "Пыка (ATG)", "Разные орги с форума airsoftclub", "Совет Командиров СК", "СтрАтеГ (З.Л.О.)", "AirsoftClub2",    "Borgame (Бор)", "Privatka club", "Sokolgames", "Strike 37", "ДНД"]
     
     let vc = SingInViewController()
     
@@ -138,8 +138,7 @@ extension TeamMenuViewController: UICollectionViewDelegateFlowLayout, UICollecti
                  imageName = value
                  
                  if org == imageName {
-                             
-                cell.logoImage?.image = UIImage(named: imageName!)
+                    cell.logoImage?.image = UIImage(named: imageName!)
                 }
              }
             return cell

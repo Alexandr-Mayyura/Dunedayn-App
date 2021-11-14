@@ -44,55 +44,46 @@ extension SettingUserViewController: UINavigationControllerDelegate, UIImagePick
         
     }
     
-//    func saveImage (image: UIImage, path: String ) -> Bool{
-//
-//        let pngImageData = image.pngData()! as NSData
-////        let jpgImageData = image.jpegData(compressionQuality: 1.0)! as NSData
-//        let result = pngImageData.write(toFile: path, atomically: true)
-//        return result
+//    func documentsDirectory() -> String {
+//        let documentsFolderPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+//        return documentsFolderPath!
 //    }
-    
-    func documentsDirectory() -> String {
-        let documentsFolderPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
-        return documentsFolderPath!
-    }
-    
-    func fileInDocumentsDirectory(filename: String) -> String {
-        return documentsDirectory().appending(filename)
-    }
+//
+//    func fileInDocumentsDirectory(filename: String) -> String {
+//        return documentsDirectory().appending(filename)
+//    }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
         let tempImage = info[.originalImage] as! UIImage
-        let pngImageData = tempImage.pngData()! as NSData
+        UIGraphicsBeginImageContextWithOptions(tempImage.size, true, tempImage.scale)
         
-        pngImageData.write(toFile: fileInDocumentsDirectory(filename: "/tempImage"), atomically: true)
+        let rect = CGRect(x: 0, y: 0, width: tempImage.size.width, height: tempImage.size.height)
+        tempImage.draw(in: rect)
+
+        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        let pngImageData = normalizedImage.pngData()! as NSData
+        pngImageData.write(toFile: ImageManager().fileInDocumentsDirectory(filename: "/tempImage"), atomically: true)
         let fileManger = FileManager.default
-        if fileManger.fileExists(atPath: "/tempImage"){
-            do{
+        if fileManger.fileExists(atPath: "/tempImage") {
+            do {
                 try fileManger.removeItem(atPath: "/tempImage")
-            }catch let error {
+            } catch let error {
                 print("error occurred, here are the details:\n \(error)")
             }
         }
-        
-        
-        print(fileInDocumentsDirectory(filename: "/tempImage"))
-        userImage.image = tempImage
+        userImage.image = normalizedImage
         
         self.dismiss(animated: true, completion: nil)
     }
     
-    func loadImageFromPath(path: String) -> UIImage? {
-        let image = UIImage(contentsOfFile: path)
-
-            if image == nil {
-
-                print("missing image at: (path)")
-            }
-            print("\(path)") // this is just for you to see the path in case you want to go to the directory, using Finder.
-            return image
-    }
+//    func loadImageFromPath(path: String) -> UIImage? {
+//        let image = UIImage(contentsOfFile: path)
+//
+//        return image
+//    }
     
     
     func attributes() {
@@ -107,8 +98,8 @@ extension SettingUserViewController: UINavigationControllerDelegate, UIImagePick
         substrate.layer.cornerRadius = 10
         substrate.translatesAutoresizingMaskIntoConstraints = false
         
-        userImage.frame = CGRect(x: view.bounds.width/2 - 100, y: 30, width: 200, height: 200)
-        
+//        userImage.frame = CGRect(x: view.bounds.width/2 - 100, y: 50, width: 200, height: 200)
+        userImage.translatesAutoresizingMaskIntoConstraints = false
         userImage.tintColor = .darkGray
         userImage.backgroundColor = .clear
         userImage.layer.cornerRadius = 10
@@ -139,8 +130,13 @@ extension SettingUserViewController: UINavigationControllerDelegate, UIImagePick
         renameView.image = UIImage(systemName: "highlighter")
         renameView.tintColor = .white
         renameButton.addSubview(renameView)
-//        let name = RealmManager.sharedInstance.get(object: self.name)
-//        self.title = name[0].name
+        
+        goToUserMenu.translatesAutoresizingMaskIntoConstraints = false
+        goToUserMenu.tintColor = .white
+        goToUserMenu.backgroundColor = .clear
+        goToUserMenu.titleLabel?.font = UIFont.init(name: "Helvetica Neue", size: 36)
+        goToUserMenu.setTitle("Сохранить", for: .normal)
+
         
         view.addSubview(substrate)
         view.addSubview(userImage)
@@ -148,9 +144,15 @@ extension SettingUserViewController: UINavigationControllerDelegate, UIImagePick
         view.addSubview(myNameLabel)
         view.addSubview(renameButton)
         view.addSubview(nameLabel)
+        view.addSubview(goToUserMenu)
         
         NSLayoutConstraint.activate([
             
+            userImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            userImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
+            userImage.heightAnchor.constraint(equalToConstant: 200),
+            userImage.widthAnchor.constraint(equalToConstant: 200),
+                        
             substrate.topAnchor.constraint(equalTo: userImage.topAnchor, constant: -5),
             substrate.leftAnchor.constraint(equalTo: userImage.leftAnchor, constant: -5),
             substrate.rightAnchor.constraint(equalTo: userImage.rightAnchor, constant: 5),
@@ -166,8 +168,10 @@ extension SettingUserViewController: UINavigationControllerDelegate, UIImagePick
             renameButton.centerYAnchor.constraint(equalTo: myNameLabel.centerYAnchor, constant: 5),
             
             nameLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 60),
-            nameLabel.centerYAnchor.constraint(equalTo: myNameLabel.centerYAnchor, constant: 0)
+            nameLabel.centerYAnchor.constraint(equalTo: myNameLabel.centerYAnchor, constant: 0),
             
+            goToUserMenu.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 60),
+            goToUserMenu.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
     }

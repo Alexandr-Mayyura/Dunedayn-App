@@ -41,7 +41,8 @@
 		1F9D94BD27271E59007BCF2D /* TypeBaseRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D94BC27271E59007BCF2D /* TypeBaseRealm.swift */; };
 		1F9D94BF27272588007BCF2D /* CheckingInternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D94BE27272588007BCF2D /* CheckingInternetConnection.swift */; };
 		1FA49A04272ECBA400BE68C0 /* TickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA49A03272ECBA400BE68C0 /* TickerCollectionViewCell.swift */; };
-		1FA820332737D51B00E2EE8C /* UserImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA820322737D51B00E2EE8C /* UserImage.swift */; };
+		1FAF65EF273B8D9A00547793 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF65EE273B8D9A00547793 /* UserProfileViewController.swift */; };
+		1FAF65F1273B90E900547793 /* UserProfileAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF65F0273B90E900547793 /* UserProfileAttributes.swift */; };
 		1FB75E3D27246523002E1300 /* CloseKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E3C27246523002E1300 /* CloseKeyboard.swift */; };
 		1FB75E3F27246599002E1300 /* EventViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E3E27246599002E1300 /* EventViewLayout.swift */; };
 		1FB75E4127246612002E1300 /* CalendarViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E4027246612002E1300 /* CalendarViewLayout.swift */; };
@@ -50,11 +51,15 @@
 		1FB75E4C2724733F002E1300 /* BackgroundImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB75E4B2724733F002E1300 /* BackgroundImages.swift */; };
 		1FDB4CBE2724B9ED00FD7F34 /* ExtentionAddEventPickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDB4CBD2724B9ED00FD7F34 /* ExtentionAddEventPickers.swift */; };
 		1FDB4CC02724BD1100FD7F34 /* AlertViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDB4CBF2724BD1100FD7F34 /* AlertViews.swift */; };
-		1FEE0D0B2739915D004C6B4F /* SaveImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE0D0A2739915D004C6B4F /* SaveImage.swift */; };
 		1FF0BC9726FEEF1E002FB1D9 /* AddEventViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0BC9626FEEF1E002FB1D9 /* AddEventViewLayout.swift */; };
 		1FF0BC9926FEF370002FB1D9 /* OrganozerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0BC9826FEF370002FB1D9 /* OrganozerPickerView.swift */; };
 		1FF0BCA12704F35B002FB1D9 /* TypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0BCA02704F35B002FB1D9 /* TypePickerView.swift */; };
 		1FF8EBF526EE04DF004AF652 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8EBF426EE04DF004AF652 /* AddEventViewController.swift */; };
+		1FF96054273D28DB007629A5 /* LoadImageFromDock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF96053273D28DB007629A5 /* LoadImageFromDock.swift */; };
+		1FF96056273D2E6D007629A5 /* ChekListRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF96055273D2E6D007629A5 /* ChekListRealm.swift */; };
+		1FF96058273D2EC6007629A5 /* ChekListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF96057273D2EC6007629A5 /* ChekListViewController.swift */; };
+		1FF9605A273D2F8C007629A5 /* ChekListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF96059273D2F8C007629A5 /* ChekListTableViewCell.swift */; };
+		1FF9605C273D3534007629A5 /* ChekListAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9605B273D3534007629A5 /* ChekListAttributes.swift */; };
 		8472E9955A7529BDBC217C9B /* Pods_Dunedayn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35E4A3A51731B15AC77B7B9 /* Pods_Dunedayn.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,7 +100,8 @@
 		1F9D94BC27271E59007BCF2D /* TypeBaseRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeBaseRealm.swift; sourceTree = "<group>"; };
 		1F9D94BE27272588007BCF2D /* CheckingInternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckingInternetConnection.swift; sourceTree = "<group>"; };
 		1FA49A03272ECBA400BE68C0 /* TickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerCollectionViewCell.swift; sourceTree = "<group>"; };
-		1FA820322737D51B00E2EE8C /* UserImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImage.swift; sourceTree = "<group>"; };
+		1FAF65EE273B8D9A00547793 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		1FAF65F0273B90E900547793 /* UserProfileAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileAttributes.swift; sourceTree = "<group>"; };
 		1FB75E3C27246523002E1300 /* CloseKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseKeyboard.swift; sourceTree = "<group>"; };
 		1FB75E3E27246599002E1300 /* EventViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewLayout.swift; sourceTree = "<group>"; };
 		1FB75E4027246612002E1300 /* CalendarViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewLayout.swift; sourceTree = "<group>"; };
@@ -104,11 +110,15 @@
 		1FB75E4B2724733F002E1300 /* BackgroundImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImages.swift; sourceTree = "<group>"; };
 		1FDB4CBD2724B9ED00FD7F34 /* ExtentionAddEventPickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionAddEventPickers.swift; sourceTree = "<group>"; };
 		1FDB4CBF2724BD1100FD7F34 /* AlertViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViews.swift; sourceTree = "<group>"; };
-		1FEE0D0A2739915D004C6B4F /* SaveImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveImage.swift; sourceTree = "<group>"; };
 		1FF0BC9626FEEF1E002FB1D9 /* AddEventViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewLayout.swift; sourceTree = "<group>"; };
 		1FF0BC9826FEF370002FB1D9 /* OrganozerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganozerPickerView.swift; sourceTree = "<group>"; };
 		1FF0BCA02704F35B002FB1D9 /* TypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePickerView.swift; sourceTree = "<group>"; };
 		1FF8EBF426EE04DF004AF652 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		1FF96053273D28DB007629A5 /* LoadImageFromDock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageFromDock.swift; sourceTree = "<group>"; };
+		1FF96055273D2E6D007629A5 /* ChekListRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChekListRealm.swift; sourceTree = "<group>"; };
+		1FF96057273D2EC6007629A5 /* ChekListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChekListViewController.swift; sourceTree = "<group>"; };
+		1FF96059273D2F8C007629A5 /* ChekListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChekListTableViewCell.swift; sourceTree = "<group>"; };
+		1FF9605B273D3534007629A5 /* ChekListAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChekListAttributes.swift; sourceTree = "<group>"; };
 		9EDD5988C3DD973A7CC4E7F3 /* Pods-Dunedayn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dunedayn.debug.xcconfig"; path = "Target Support Files/Pods-Dunedayn/Pods-Dunedayn.debug.xcconfig"; sourceTree = "<group>"; };
 		B35E4A3A51731B15AC77B7B9 /* Pods_Dunedayn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dunedayn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6868211DBA2EB253E0686DA /* Pods-Dunedayn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dunedayn.release.xcconfig"; path = "Target Support Files/Pods-Dunedayn/Pods-Dunedayn.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,7 +154,7 @@
 				1F9D94BA27271DBF007BCF2D /* TypeRealm.swift */,
 				1F9D94BC27271E59007BCF2D /* TypeBaseRealm.swift */,
 				1F8E2AEC27358BA3008BB922 /* UserRealm.swift */,
-				1FA820322737D51B00E2EE8C /* UserImage.swift */,
+				1FF96055273D2E6D007629A5 /* ChekListRealm.swift */,
 			);
 			path = RealmModels;
 			sourceTree = "<group>";
@@ -218,10 +228,12 @@
 			children = (
 				1F4DC4F126EBD791000F9A74 /* SingUpViewController.swift */,
 				1F4DC4EF26EBD49F000F9A74 /* SingInViewController.swift */,
-				1F3AC555273310A6006FFF55 /* SettingUserViewController.swift */,
 				1F4DC4F326EBDFD9000F9A74 /* TeamMenuViewController.swift */,
 				1F60B2272729258800EDB3E2 /* UserMenuViewController.swift */,
 				1F4DC4F826EBF0FC000F9A74 /* CalendarViewController.swift */,
+				1FAF65EE273B8D9A00547793 /* UserProfileViewController.swift */,
+				1FF96057273D2EC6007629A5 /* ChekListViewController.swift */,
+				1F3AC555273310A6006FFF55 /* SettingUserViewController.swift */,
 				1F4DC4EB26EA9A05000F9A74 /* EventsViewController.swift */,
 				1FF8EBF426EE04DF004AF652 /* AddEventViewController.swift */,
 			);
@@ -233,10 +245,12 @@
 			children = (
 				1F433FBF2725566B0098A371 /* SingInAttributes.swift */,
 				1F0BEA862726946E00BB17BB /* SingUpAttributes.swift */,
-				1F3AC5572733156E006FFF55 /* SettingUserAttributes.swift */,
 				1FB75E4627246884002E1300 /* TeamUserMenuViewLayout.swift */,
-				1F60B2292729288B00EDB3E2 /* UserMenuViewLayout.swift */,
 				1FB75E4027246612002E1300 /* CalendarViewLayout.swift */,
+				1F60B2292729288B00EDB3E2 /* UserMenuViewLayout.swift */,
+				1FAF65F0273B90E900547793 /* UserProfileAttributes.swift */,
+				1FF9605B273D3534007629A5 /* ChekListAttributes.swift */,
+				1F3AC5572733156E006FFF55 /* SettingUserAttributes.swift */,
 				1FB75E3E27246599002E1300 /* EventViewLayout.swift */,
 				1FF0BC9626FEEF1E002FB1D9 /* AddEventViewLayout.swift */,
 				1FDB4CBF2724BD1100FD7F34 /* AlertViews.swift */,
@@ -274,6 +288,7 @@
 				1F4DC4F626EBE144000F9A74 /* TeamMenuCollectionViewCell.swift */,
 				1FA49A03272ECBA400BE68C0 /* TickerCollectionViewCell.swift */,
 				1F4DC4FA26EBF702000F9A74 /* CalendarTableViewCell.swift */,
+				1FF96059273D2F8C007629A5 /* ChekListTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -282,8 +297,8 @@
 			isa = PBXGroup;
 			children = (
 				1FB75E4B2724733F002E1300 /* BackgroundImages.swift */,
+				1FF96053273D28DB007629A5 /* LoadImageFromDock.swift */,
 				1F9D94BE27272588007BCF2D /* CheckingInternetConnection.swift */,
-				1FEE0D0A2739915D004C6B4F /* SaveImage.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -411,14 +426,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FA820332737D51B00E2EE8C /* UserImage.swift in Sources */,
 				1F0BEA922726C08300BB17BB /* OrganizerBaseRealm.swift in Sources */,
 				1FF8EBF526EE04DF004AF652 /* AddEventViewController.swift in Sources */,
 				1F4DC4B926E9D7BA000F9A74 /* AppDelegate.swift in Sources */,
 				1F4DC4DB26E9E55B000F9A74 /* Users.swift in Sources */,
+				1FF96056273D2E6D007629A5 /* ChekListRealm.swift in Sources */,
 				1FB75E3D27246523002E1300 /* CloseKeyboard.swift in Sources */,
-				1FEE0D0B2739915D004C6B4F /* SaveImage.swift in Sources */,
+				1FF96054273D28DB007629A5 /* LoadImageFromDock.swift in Sources */,
 				1FF0BCA12704F35B002FB1D9 /* TypePickerView.swift in Sources */,
+				1FAF65F1273B90E900547793 /* UserProfileAttributes.swift in Sources */,
+				1FF9605C273D3534007629A5 /* ChekListAttributes.swift in Sources */,
 				1F9D94BB27271DBF007BCF2D /* TypeRealm.swift in Sources */,
 				1F0BEA8E2726B89700BB17BB /* EventBaseRealm.swift in Sources */,
 				1FB75E4C2724733F002E1300 /* BackgroundImages.swift in Sources */,
@@ -437,7 +454,9 @@
 				1F8E2AED27358BA3008BB922 /* UserRealm.swift in Sources */,
 				1F9D94BD27271E59007BCF2D /* TypeBaseRealm.swift in Sources */,
 				1F0BEA902726C01C00BB17BB /* OrganizerRealm.swift in Sources */,
+				1FF9605A273D2F8C007629A5 /* ChekListTableViewCell.swift in Sources */,
 				1F4DC4DC26E9E55B000F9A74 /* UserBase.swift in Sources */,
+				1FAF65EF273B8D9A00547793 /* UserProfileViewController.swift in Sources */,
 				1F0BEA8C2726B80500BB17BB /* EventsRealm.swift in Sources */,
 				1F3AC556273310A6006FFF55 /* SettingUserViewController.swift in Sources */,
 				1FB75E3F27246599002E1300 /* EventViewLayout.swift in Sources */,
@@ -454,6 +473,7 @@
 				1F4DC4F026EBD49F000F9A74 /* SingInViewController.swift in Sources */,
 				1F3AC5582733156E006FFF55 /* SettingUserAttributes.swift in Sources */,
 				1F4DC4EC26EA9A05000F9A74 /* EventsViewController.swift in Sources */,
+				1FF96058273D2EC6007629A5 /* ChekListViewController.swift in Sources */,
 				1F60B2282729258800EDB3E2 /* UserMenuViewController.swift in Sources */,
 				1F4DC4E826EA7036000F9A74 /* EventSetup.swift in Sources */,
 			);

@@ -44,7 +44,7 @@ class CalendarViewController: UIViewController {
                         RealmManager.sharedInstance.save(object: self.organizers)
                         RealmManager.sharedInstance.save(object: self.calendarEvents)
                         RealmManager.sharedInstance.save(object: self.type)
-                    
+                       
                         self.tableview.reloadData()
                 }
             }

@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import Alamofire
 
 public class RealmManager {
     private let database: Realm
@@ -32,14 +33,6 @@ public class RealmManager {
     // записать данные
     public func save<T: Object>(object: T) {
        
-            try! database.write {
-                database.add(object, update: .all)
-            }
-    }
-    
-    // изменить данные
-    public func update<T: Object>(object: T) {
-   
             try! database.write {
                 database.add(object, update: .all)
             }

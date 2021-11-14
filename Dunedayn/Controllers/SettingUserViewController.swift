@@ -11,9 +11,6 @@ import SDWebImage
 class SettingUserViewController: UIViewController {
     
     let name = User()
-    var userImageUrl = UserImage()
-    
-    var idImage = 0
         
     var userImage = UIImageView()
     let substrate = UIView()
@@ -31,6 +28,22 @@ class SettingUserViewController: UIViewController {
         bt.addTarget(self, action: #selector(addImage), for: .touchUpInside)
         return bt
     }()
+    
+    let goToUserMenu : UIButton = {
+        let bt = UIButton()
+        bt.addTarget(self, action: #selector(goMenu), for: .touchUpInside)
+        return bt
+    }()
+    
+ 
+    
+    
+    
+    @objc func goMenu(sender: UIButton) {
+        
+        navigationController?.popViewController(animated: true)
+        
+    }
     
     @objc func newName(sender: UIButton) {
         
@@ -60,8 +73,10 @@ class SettingUserViewController: UIViewController {
         } else {
             self.myNameLabel.text = RealmManager.sharedInstance.get(object: name)[0].name
         }
-        idImage += 2
-        self.userImage.image = loadImageFromPath(path: fileInDocumentsDirectory(filename: "/tempImage"))
- 
+
+        self.userImage.image = ImageManager().loadImageFromPath(path: ImageManager().fileInDocumentsDirectory(filename: "/tempImage"))
+        
+        self.title = "Настройки профиля"
     }
 }
+
