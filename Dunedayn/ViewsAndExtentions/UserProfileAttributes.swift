@@ -18,48 +18,57 @@ extension UserProfileViewController {
         view.insertSubview(image.backgraundImage, at: 0)
         
 
-        view.addSubview(substrate)
-        view.addSubview(userImage)
-        view.addSubview(userName)
+        view.addSubview(substrateView)
+        view.addSubview(userImageView)
+        view.addSubview(userNameLabel)
+        view.addSubview(nameLabel)
         
         
         let color = UIColor(red: 0.094, green: 0.094, blue: 0.051, alpha: 0.85)
         
-        substrate.backgroundColor = color
-        substrate.layer.cornerRadius = 10
-        substrate.translatesAutoresizingMaskIntoConstraints = false
-        
-        userImage.translatesAutoresizingMaskIntoConstraints = false
-        userName.translatesAutoresizingMaskIntoConstraints = false
+        substrateView.backgroundColor = color
+        substrateView.layer.cornerRadius = 10
+        substrateView.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        userImageView.translatesAutoresizingMaskIntoConstraints = false
+        userNameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
         
-            userImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
-            userImage.heightAnchor.constraint(equalToConstant: 200),
-            userImage.widthAnchor.constraint(equalToConstant: 200),
-            userImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            userImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
+            userImageView.heightAnchor.constraint(equalToConstant: 200),
+            userImageView.widthAnchor.constraint(equalToConstant: 200),
+            userImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            substrate.topAnchor.constraint(equalTo: userImage.topAnchor, constant: -5),
-            substrate.leftAnchor.constraint(equalTo: userImage.leftAnchor, constant: -5),
-            substrate.rightAnchor.constraint(equalTo: userImage.rightAnchor, constant: 5),
-            substrate.bottomAnchor.constraint(equalTo: userImage.bottomAnchor, constant: 5),
+            substrateView.topAnchor.constraint(equalTo: userImageView.topAnchor, constant: -5),
+            substrateView.leftAnchor.constraint(equalTo: userImageView.leftAnchor, constant: -5),
+            substrateView.rightAnchor.constraint(equalTo: userImageView.rightAnchor, constant: 5),
+            substrateView.bottomAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 5),
             
-            userName.topAnchor.constraint(equalTo: userImage.bottomAnchor, constant: 30),
-            userName.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            nameLabel.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 30),
+            nameLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 60),
         
-        
+            userNameLabel.leftAnchor.constraint(equalTo: nameLabel.rightAnchor, constant: 60),
+            userNameLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor, constant: 0)
+            
+            
         ])
-        userImage.tintColor = .darkGray
-        userImage.backgroundColor = .clear
-        userImage.layer.cornerRadius = 10
-        userImage.clipsToBounds = true
-        userImage.contentMode = .scaleAspectFill
+        userImageView.tintColor = .darkGray
+        userImageView.backgroundColor = .clear
+        userImageView.layer.cornerRadius = 10
+        userImageView.clipsToBounds = true
+        userImageView.contentMode = .scaleAspectFill
         
-        userName.backgroundColor = .clear
-        userName.textColor = .white
-        userName.font = UIFont.init(name: "Helvetica Neue", size: 26)
+        userNameLabel.backgroundColor = color
+        userNameLabel.clipsToBounds = true
+        userNameLabel.layer.cornerRadius = 10
+        userNameLabel.textColor = .white
+        userNameLabel.font = UIFont.init(name: "Helvetica Neue", size: 30)
         
+        nameLabel.backgroundColor = .clear
+        nameLabel.textColor = .white
+        nameLabel.font = UIFont.init(name: "Helvetica Neue", size: 26)
         
-        
+    
     }
 }

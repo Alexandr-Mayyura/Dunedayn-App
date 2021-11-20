@@ -54,9 +54,6 @@ class ChekListViewController: UIViewController {
 
     }
 
-    
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -95,11 +92,12 @@ extension ChekListViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chekListCell", for: indexPath) as! ChekListTableViewCell
         cell.backgroundColor = UIColor(red: 0.094, green: 0.094, blue: 0.051, alpha: 0.85)
         
-        let task = RealmManager.sharedInstance.get(object: chek)[indexPath.row]
-        cell.nameLabel?.text = task.notes
+        let task = RealmManager.sharedInstance.get(object: chek).sorted(byKeyPath: "isCompleted", ascending: true)
+
+        cell.nameLabel?.text = task[indexPath.row].notes
         cell.tintColor = .white
 
-        if task.isCompleted == true {
+        if task[indexPath.row].isCompleted == true {
             cell.accessoryType = .checkmark
             cell.nameLabel?.textColor = .gray
         } else {
@@ -123,14 +121,17 @@ extension ChekListViewController: UITableViewDataSource, UITableViewDelegate {
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
          let reminderItem = Task()
-         reminderItem.notes = RealmManager.sharedInstance.get(object: chek)[indexPath.row].notes
-         reminderItem.id = RealmManager.sharedInstance.get(object: chek)[indexPath.row].id
-         reminderItem.isCompleted = !RealmManager.sharedInstance.get(object: chek)[indexPath.row].isCompleted
-
-//         RealmManager.sharedInstance.get(object: self.chek).sorted(byKeyPath: "isCompleted", ascending: true)
-         RealmManager.sharedInstance.save(object: reminderItem)
+       
+         let itemSort = RealmManager.sharedInstance.get(object: chek).sorted(byKeyPath: "isCompleted", ascending: true)
          
-         tableView.reloadRows(at: [indexPath], with: .automatic)
+         reminderItem.isCompleted = !itemSort[indexPath.row].isCompleted
+         reminderItem.notes = itemSort[indexPath.row].notes
+         reminderItem.id = itemSort[indexPath.row].id
+         
+        RealmManager.sharedInstance.save(object: reminderItem)
+         
+//         tableView.reloadRows(at: [indexPath], with: .automatic)
+         self.tableview.reloadData()
 
     }
 

@@ -11,9 +11,10 @@ class UserProfileViewController: UIViewController {
     
     let user = User()
     
-    let userImage = UIImageView()
-    let userName = UILabel()
-    let substrate = UIView()
+    let userImageView = UIImageView()
+    let userNameLabel = UILabel()
+    let nameLabel = UILabel()
+    let substrateView = UIView()
     
     
  
@@ -25,7 +26,7 @@ class UserProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         attributes()
-        
+        nameLabel.text = "Имя:"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .done, target: self, action: #selector (rightButtonAction))
         self.navigationController?.navigationBar.backgroundColor = .black
         self.navigationController?.navigationBar.tintColor = .white
@@ -34,8 +35,10 @@ class UserProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        userName.text = RealmManager.sharedInstance.get(object: user).first?.name
-        self.userImage.image = ImageManager().loadImageFromPath(path: ImageManager().fileInDocumentsDirectory(filename: "/tempImage"))
+        
+        self.title = RealmManager.sharedInstance.get(object: user).first?.name
+        userNameLabel.text = RealmManager.sharedInstance.get(object: user).first?.name
+        self.userImageView.image = ImageManager().loadImageFromPath(path: ImageManager().fileInDocumentsDirectory(filename: "/tempImage"))
         
     }
     

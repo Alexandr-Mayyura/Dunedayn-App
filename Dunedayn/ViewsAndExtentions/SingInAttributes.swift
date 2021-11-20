@@ -21,7 +21,7 @@ extension SingInViewController {
         let image = BackgroundImages()
         image.backgraundImage.image = image.image
         view.insertSubview(image.backgraundImage, at: 0)
-           
+        
         firstView.backgroundColor = .clear
         logoImageView.image = logoImage
         logoLabel.attributedText = attrString

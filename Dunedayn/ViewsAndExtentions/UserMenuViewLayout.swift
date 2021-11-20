@@ -21,9 +21,6 @@ extension UserMenuViewController {
         image.backgraundImage.image = image.image
         view.insertSubview(image.backgraundImage, at: 0)
         
-        self.title = "Dundenbay"
-        
-        
         NSLayoutConstraint.activate (
             [
                 collectionViewTicker.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),

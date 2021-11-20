@@ -34,6 +34,8 @@
 		1F4DC4F726EBE144000F9A74 /* TeamMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4F626EBE144000F9A74 /* TeamMenuCollectionViewCell.swift */; };
 		1F4DC4F926EBF0FC000F9A74 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4F826EBF0FC000F9A74 /* CalendarViewController.swift */; };
 		1F4DC4FB26EBF702000F9A74 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DC4FA26EBF702000F9A74 /* CalendarTableViewCell.swift */; };
+		1F5D4EA5274999AB00E99200 /* Сharter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D4EA4274999AB00E99200 /* Сharter.swift */; };
+		1F5D4EA727499D0D00E99200 /* CharterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D4EA627499D0D00E99200 /* CharterViewController.swift */; };
 		1F60B2282729258800EDB3E2 /* UserMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F60B2272729258800EDB3E2 /* UserMenuViewController.swift */; };
 		1F60B22A2729288B00EDB3E2 /* UserMenuViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F60B2292729288B00EDB3E2 /* UserMenuViewLayout.swift */; };
 		1F8E2AED27358BA3008BB922 /* UserRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2AEC27358BA3008BB922 /* UserRealm.swift */; };
@@ -93,6 +95,8 @@
 		1F4DC4F626EBE144000F9A74 /* TeamMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		1F4DC4F826EBF0FC000F9A74 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		1F4DC4FA26EBF702000F9A74 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		1F5D4EA4274999AB00E99200 /* Сharter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Сharter.swift"; sourceTree = "<group>"; };
+		1F5D4EA627499D0D00E99200 /* CharterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharterViewController.swift; sourceTree = "<group>"; };
 		1F60B2272729258800EDB3E2 /* UserMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuViewController.swift; sourceTree = "<group>"; };
 		1F60B2292729288B00EDB3E2 /* UserMenuViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuViewLayout.swift; sourceTree = "<group>"; };
 		1F8E2AEC27358BA3008BB922 /* UserRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRealm.swift; sourceTree = "<group>"; };
@@ -210,6 +214,7 @@
 				1F4DC4D526E9E53D000F9A74 /* Roles.swift */,
 				1F4DC4DA26E9E55B000F9A74 /* UserBase.swift */,
 				1F4DC4D926E9E55B000F9A74 /* Users.swift */,
+				1F5D4EA4274999AB00E99200 /* Сharter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 				1F4DC4F326EBDFD9000F9A74 /* TeamMenuViewController.swift */,
 				1F60B2272729258800EDB3E2 /* UserMenuViewController.swift */,
 				1F4DC4F826EBF0FC000F9A74 /* CalendarViewController.swift */,
+				1F5D4EA627499D0D00E99200 /* CharterViewController.swift */,
 				1FAF65EE273B8D9A00547793 /* UserProfileViewController.swift */,
 				1FF96057273D2EC6007629A5 /* ChekListViewController.swift */,
 				1F3AC555273310A6006FFF55 /* SettingUserViewController.swift */,
@@ -448,6 +454,7 @@
 				1F4DC4F726EBE144000F9A74 /* TeamMenuCollectionViewCell.swift in Sources */,
 				1FB75E45272466A0002E1300 /* DateFormatters.swift in Sources */,
 				1F4DC4F426EBDFD9000F9A74 /* TeamMenuViewController.swift in Sources */,
+				1F5D4EA727499D0D00E99200 /* CharterViewController.swift in Sources */,
 				1FB75E4127246612002E1300 /* CalendarViewLayout.swift in Sources */,
 				1FDB4CC02724BD1100FD7F34 /* AlertViews.swift in Sources */,
 				1FDB4CBE2724B9ED00FD7F34 /* ExtentionAddEventPickers.swift in Sources */,
@@ -458,6 +465,7 @@
 				1F4DC4DC26E9E55B000F9A74 /* UserBase.swift in Sources */,
 				1FAF65EF273B8D9A00547793 /* UserProfileViewController.swift in Sources */,
 				1F0BEA8C2726B80500BB17BB /* EventsRealm.swift in Sources */,
+				1F5D4EA5274999AB00E99200 /* Сharter.swift in Sources */,
 				1F3AC556273310A6006FFF55 /* SettingUserViewController.swift in Sources */,
 				1FB75E3F27246599002E1300 /* EventViewLayout.swift in Sources */,
 				1FA49A04272ECBA400BE68C0 /* TickerCollectionViewCell.swift in Sources */,

@@ -14,6 +14,11 @@ class UserMenuViewController: UIViewController {
     let logosName = ["5У", "Линия Фронта", "Пыка (ATG)", "Разные орги с форума airsoftclub", "Совет Командиров СК", "СтрАтеГ (З.Л.О.)", "AirsoftClub2", "Borgame (Бор)", "Privatka club", "Sokolgames", "Strike 37", "ДНД"]
     
     let vc = SingInViewController()
+    let user = User()
+    
+    @IBAction func exitButton(_ sender: UIButton) {
+       
+    }
     
     let userMenuCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -46,14 +51,18 @@ class UserMenuViewController: UIViewController {
                    }
         }
     }
-    
-   
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.collectionViewTicker.reloadData()
         isOn = true
         startScrolling()
+        
+        if RealmManager.sharedInstance.get(object: user).first?.name == nil || RealmManager.sharedInstance.get(object: user).first?.name == "" {
+            self.title = "Dundenbay"
+        } else {
+            self.title = RealmManager.sharedInstance.get(object: user).first?.name
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -67,8 +76,6 @@ class UserMenuViewController: UIViewController {
         collectionViewTicker.dataSource = self
         userMenuCollectionView.delegate = self
         userMenuCollectionView.dataSource = self
-        
-       
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -102,7 +109,7 @@ extension UserMenuViewController: UICollectionViewDelegateFlowLayout, UICollecti
          if collectionView == userMenuCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "teamMenuCell", for: indexPath) as! TeamMenuCollectionViewCell
              
-             if indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 4 {
+             if indexPath.row == 0 || indexPath.row == 4 {
                 cell.backgroundColor = UIColor(red: 0.094, green: 0.094, blue: 0.051, alpha: 0.90)
                 cell.layer.cornerRadius = 10
                 let nameMenu = teamMenu[indexPath.row]
@@ -147,7 +154,7 @@ extension UserMenuViewController: UICollectionViewDelegateFlowLayout, UICollecti
 
      func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
          if collectionView == self.userMenuCollectionView {
-             if indexPath.row == 0 && indexPath.row == 1 && indexPath.row == 4 {
+             if indexPath.row == 0 && indexPath.row == 4 {
                  UIView.animate(withDuration: 0.1) {
                      if let cell = collectionView.cellForItem(at: indexPath) {
                          cell.transform = .init(scaleX: 0.90, y: 0.90)
@@ -166,10 +173,7 @@ extension UserMenuViewController: UICollectionViewDelegateFlowLayout, UICollecti
                     cell.transform = .identity
                     cell.contentView.backgroundColor = .clear
                 }
-                if indexPath.row == 1 {
-                     let vc = CalendarViewController()
-                    self.navigationController?.pushViewController(vc, animated: true)
-                } else if indexPath.row == 0 {
+                if indexPath.row == 0 {
                     let vc = UserProfileViewController()
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else if indexPath.row == 4 {

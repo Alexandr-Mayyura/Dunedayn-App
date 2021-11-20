@@ -26,6 +26,12 @@ class SingInViewController: UIViewController, UITextFieldDelegate{
         })
     }
     
+    func returnAnimation() {
+        UIView.animate(withDuration: 1, animations: { [weak self]() -> Void in
+            self?.logoImageView.transform = .identity
+        })
+    }
+    
     @IBAction func singInButton(_ sender: Any) {
         animation()
     }
@@ -61,17 +67,22 @@ class SingInViewController: UIViewController, UITextFieldDelegate{
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
-        
+        returnAnimation()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         attributes()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         addContetnt()
     }
     
